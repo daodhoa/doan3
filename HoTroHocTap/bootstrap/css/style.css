@@ -1,0 +1,9 @@
+.bg-dark {
+    background-color: #2E8B57;
+}
+.navbar .nav > li > a{
+	color: white;
+}
+.navbar-header a {
+	color: white !important;
+}
