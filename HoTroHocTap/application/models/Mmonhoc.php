@@ -13,5 +13,12 @@ class Mmonhoc extends CI_Model
 		}
 		return $records;
 	}
+
+	public function getThongTinMonHoc($mamon) 
+	{
+		$this->db->where('mamon', $mamon);
+		$records = $this->db->get('dm_mon');
+		return $records->row_array();
+	}
 }
 ?>

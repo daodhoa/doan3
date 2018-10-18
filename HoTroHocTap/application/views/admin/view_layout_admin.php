@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BK-Learn Admin</title>
     <!-- Core CSS - Include with every page -->
-    <link href="../bootstrap/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../bootstrap/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="../bootstrap/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+    <!--<link href="../bootstrap/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />-->
     <link href="../bootstrap/assets/css/style.css" rel="stylesheet" />
     <link href="../bootstrap/assets/css/main-style.css" rel="stylesheet" />
-    <!-- Page-Level CSS -->
-    <link href="../bootstrap/assets/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    <link href="../bootstrap/assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="../bootstrap/assets/plugins/jquery-1.10.2.js"></script>
+    <script src="../bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="../bootstrap/assets/plugins/pace/pace.js"></script>
+    <script src="../bootstrap/js/jquery.min.js"></script>
 
-    
+   <script src="../bootstrap/js/jquery.dataTables.min.js"></script>  
+    <script src="../bootstrap/js/dataTables.bootstrap.min.js"></script>            
+    <link rel="stylesheet" href="../bootstrap/css/dataTables.bootstrap.min.css" />  
+
 </head>
 <body>
     <!--  wrapper -->
@@ -151,18 +156,6 @@
 
     </div>
     <!-- end wrapper -->
-
-    <!-- Core Scripts - Include with every page -->
-    <script src="../bootstrap/assets/plugins/jquery-1.10.2.js"></script>
-    <script src="../bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="../bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="../bootstrap/assets/plugins/pace/pace.js"></script>
-    <script src="../bootstrap/assets/scripts/siminta.js"></script>
-    <!-- Page-Level Plugin Scripts-->
-    <script src="../bootstrap/assets/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="../bootstrap/assets/plugins/morris/morris.js"></script>
-    <script src="../bootstrap/assets/scripts/dashboard-demo.js"></script>
-    <script src="../bootstrap/js/jquery.min.js"></script>
 
 </body>
 

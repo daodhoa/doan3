@@ -1,61 +1,38 @@
 <div class="row">
     <!-- Page Header -->
     <div class="col-lg-12">
-        <h1 class="page-header">Quản lý môn học</h1>
+        <h1 class="page-header">Quản lý câu hỏi</h1>
     </div>
                 <!--End Page Header -->
 </div>
 <div class="row" >
 	<div class="col-md-5">
-		<h3>Thêm môn học</h3>
+		<h3>Thêm câu hỏi</h3>
 	</div>
 	<div class="col-md-7">
-		
-		<!--<h3>Danh sách môn học</h3>
-		<div class="form-group">
-            <input type="text" class="form-control" id="search" placeholder="Search">
-        </div>
-		<table class="table table-striped table-bordered table-hover" id="tbl-mon">
-			<thead>
-				<tr>
-					<td>Mã môn</td> <td>Tên môn</td> <td>Ghi chú</td> <td>Thao tác</td>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($records->result() as $row):?>
-					<tr>
-						<td><?php echo($row->mamon);?></td>
-						<td><?php echo($row->tenmon); ?></td>
-						<td><?php echo($row->ghichu); ?></td>
-						<td><button type="button" class="btn btn-danger btn-sm">Xóa</button>
-							<button type="button" class="btn btn-warning btn-sm">Sửa</button>
-						</td>
-					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table> -->
-
 		<div class="panel panel-default">
                         <div class="panel-heading">
-                             Danh sách môn học
+                             Danh sách câu hỏi
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover" id="tbl-cauhoi">
                                     <thead>
                                         <tr>
-                                            <td>Mã môn</td> 
-                                            <td>Tên môn</td>
-                                            <td>Ghi chú</td> 
+                                            <td>Mã</td> 
+                                            <td>Môn học</td>
+                                            <td>Độ khó</td>
+                                            <td>Nội dung</td>
                                             <td>Thao tác</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($records->result() as $row):?>
 											<tr>
-												<td><?php echo($row->mamon);?></td>
+												<td><?php echo($row->macauhoi);?></td>
 												<td><?php echo($row->tenmon); ?></td>
-												<td><?php echo($row->ghichu); ?></td>
+												<td><?php echo($row->chuthich); ?></td>
+												<td><?php echo($row->noidung); ?></td>
 												<td><button type="button" class="btn btn-danger btn-sm">Xóa</button>
 												<button type="button" class="btn btn-warning btn-sm">Sửa</button>
 												</td>
@@ -75,7 +52,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-        $('#dataTables-example').DataTable();
+        $('#tbl-cauhoi').DataTable();
     });
 </script>
 
