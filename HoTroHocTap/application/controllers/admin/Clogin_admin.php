@@ -13,12 +13,14 @@ class Clogin_admin extends MY_Controller
 
 	public function index()
 	{
+
 		$this->load->view('admin/view_login_admin');
 	}
 
 	public function login()
 	{
 		//this->load->helper('form');
+		
 		if($this->input->post('submit'))
 		{
 			$tentaikhoan = $this->input->post('tentaikhoan');
