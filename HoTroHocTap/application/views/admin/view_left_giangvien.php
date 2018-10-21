@@ -7,7 +7,7 @@
                         <!-- user image section-->
                         <div class="user-section">
                             <div class="user-section-inner">
-                                <img src="../bootstrap/assets/img/user.jpg" alt="">
+                                <img src="<?php echo base_url(); ?>/bootstrap/assets/img/user.jpg" alt="">
                             </div>
                             <div class="user-info">
                                 <div><?php echo $this->session->userdata('hoten'); ?></strong></div>

@@ -5,21 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BK-Learn Admin</title>
     <!-- Core CSS - Include with every page -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../bootstrap/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!--<link href="../bootstrap/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />-->
-    <link href="../bootstrap/assets/css/style.css" rel="stylesheet" />
-    <link href="../bootstrap/assets/css/main-style.css" rel="stylesheet" />
-    <script src="../bootstrap/assets/plugins/jquery-1.10.2.js"></script>
-    <script src="../bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="../bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="../bootstrap/assets/plugins/pace/pace.js"></script>
-    <script src="../bootstrap/js/jquery.min.js"></script>
+    <link href="<?php echo base_url(); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>/bootstrap/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!--<link href="<?php echo base_url(); ?>/bootstrap/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />-->
+    <link href="<?php echo base_url(); ?>/bootstrap/assets/css/style.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>/bootstrap/assets/css/main-style.css" rel="stylesheet" />
+    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/jquery-1.10.2.js"></script>
+    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/pace/pace.js"></script>
+    <script src="<?php echo base_url(); ?>/bootstrap/js/jquery.min.js"></script>
 
-   <script src="../bootstrap/js/jquery.dataTables.min.js"></script>  
-    <script src="../bootstrap/js/dataTables.bootstrap.min.js"></script>            
-    <link rel="stylesheet" href="../bootstrap/css/dataTables.bootstrap.min.css" />  
+   <script src="<?php echo base_url(); ?>/bootstrap/js/jquery.dataTables.min.js"></script>  
+    <script src="<?php echo base_url(); ?>/bootstrap/js/dataTables.bootstrap.min.js"></script>            
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/bootstrap/css/dataTables.bootstrap.min.css" />  
 
+    <script type="text/javascript">
+        function confirmAction(){
+        return confirm("Xác nhận xóa?")
+        }
+    </script>
+
+    <?php 
+    if($this->session->flashdata('message')!=''):
+        $message = $this->session->flashdata('message');
+    ?>
+    <script type="text/javascript">
+        alert('<?php echo $message; ?>');
+    </script>
+    <?php endif; ?>
 </head>
 <body>
     <!--  wrapper -->
