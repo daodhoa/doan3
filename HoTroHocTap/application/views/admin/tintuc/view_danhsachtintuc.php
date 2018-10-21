@@ -1,65 +1,45 @@
 <div class="row">
     <!-- Page Header -->
     <div class="col-lg-12">
-        <h1 class="page-header">Quản lý tin </h1>
+        <h1 class="page-header">Quản lý tin tức</h1>
     </div>
                 <!--End Page Header -->
 </div>
 <div class="row" >
-	<div class="col-md-6">
-		<h3>Thêm môn học</h3>
-	</div>
-	<div class="col-md-6">
+	<div class="col-md-12">
 		
-		<!--<h3>Danh sách môn học</h3>
-		<div class="form-group">
-            <input type="text" class="form-control" id="search" placeholder="Search">
-        </div>
-		<table class="table table-striped table-bordered table-hover" id="tbl-mon">
-			<thead>
-				<tr>
-					<td>Mã môn</td> <td>Tên môn</td> <td>Ghi chú</td> <td>Thao tác</td>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($records->result() as $row):?>
-					<tr>
-						<td><?php echo($row->mamon);?></td>
-						<td><?php echo($row->tenmon); ?></td>
-						<td><?php echo($row->ghichu); ?></td>
-						<td><button type="button" class="btn btn-danger btn-sm">Xóa</button>
-							<button type="button" class="btn btn-warning btn-sm">Sửa</button>
-						</td>
-					</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table> -->
-
 		<div class="panel panel-default">
+			<?php foreach ($monHocs->result() as $monHoc):?>
                         <div class="panel-heading">
-                             Danh sách môn học 
+                             Môn học: <?php echo($monHoc->tenmon); ?>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <td>Mã môn</td> 
-                                            <td>Tên môn</td>
-                                            <td>Ghi chú</td> 
+                                            <td>Ngày đăng</td> 
+                                            <td>Tiêu đề</td>
                                             <td>Thao tác</td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($records->result() as $row):?>
+                                        <?php foreach ($tinTucs->result() as $tinTuc):?>
+                                        	<?php if (!strcmp($tinTuc->mamonhoc,$monHoc->mamon)):?>
 											<tr>
-												<td><?php echo($row->mamon);?></td>
-												<td><?php echo($row->tenmon); ?></td>
-												<td><?php echo($row->ghichu); ?></td>
-												<td><button type="button" class="btn btn-danger btn-sm">Xóa</button>
-												<button type="button" class="btn btn-warning btn-sm">Sửa</button>
+												<td><?php echo($tinTuc->ngaydang);?></td>
+												<td><?php echo($tinTuc->tieude); ?></td>
+												<td>
+                                                <a href="<?php echo base_url().'admin/cdanhmuctintuc/xoa/'.$tinTuc->matintuc ;?>"
+                                                    type="button" class="btn btn-danger btn-sm" 
+                                                    onclick="return confirm('Bạn chắc muốn xóa tin này chứ?');" >
+                                                Xóa
+                                                </a>
+												<a href="<?php echo base_url().'admin/cdanhmuctintuc/showViewSuatintuc/'.$tinTuc->matintuc ;?>" type="button" class="btn btn-warning btn-sm">Sửa</a>
+												<a href="<?php echo base_url().'admin/cdanhmuctintuc/showViewChiTiettintuc/'.$tinTuc->matintuc ;?>" type="button" class="btn btn-info btn-sm">Xem chi tiết</a>
 												</td>
 											</tr>
+											<?php endif?>
 										<?php endforeach; ?>
 
 
@@ -68,8 +48,14 @@
                             </div>
                             
                         </div>
-                    </div>
+        	<?php endforeach; ?>
+        </div>
 
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<a href="<?php echo base_url().'admin/cdanhmuctintuc/showViewThemtintuc' ;?>" type="button" class="btn btn-info btn-lg"> Thêm tin tức</a>
 	</div>
 </div>
 

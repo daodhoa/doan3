@@ -58,7 +58,7 @@
                         <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý đề thi</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url().'admin/cdanhmuctintuc' ;?>"><i class="fa fa-table fa-fw"></i>Quản lý tin tức</a>
+                        <a href="<?php echo base_url().'admin/cdanhmuctintuc/danhsachtintuc' ;?>"><i class="fa fa-table fa-fw"></i>Quản lý tin tức</a>
                     </li>
 
                 </ul>
