@@ -31,7 +31,9 @@ class Clogin_admin extends MY_Controller
 
 			$record = $this->Madmin->login($tentaikhoan, $matkhau);
 			if($record == FALSE ){
-				echo "Đăng nhập thất bại";
+				$this->session->set_userdata('error_login', 'Sai tài khoản hoặc mật khẩu.');
+				redirect(base_url().'admin/Clogin_admin');
+				//$this->load->view('admin/view_login_admin');
 			}
 			else
 			{
@@ -45,7 +47,7 @@ class Clogin_admin extends MY_Controller
 		}
 		else
 		{
-			echo "Loi";
+			echo "ERROR- 404";
 		}
 
 		//$this->load->view('admin/view_login_admin');

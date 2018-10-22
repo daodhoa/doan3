@@ -21,7 +21,7 @@
    </div>
     <form id="Login" action="<?php echo base_url().'admin/clogin_admin/login' ?>" method="POST">
         <div class="form-group">
-            <input type="text" class="form-control" id="inputEmail" placeholder="Username" name="tentaikhoan" required>
+            <input type="text" class="form-control" id="inputEmail" placeholder="Username" name="tentaikhoan" required value="<?php echo $this->input->post('tentaikhoan'); ?>">
         </div>
         <div class="form-group">
             <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="matkhau" required>
@@ -29,11 +29,18 @@
         <div class="forgot">
         <a href="reset.html">Forgot password?</a>
 		    </div>
+        <?php 
+        $error_login= $this->session->userdata('error_login');
+        if($error_login != ''):?>
+          <p style="color: red;"><?php echo $error_login; ?></p>
+        <?php endif;
+          $this->session->unset_userdata('error_login');
+        ?>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" name="submit" value="Đăng nhập">
         </div>
         <!--<button type="submit" class="btn btn-primary" name="submit">Login</button>-->
-
+        
     </form>
  </div>
 	<p class="botto-text"> Designed by DuyHoa</p>
