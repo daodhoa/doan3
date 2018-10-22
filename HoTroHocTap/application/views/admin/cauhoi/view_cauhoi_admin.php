@@ -141,7 +141,20 @@
 
 <script type="text/javascript">
 	$(document).ready(function (){
-        $('#tbl-cauhoi').DataTable();
+        $('#tbl-cauhoi').DataTable(
+        {
+          "language" :{
+            "lengthMenu": "Hiển thị _MENU_ bản ghi/trang",
+            "info": "Trang _PAGE_ trên _PAGES_",
+            "search" : "Tìm kiếm",
+            "paginate": {
+              "previous": "Trang trước",
+              "next" : "Trang sau"
+            }
+          }
+
+        }
+        );
         $("#add-form").hide();
        
     });

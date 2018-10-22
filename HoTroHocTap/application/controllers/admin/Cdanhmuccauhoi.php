@@ -32,6 +32,7 @@ class Cdanhmuccauhoi extends MY_Controller
                 'mau'=>'success'
 			);
 			$this->session->set_flashdata('mes', $mes);
+            redirect(base_url('admin/Cdanhmuccauhoi'));
 		}
 	}
 
@@ -196,7 +197,7 @@ class Cdanhmuccauhoi extends MY_Controller
                 $this->session->set_flashdata('message', 'Cập nhật thành công');
             }
 
-            redirect(base_url('admin/Cdanhmuccauhoi'));
+            redirect(base_url('admin/Cdanhmuccauhoi/xem?macauhoi='. $macauhoi));
         }
     }
 

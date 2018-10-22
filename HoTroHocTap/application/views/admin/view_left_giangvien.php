@@ -52,7 +52,7 @@
                         <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý bài giảng</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý câu hỏi</a>
+                        <a href="<?php echo base_url().'admin/cdanhmuccauhoi' ;?>"><i class="fa fa-table fa-fw"></i>Quản lý câu hỏi</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý đề thi</a>
