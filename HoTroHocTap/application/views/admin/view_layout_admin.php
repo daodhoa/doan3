@@ -13,8 +13,7 @@
     <link href="<?php echo base_url(); ?>/bootstrap/assets/css/main-style.css" rel="stylesheet" />
     <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/jquery-1.10.2.js"></script>
     <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/pace/pace.js"></script>
+    
     <script src="<?php echo base_url(); ?>/bootstrap/js/jquery.min.js"></script>
 
 
@@ -24,7 +23,7 @@
 
     <script type="text/javascript">
         function confirmAction(){
-        return confirm("Xác nhận xóa?")
+        return confirm("Xác nhận xóa?");
         }
     </script>
 
@@ -159,7 +158,7 @@
        ?>
         <!-- end navbar side -->
         <!--  page-wrapper -->
-        <div id="page-wrapper" style="background-color: white;">
+        <div id="page-wrapper" style="background-color: #EEEEEE;">
 
         <?php
             if(isset($content))
@@ -176,17 +175,16 @@
 <<<<<<< HEAD
 =======
     <!-- Core Scripts - Include with every page -->
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/jquery-1.10.2.js"></script>
+    <!--<script src="<?php echo base_url() ?>bootstrap/assets/plugins/jquery-1.10.2.js"></script>
     <script src="<?php echo base_url() ?>bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="<?php echo base_url() ?>bootstrap/assets/plugins/pace/pace.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/scripts/siminta.js"></script>
+    <script src="<?php echo base_url() ?>bootstrap/assets/scripts/siminta.js"></script>-->
     <!-- Page-Level Plugin Scripts-->
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/morris/raphael-2.1.0.min.js"></script>
+    <!--<script src="<?php echo base_url() ?>bootstrap/assets/plugins/morris/raphael-2.1.0.min.js"></script>
     <script src="<?php echo base_url() ?>bootstrap/assets/plugins/morris/morris.js"></script>
     <script src="<?php echo base_url() ?>bootstrap/assets/scripts/dashboard-demo.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/js/jquery.min.js"></script>
-
+    <script src="<?php echo base_url() ?>bootstrap/js/jquery.min.js"></script>-->
 >>>>>>> ngohoa
 </body>
 

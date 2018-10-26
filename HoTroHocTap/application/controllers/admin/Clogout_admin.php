@@ -14,7 +14,7 @@ class Clogout_admin extends MY_Controller
 	{
 		if($this->session->userdata('tentaikhoan') != '')
 		{
-			$array = array('tentaikhoan', 'maquyen' , 'hoten');
+			$array = array('maquantri','tentaikhoan', 'maquyen' , 'hoten');
 			$this->session->unset_userdata($array);
 			redirect(base_url().'admin/clogin_admin');
 		}
