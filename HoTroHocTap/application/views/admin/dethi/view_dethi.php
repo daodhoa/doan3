@@ -7,6 +7,10 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 </head>
 <body>
+	<form method="POST">
+		<input type="submit" name="words" value="Export">
+	</form>
+	
     <?php echo $html; ?>
 </body>
 </html>

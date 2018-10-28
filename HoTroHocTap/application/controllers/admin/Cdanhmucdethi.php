@@ -50,9 +50,11 @@ class Cdanhmucdethi extends MY_Controller
 
 	public function taoDeThi()
 	{
+        $name = "";
 		if($this->input->get('type')== 0 )
         {
             $filename = $this->input->get('md')."_dethi.txt";
+            $name = $this->input->get('md');
             $html = '';
             if(file_exists(rootlogfile().$filename))
             {//file tồn tại down luôn
@@ -82,6 +84,14 @@ class Cdanhmucdethi extends MY_Controller
             $data['url']=base_url();
             $this->parser->parse('admin/dethi/view_dethi',$data);*/
             $this->load->view('admin/dethi/view_dethi', $data);
+        }
+
+        if($this->input->post('words'))
+        {
+            header("Content-Type: application/vnd.msword");
+            header("Expires: 0");
+            header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
+            header("content-disposition: attachment; filename=dethi_".$name.".doc");
         }
 	}
 

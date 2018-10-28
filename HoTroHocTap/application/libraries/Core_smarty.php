@@ -30,7 +30,7 @@ class Core_Smarty extends Smarty {
         $cache_id = $template. "_" . md5(json_encode($data));
         $compile_id = null;
         
-        return $this->fetch("$template.{$this->templateExt}", $cache_id, $compile_id, null, !$return, TRUE);
+        return $this->fetch("$template.php", $cache_id, $compile_id, null, !$return, TRUE);
 		
     }
 
