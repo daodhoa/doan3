@@ -49,7 +49,17 @@
                         <a href= "<?php echo base_url().'admin/cdanhmucmonhoc' ;?>"><i class="fa fa-flask fa-fw"></i>Quản lý môn học</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý bài giảng</a>
+                        <a href="#"><i class="fa fa-table fa-fw"></i>
+                            <span>Quản lý bài giảng</span><span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right" style="margin-right: 10px"></i>
+                            </span>
+                        </a>
+                         <ul class="treeview-menu">
+                          <li ><a href= "<?php echo base_url().'thembg' ;?>"><i class="fa fa-circle-o"></i> Thêm bài giảng</a></li>
+                        </ul>
+                        <ul class="treeview-menu">
+                          <li ><a href="<?php echo base_url().'dsbg' ;?>"><i class="fa fa-circle-o"></i> Danh sách bài giảng</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="<?php echo base_url().'admin/cdanhmuccauhoi' ;?>"><i class="fa fa-table fa-fw"></i>Quản lý câu hỏi</a>

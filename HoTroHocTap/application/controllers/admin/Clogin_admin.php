@@ -25,7 +25,7 @@ class Clogin_admin extends MY_Controller
 		{
 			$tentaikhoan = $this->input->post('tentaikhoan');
 			$matkhau = $this->input->post('matkhau');
-			$matkhau = md5($matkhau);
+			$matkhau = sha1($matkhau);
 
 			//echo($tentaikhoan);
 

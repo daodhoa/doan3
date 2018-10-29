@@ -6,36 +6,46 @@
     <title>BK-Learn Admin</title>
     <!-- Core CSS - Include with every page -->
 
-    <link href="<?php echo base_url(); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>/bootstrap/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="{$url}bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{$url}bootstrap/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <!--<link href="<?php echo base_url(); ?>/bootstrap/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />-->
-    <link href="<?php echo base_url(); ?>/bootstrap/assets/css/style.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>/bootstrap/assets/css/main-style.css" rel="stylesheet" />
-    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/jquery-1.10.2.js"></script>
-    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/pace/pace.js"></script>
-    <script src="<?php echo base_url(); ?>/bootstrap/js/jquery.min.js"></script>
+    <link href="{$url}bootstrap/assets/css/style.css" rel="stylesheet" />
+    <link href="{$url}bootstrap/assets/css/main-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{$url}bootstrap/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{$url}bootstrap/css/ionicons.min.css">
+    <link rel="stylesheet" href="{$url}bootstrap/css/_all-skins.css">
+    <link rel="stylesheet" href="{$url}bootstrap/css/blue.css">
+    <link rel="stylesheet" href="{$url}bootstrap/css/morris.css">
+    <link rel="stylesheet" href="{$url}bootstrap/css/select2.min.css" />
+    <link rel="stylesheet" href="{$url}bootstrap/css/dataTables.bootstrap.css">
 
+    
+    <script src="{$url}bootstrap/assets/plugins/jquery-1.10.2.js"></script>
+    <script src="{$url}bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="{$url}bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="{$url}bootstrap/assets/plugins/pace/pace.js"></script>
+    <script src="{$url}bootstrap/js/jquery.min.js"></script>
+    <script src="{$url}bootstrap/js/jquery-ui.min.js"></script>
 
-   <script src="<?php echo base_url(); ?>/bootstrap/js/jquery.dataTables.min.js"></script>  
-    <script src="<?php echo base_url(); ?>/bootstrap/js/dataTables.bootstrap.min.js"></script>            
-    <link rel="stylesheet" href="<?php echo base_url(); ?>/bootstrap/css/dataTables.bootstrap.min.css" />  
+   <script src="{$url}bootstrap/js/jquery.dataTables.min.js"></script>  
+    <script src="{$url}bootstrap/js/dataTables.bootstrap.min.js"></script>            
+    <link rel="stylesheet" href="{$url}bootstrap/css/dataTables.bootstrap.min.css" />  
 
+    <!-- ckeditor -->
+  <script src="{$url}bootstrap/ckeditor/ckeditor.js"></script>
+  <script src="{$url}bootstrap/ckfinder/ckfinder.js"></script>
+  <base href="{$url}">
     <script type="text/javascript">
         function confirmAction(){
         return confirm("Xác nhận xóa?")
         }
     </script>
-
-    <?php 
-    if($this->session->flashdata('message')!=''):
-        $message = $this->session->flashdata('message');
-    ?>
-    <script type="text/javascript">
-        alert('<?php echo $message; ?>');
-    </script>
-    <?php endif; ?>
+    <script>
+    setTimeout(function(){
+      $('#thongbao').hide(1000);
+    },2000);
+     
+  </script>
 </head>
 <body>
     <!--  wrapper -->
@@ -127,7 +137,7 @@
                     <!-- dropdown user-->
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i>
-                            <?php echo $this->session->userdata('hoten'); ?></a>
+                            {$hoten}</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
                         </li>
@@ -146,48 +156,6 @@
         <!-- end navbar top -->
 
         <!-- navbar side -->
-       <?php
-            $maquyen = $this->session->userdata('maquyen');
-            if($maquyen == 'giaovien')
-            {
-                $this->load->view('admin/view_left_giangvien');
-            }
-            if($maquyen == 'admin')
-            {
-                $this->load->view('admin/view_left_admin');
-            }
-       ?>
+   
         <!-- end navbar side -->
-        <!--  page-wrapper -->
-        <div id="page-wrapper" style="background-color: white;">
-
-        <?php
-            if(isset($content))
-            {
-                $this->load->view($content);
-            }
-        ?>
-        </div>
-        <!-- end page-wrapper -->
-
-    </div>
-    <!-- end wrapper -->
-
-<<<<<<< HEAD
-=======
-<!--
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/jquery-1.10.2.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/pace/pace.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/scripts/siminta.js"></script>
-    
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/morris/morris.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/scripts/dashboard-demo.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/js/jquery.min.js"></script>
--->
->>>>>>> ngohoa
-</body>
-
-</html>
+        

@@ -53,9 +53,11 @@ $route['default_controller'] = 'Welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['admin']= 'admin/clogin_admin';
+$route['admin']= 'admin/Clogin_admin';
 $route['dangnhap'] = "admin/Clogin_admin";
 $route['doimatkhau'] = "admin/Cdoimatkhau";
 $route['dangxuat'] = "admin/Clogout_admin";
 $route['trangchu'] = "admin/Chome_admin";
+$route['thembg'] 				= "admin/Cthembg";
+$route['dsbg'] 					= "admin/Cdsbaigiang";
 
