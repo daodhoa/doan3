@@ -26,6 +26,13 @@
         return confirm("Xác nhận xóa?");
         }
     </script>
+    <script>
+        setTimeout(function(){
+        $('#thongbao').hide(1000);
+        },2000);
+    </script>
+    <script src="<?php echo base_url(); ?>/bootstrap/ckeditor/ckeditor.js"></script>
+    <script src="<?php echo base_url(); ?>/bootstrap/ckfinder/ckfinder.js"></script>
 
     <?php 
     if($this->session->flashdata('message')!=''):
