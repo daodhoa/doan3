@@ -8,7 +8,7 @@
 
     <link href="<?php echo base_url(); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>/bootstrap/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!--<link href="<?php echo base_url(); ?>/bootstrap/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />-->
+    
     <link href="<?php echo base_url(); ?>/bootstrap/assets/css/style.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>/bootstrap/assets/css/main-style.css" rel="stylesheet" />
     <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/jquery-1.10.2.js"></script>
@@ -21,11 +21,6 @@
     <script src="<?php echo base_url(); ?>/bootstrap/js/dataTables.bootstrap.min.js"></script>            
     <link rel="stylesheet" href="<?php echo base_url(); ?>/bootstrap/css/dataTables.bootstrap.min.css" />  
 
-    <script type="text/javascript">
-        function confirmAction(){
-        return confirm("Xác nhận xóa?");
-        }
-    </script>
     <script>
         setTimeout(function(){
         $('#thongbao').hide(1000);
@@ -34,14 +29,6 @@
     <script src="<?php echo base_url(); ?>/bootstrap/ckeditor/ckeditor.js"></script>
     <script src="<?php echo base_url(); ?>/bootstrap/ckfinder/ckfinder.js"></script>
 
-    <?php 
-    if($this->session->flashdata('message')!=''):
-        $message = $this->session->flashdata('message');
-    ?>
-    <script type="text/javascript">
-        alert('<?php echo $message; ?>');
-    </script>
-    <?php endif; ?>
 </head>
 <body>
     <!--  wrapper -->
@@ -178,7 +165,24 @@
 
     </div>
     <!-- end wrapper -->
+    
+    <script type="text/javascript">
+        function confirmAction(){
+        return confirm("Xác nhận xóa?");
+        }
+    </script>
 
+<<<<<<< HEAD
+=======
+    <?php 
+    if($this->session->flashdata('message')!=''):
+        $message = $this->session->flashdata('message');
+    ?>
+    <script type="text/javascript">
+        alert('<?php echo $message; ?>');
+    </script>
+    <?php endif; ?>
+>>>>>>> duyhoa
 </body>
 
 </html>

@@ -8,8 +8,8 @@
 <div class="content-wrapper">
   <section class="content-header">
     <ol class="breadcrumb">
-      <li><a href="<?php echo base_url('admin/cdanhmucdethi'); ?>"><i class="fa fa-dashboard"></i> Quản lý đề thi</a></li>
-      <li class="active">In đề thi</li>
+      <li><a href="<?php echo base_url('admin/cdanhmucmathi'); ?>"><i class="fa fa-dashboard"></i> Quản lý đề thi</a></li>
+      <li class="active">Tạo đề thi </li>
     </ol>
   </section>
   <!-- Main content-->
@@ -37,16 +37,24 @@
 		border-top-color: green;">
             <div class="box box-success" >
                 <div class="box-header with-border">
-                    <h3 class="box-title">Thêm nhóm đề thi</h3>
+                    <h3 class="box-title">Thêm đề thi</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    <form action="<?php echo base_url('admin/cdanhmucdethi/them'); ?>" method="post" id="themmathi">
+                    <form method="post" id="themmathi">
+                        <div class="form-group">
+                            <label for="mathi">Mã đề thi</label>
+                            <input type="hidden" id="thoigian" value="">
+                            <input type="text" readonly id="mathi" value="<?php echo $mathimoi; ?>" class="form-control" name="mathi" placeholder="Mã thi" style="background-color: #FFFFCC">
+                        </div>
                         <div class="form-group">
                             <label for="monhoc">Môn học</label>
-                            <select class="form-control" name="monhoc" id="monhoc" required="required" style="background-color: #FFFFCC">
+                            <select class="form-control" name="monhoc" id="monhoc" required="required" style="background-color: #FFFFCC" >
                                 <option value="">---chọn môn học---</option>
-                                <?php foreach ($monhoc as $row): ?>
-                                    <option value="<?php echo $row->mamon; ?>"><?php echo $row->tenmon; ?></option>
+                                <?php foreach ($dsmonhoc as $row): ?>
+                                    <option 
+                                    <?php if($this->input->post('monhoc')==$row['mamon'] ): ?>
+                                        selected = "true" <?php endif; ?>
+                                    value="<?php echo $row['mamon'];?>"><?php echo $row['tenmon']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -55,7 +63,7 @@
                             <div class="row" id="slcauhoi">
                                 <div class="col-md-6" >
                                     <div class="col-md-12">
-                                        <input type="number" min="0" class="form-control" name="slcauhoi[de]" placeholder="Dễ" style="background-color: #FFFFCC">
+                                        <input type="number" min="0" class="form-control" name="slcauhoi[de]" placeholder="Dễ" style="background-color: #FFFFCC" value="<?php echo $this->input->post('slcauhoi[de]'); ?>">
                                     </div>
                                     <div class="col-md-12 text-center">
                                         #
@@ -63,7 +71,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="col-md-12">
-                                        <input type="number" min="0" class="form-control" name="slcauhoi[tbinh]" placeholder="Bình thường" style="background-color: #FFFFCC">
+                                        <input type="number" min="0" class="form-control" name="slcauhoi[tb]" placeholder="Trung bình" style="background-color: #FFFFCC" value="<?php echo $this->input->post('slcauhoi[tb]'); ?>">
                                     </div>
                                     <div class="col-md-12 text-center">
                                         #
@@ -71,7 +79,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="col-md-12">
-                                        <input type="number" min="0" class="form-control" name="slcauhoi[kho]" placeholder="Khó" style="background-color: #FFFFCC">
+                                        <input type="number" min="0" class="form-control" name="slcauhoi[kho]" placeholder="Khó" style="background-color: #FFFFCC" value="<?php echo $this->input->post('slcauhoi[kho]'); ?>">
                                     </div>
                                     <div class="col-md-12 text-center">
                                         #
@@ -79,17 +87,20 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="col-md-12">
-                                        <input type="number"  min="0" class="form-control" name="slcauhoi[khohn]" placeholder="Khó hơn" style="background-color: #FFFFCC">
+                                        <input type="number"  min="0" class="form-control" name="slcauhoi[khohn]" placeholder="Khó hơn" style="background-color: #FFFFCC" value="<?php echo $this->input->post('slcauhoi[khohn]'); ?>">
                                     </div>
                                     <div class="col-md-12 text-center">
                                         #
                                     </div>
+                                </div>
+                                <div class="col-md-12" style="color: red !important;">
+                                    <p><?php echo form_error('slcauhoi'); ?></p>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="soluongde">Số lượng đề</label>
-                            <input type="number" min="1" class="form-control"  required="required" name="soluongde" placeholder="Số lượng đề (cái)" style="background-color: #FFFFCC">
+                            <label for="thoigianlambai">Thời gian làm bài(phút)</label>
+                            <input type="number" min="1" class="form-control"  required="required" name="thoigianlambai" placeholder="Thời gian làm bài(phút)" style="background-color: #FFFFCC" value="<?php echo $this->input->post('thoigianlambai'); ?>">
                         </div>
                         <button type="submit" name="luu" value="luu" class="btn btn-success btn-sm btn-flat"><i class="fa fa-check"></i> Xác nhận</button>
                     </form>
@@ -104,7 +115,7 @@
 		border-top-color: green; border-radius: 4px;">
             <div class="box box-success" >
                 <div class="box-header with-border">
-                    <h3 class="box-title">Danh sách nhóm đề thi</h3>
+                    <h3 class="box-title">Danh sách đề thi</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <form action="" method="post">
@@ -112,26 +123,32 @@
                             <thead>
                             <tr>
                                 <th class="text-center">STT</th>
-                                <th class="text-center col-md-4">Môn học</th>
-                                <th class="text-center">SL Đề</th>
-                                <th class="text-center">SL Câu</th>
+                                <th class="text-center col-md-2">Mã thi</th>
+                                <th class="text-center col-md-3">Môn học</th>
+                                <th class="text-center">TG làm bài</th>
                                 <th class="text-center col-md-4">TG tạo</th>
-                                <th class="text-center">Chức năng</th>
+                                <th class="text-center">Trạng thái</th>
                             </tr>
                             </thead>
                             <tbody>
                                 <?php $stt = 1; 
-                                    foreach($dsnhomdethi as $row):
+                                    foreach($dsdethi as $row):
                                 ?>
                                 
                                     <tr>
                                         <td class="text-center"><?php echo $stt; $stt++; ?></td>
-                                        <td><?php echo $row['tenmon'] ?></td>
-                                        <td class="text-center"><?php echo $row['soluongde']; ?></td>
-                                        <td class="text-center"><?php echo $row['slc']; ?></td>
+                                        <td><?php echo $row['madethi']; ?></td>
+                                        <td><?php echo $row['tenmon']; ?></td>
+                                        <td><?php echo $row['thoigianlambai']; ?></td>
                                         <td><?php echo $row['thoigiantao']; ?></td>
-                                        <td class="text-center">
-                                            <a href="<?php echo base_url('admin/cdanhmucdethi/taoDeThi'); ?>?type=0&md=<?php echo $row['manhomde']; ?>" class="btn btn-success btn-flat btn-sm"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                        <td class="text-center col-md-2">
+                                            <a href="<?php echo base_url('admin/cdanhmucmathi/xemchitiet?madethi='.$row['madethi']); ?>" class="btn btn-success btn-flat btn-sm"><i class="fa fa-download" aria-hidden="true"></i></a>
+
+                                            <?php if($row['trangthai'] == 1): ?>
+                                                <button class="btn btn-primary btn-flat btn-sm" title="đang hoạt động" onclick="changeStatus('<?php echo $row["madethi"]; ?>');" name="check" ><i class="fa fa-check" aria-hidden="true"></i></button>
+                                            <?php elseif($row['trangthai'] == 0): ?>
+                                                <button  class="btn btn-danger btn-flat btn-sm" title="đã bị hủy" onclick="changeStatus('<?php echo $row["madethi"]; ?>');" name ="uncheck" ><i class="fa fa-times" aria-hidden="true"></i></button>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -144,9 +161,20 @@
     <!--end of danh sách mã thi-->
   </section>
 </div>
-
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#example1').DataTable();
-    });
+	$(document).ready(function() {
+		$('#example1').DataTable();
+	});
+
+    function changeStatus(madethi){
+        $.ajax({
+            url: "<?php echo base_url('admin/cdanhmucmathi/changeStatus/'); ?>" + madethi ,
+            type: 'POST',
+            dataType : 'JSON',
+        })
+        .done(function(data) {
+            alert('Đã cập nhật trạng thái');
+        })
+        
+    }
 </script>

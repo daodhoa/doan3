@@ -6,6 +6,7 @@ class Mmonhoc extends CI_Model
 {
 	public function getDanhSachMonHoc()
 	{
+
 		$records = $this->db->get('dm_mon');
 		if(empty($records))
 		{
@@ -32,7 +33,14 @@ class Mmonhoc extends CI_Model
 	{
 		$this->db->where('manguoitao', $maquantri);
 		$records = $this->db->get('dm_mon');
-		return $records->result();
+		return $records->result_array();
+	}
+
+	public function getListLopHoc($mamon)
+	{
+		$this->db->where('mamon', $mamon);
+		$records = $this->db->get('tbl_lophoc');
+		return $records->result_array();
 	}
 }
 ?>
