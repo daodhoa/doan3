@@ -20,21 +20,6 @@
    <script src="<?php echo base_url(); ?>/bootstrap/js/jquery.dataTables.min.js"></script>  
     <script src="<?php echo base_url(); ?>/bootstrap/js/dataTables.bootstrap.min.js"></script>            
     <link rel="stylesheet" href="<?php echo base_url(); ?>/bootstrap/css/dataTables.bootstrap.min.css" />  
-
-    <script type="text/javascript">
-        function confirmAction(){
-        return confirm("Xác nhận xóa?");
-        }
-    </script>
-
-    <?php 
-    if($this->session->flashdata('message')!=''):
-        $message = $this->session->flashdata('message');
-    ?>
-    <script type="text/javascript">
-        alert('<?php echo $message; ?>');
-    </script>
-    <?php endif; ?>
 </head>
 <body>
     <!--  wrapper -->
@@ -171,7 +156,21 @@
 
     </div>
     <!-- end wrapper -->
+    
+    <script type="text/javascript">
+        function confirmAction(){
+        return confirm("Xác nhận xóa?");
+        }
+    </script>
 
+    <?php 
+    if($this->session->flashdata('message')!=''):
+        $message = $this->session->flashdata('message');
+    ?>
+    <script type="text/javascript">
+        alert('<?php echo $message; ?>');
+    </script>
+    <?php endif; ?>
 </body>
 
 </html>

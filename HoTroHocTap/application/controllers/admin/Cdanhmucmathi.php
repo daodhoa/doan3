@@ -8,63 +8,126 @@ class Cdanhmucmathi extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Mmathi');
+		$this->load->model('Mthicu');
 	}
 
 	public function index()
 	{
+		
 		$this->load->model('Mmonhoc');
 		$dsmonhoc = $this->Mmonhoc->getListMonHoc($this->session->userdata('maquantri'));
-		$dsmathi = $this->Mmathi->getListMathi($this->session->userdata('maquantri'));
+		$dsdethi = $this->Mthicu->layDanhSachDeThi($this->session->userdata('maquantri'));
+		//print_r($dsmonhoc);
+		//print_r($dsdethi);
+
+
 		$data= array();
 		$data['dsmonhoc'] = $dsmonhoc;
 		$data['mathimoi'] = substr(time(), 5);
-		$data['dsmathi'] =  $dsmathi;
-		$data['content'] = 'admin/mathi/view_mathi_admin';
-		$this->load->view('admin/view_layout_admin', $data);
+		$data['dsdethi'] =  $dsdethi;
+		
+		$this->load->library('form_validation');
+		if($this->input->post('luu'))
+		{
+			$this->form_validation->set_rules('slcauhoi','Số lượng câu hỏi', 
+			'callback_check_slch');
+			if($this->form_validation->run() != FALSE)
+			{
+				$mamon = $this->input->post('monhoc');
+				$madethi = $this->input->post('mathi');
+				$slcauhoi = $this->input->post('slcauhoi');
+				$thoigianlambai = $this->input->post('thoigianlambai');
+				
+				$this->Mthicu->insertDethi(array(
+					'madethi' => $madethi,
+					'mamon' => $mamon,
+					'thoigianlambai' => $thoigianlambai,
+					'trangthai' => 1,
+					'thoigiantao' => date("Y/m/d H:i",time())
+				));
+				
+				$arrayCauhoi = array();
+				foreach ($slcauhoi as $key => $value) {
+					if($value > 0)
+					{
+						$arrayCauhoi = $this->Mthicu->taoDsCauHoi($mamon, $key, $value);
+						foreach ($arrayCauhoi as $row) {
+							$this->Mthicu->insertDethiCauhoi(array(
+								'madethi' => $madethi,
+								'macauhoi' => $row['macauhoi']
+							));
+						}
+					}
+				}
+
+				$this->session->set_flashdata('message', 'thêm mới thành công');
+				redirect(base_url('admin/Cdanhmucmathi'));
+			}	
+		}
+
+			$data['content'] = 'admin/dethicu/view_dethi_admin';
+			$this->load->view('admin/view_layout_admin', $data);
 	}
 
-	public function changeStatus($mathi)
+	public function changeStatus($madethi)
 	{
-		$this->Mmathi->changeStatus($mathi);
+		$result = $this->Mthicu->changeStatus($madethi);
 		echo json_encode(array("status" => TRUE));
 	}
 
-	public function them()
+	function check_slch()
 	{
-		
-		$this->load->model('Mmonhoc');
-		if($this->input->post('luu'))
-		{
+		$slcauhoi = $this->input->post('slcauhoi');
 			$mamon = $this->input->post('monhoc');
-			$ghichu = $this->Mmonhoc->getThongTinMonHoc($mamon)->ghichu;
-			$dataIs['mathi'] = $ghichu.$this->input->post('mathi');
-            $dataIs['mamon'] = $mamon;
-            $dataIs['thoigianlambai'] = $this->input->post('thoigianlambai');
-            $dataIs['thoigiantao'] = date("d/m/Y h:i",time());
-            $dataIs['maquantri'] = $this->session->userdata('maquantri');
-            
-            if($this->IUD('insert','tbl_mathi','','',$dataIs,'') > 0)
-            {
-                $soluongcauhoi = $this->input->post('slcauhoi');
-                if(!empty($soluongcauhoi))
-                {
-                    foreach($soluongcauhoi as $k=>$v)
-                    {
-                        $i['mathi'] = $dataIs['mathi'];
-                        $i['manhom'] = $k;
-                        $i['soluongcauhoi'] = $v;
-                        $this->IUD('insert','tbl_nhomcauhoi_mathi','','',$i,'');
-                    }
-                }
+			$de = $this->Mthicu->demslch($mamon, 'de');
+			$tb = $this->Mthicu->demslch($mamon, 'tb');
+			$kho = $this->Mthicu->demslch($mamon, 'kho');
+			$khohn = $this->Mthicu->demslch($mamon, 'khohn');
 
-                $this->session->set_flashdata('thongbao','Thêm mã thi thành công');
-            }
-            
+			$flag = TRUE;
+
+		if(empty($slcauhoi))
+		{
+			$this->form_validation->set_message(__FUNCTION__, '1 đề thi phải chứa ít nhất 1 câu hỏi');
+			return FALSE;
 		}
 
-		redirect(base_url('admin/cdanhmucmathi'));
+		foreach ($slcauhoi as $key => $value) {
+			if($this->Mthicu->demslch($mamon, $key) < $value){
+				$flag = FALSE;
+				break;
+			}
+		}
+
+		if($flag==FALSE){
+			$this->form_validation->set_message(__FUNCTION__,'Số câu hỏi tối đa: Dễ: '.$de.', trung bình: '.$tb.' khó: '.$kho.',  khó hơn: '.$khohn);
+			return FALSE;
+		}
+		return TRUE;
 	}
 
+	public function xemchitiet()
+	{
+		$madethi = $this->input->get('madethi');
+		$dethi = $this->Mthicu->getChitietdethi($madethi);
+		$dscauhoi = $this->Mthicu->getCauhoiDethi($madethi);
+		$arrayCautraloi = array();
+		$arrayDapandung = array();
+		foreach ($dscauhoi as $row) 
+		{
+			$arrayDapandung[$row['macauhoi']] = $this->Mthicu->getDapandung($row['macauhoi']);
+			$arrayCautraloi[$row['macauhoi']] = $this->Mthicu->getCauTraLoi($row['macauhoi']);
+		}
+
+		$data= array(
+			'dethi' => $dethi,
+			'dscauhoi' => $dscauhoi,
+			'cautraloi' => $arrayCautraloi,
+			'dapandung' => $arrayDapandung
+		);
+
+		$this->load->view('admin/dethicu/view_dethi_chitiet', $data);
+
+	}
 }
 ?>
