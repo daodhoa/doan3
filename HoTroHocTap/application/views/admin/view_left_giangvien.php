@@ -49,13 +49,13 @@
                         <a href= "<?php echo base_url().'admin/cdanhmucmonhoc' ;?>"><i class="fa fa-flask fa-fw"></i>Quản lý môn học</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý bài giảng</a>
+                        <a href="<?php echo base_url('admin/cdsbaigiang'); ?>"><i class="fa fa-table fa-fw"></i>Quản lý bài giảng</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url().'admin/cdanhmuccauhoi' ;?>"><i class="fa fa-table fa-fw"></i>Quản lý câu hỏi</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý đề thi</a>
+                        <a href="<?php echo base_url('admin/cdanhmucmathi'); ?>"><i class="fa fa-table fa-fw"></i>Quản lý đề thi</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url().'admin/cdanhmuctintuc/danhsachtintuc/0/0' ;?>"><i class="fa fa-table fa-fw"></i>Quản lý tin tức</a>

@@ -7,7 +7,7 @@ class MY_Controller extends CI_Controller
 	
 	function __construct()
 	{
-
+		date_default_timezone_set('Asia/Bangkok');
 		parent::__construct();
 		$this->load->model('madmin');
 		$folder= $this->uri->segment(1);
@@ -38,7 +38,7 @@ class MY_Controller extends CI_Controller
 		}
 	}
 
-	function G_ID($tbl_name,$key_of_table,$key_cmp)
+		function G_ID($tbl_name,$key_of_table,$key_cmp)
 		{
 			return $this->madmin->get_by_id($tbl_name,$key_of_table,$key_cmp);
 		}

@@ -8,13 +8,12 @@
 
     <link href="<?php echo base_url(); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>/bootstrap/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!--<link href="<?php echo base_url(); ?>/bootstrap/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />-->
+    
     <link href="<?php echo base_url(); ?>/bootstrap/assets/css/style.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>/bootstrap/assets/css/main-style.css" rel="stylesheet" />
     <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/jquery-1.10.2.js"></script>
     <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="<?php echo base_url(); ?>/bootstrap/assets/plugins/pace/pace.js"></script>
+    
     <script src="<?php echo base_url(); ?>/bootstrap/js/jquery.min.js"></script>
 
 
@@ -22,20 +21,14 @@
     <script src="<?php echo base_url(); ?>/bootstrap/js/dataTables.bootstrap.min.js"></script>            
     <link rel="stylesheet" href="<?php echo base_url(); ?>/bootstrap/css/dataTables.bootstrap.min.css" />  
 
-    <script type="text/javascript">
-        function confirmAction(){
-        return confirm("Xác nhận xóa?")
-        }
+    <script>
+        setTimeout(function(){
+        $('#thongbao').hide(1000);
+        },2000);
     </script>
+    <script src="<?php echo base_url(); ?>/bootstrap/ckeditor/ckeditor.js"></script>
+    <script src="<?php echo base_url(); ?>/bootstrap/ckfinder/ckfinder.js"></script>
 
-    <?php 
-    if($this->session->flashdata('message')!=''):
-        $message = $this->session->flashdata('message');
-    ?>
-    <script type="text/javascript">
-        alert('<?php echo $message; ?>');
-    </script>
-    <?php endif; ?>
 </head>
 <body>
     <!--  wrapper -->
@@ -159,7 +152,7 @@
        ?>
         <!-- end navbar side -->
         <!--  page-wrapper -->
-        <div id="page-wrapper" style="background-color: white;">
+        <div id="page-wrapper" style="background-color: #EEEEEE;">
 
         <?php
             if(isset($content))
@@ -172,22 +165,24 @@
 
     </div>
     <!-- end wrapper -->
+    
+    <script type="text/javascript">
+        function confirmAction(){
+        return confirm("Xác nhận xóa?");
+        }
+    </script>
 
 <<<<<<< HEAD
 =======
-    <!-- Core Scripts - Include with every page -->
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/jquery-1.10.2.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/pace/pace.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/scripts/siminta.js"></script>
-    <!-- Page-Level Plugin Scripts-->
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/plugins/morris/morris.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/assets/scripts/dashboard-demo.js"></script>
-    <script src="<?php echo base_url() ?>bootstrap/js/jquery.min.js"></script>
-
->>>>>>> ngohoa
+    <?php 
+    if($this->session->flashdata('message')!=''):
+        $message = $this->session->flashdata('message');
+    ?>
+    <script type="text/javascript">
+        alert('<?php echo $message; ?>');
+    </script>
+    <?php endif; ?>
+>>>>>>> duyhoa
 </body>
 
 </html>

@@ -37,7 +37,7 @@ class Clogin_admin extends MY_Controller
 			}
 			else
 			{
-
+				$this->session->set_userdata('maquantri', $record['maquantri']);
 				$this->session->set_userdata('tentaikhoan', $record['tentaikhoan']);
 				$this->session->set_userdata('maquyen', $record['maquyen']);
 				$this->session->set_userdata('hoten', $record['hoten']);

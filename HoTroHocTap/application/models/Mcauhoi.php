@@ -57,7 +57,6 @@ class Mcauhoi extends CI_Model
     	}
     	
     	return $query;
-    	
     }
 
     public function getDapAn($macauhoi)
