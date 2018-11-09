@@ -249,11 +249,14 @@ input[disabled] {
 }
 
 input[type="checkbox"],
+
 input[type="radio"] {
   -moz-box-sizing: border-box;
        box-sizing: border-box;
   padding: 0;
 }
+
+
 
 input[type="search"] {
   -webkit-appearance: textfield;
@@ -689,7 +692,7 @@ form select {
   height: auto;
 }
 .students-grid .student-name {
-  font-size: 18px;
+  font-size: 18px !important;
   font-size: 1.125rem;
   font-weight: 300;
 }
@@ -723,7 +726,7 @@ form select {
   vertical-align: middle;
   color: #719d51;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 18px !important;
   font-size: 1.125rem;
 }
 @media screen and (max-width: 990px) {
@@ -732,7 +735,7 @@ form select {
   }
 }
 .accordion .accordion-toggle span {
-  font-size: 14px;
+  font-size: 14px !important;
   font-size: 0.875rem;
 }
 .accordion .accordion-toggle:after {
@@ -756,8 +759,27 @@ form select {
 .accordion .accordion-content {
   display: none;
   clear: both;
-  font-size: 16px;
+  font-size: 16px !important;
   font-size: 1rem;
+}
+
+.accordion .accordion-toggle h3 a{
+  color: #719d51;
+  text-decoration: none;
+  -webkit-transition: .3s ease;
+          transition: .3s ease;
+}
+.accordion .accordion-toggle h3 a:hover{
+  color: #00CC00;
+}
+.fullwidth-content p a{
+  color: #719d51;
+  text-decoration: none;
+  -webkit-transition: .3s ease;
+          transition: .3s ease;
+}
+.fullwidth-content p a:hover{
+  color: #00CC00;
 }
 
 .map {
@@ -2026,7 +2048,7 @@ form select {
 #branding .site-title {
   display: inline-block;
   margin: 0;
-  font-size: 15px;
+  font-size: 15px !important;
   font-size: 0.9375rem;
   font-weight: 300;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -2057,7 +2079,7 @@ form select {
   margin: 0 0 0 5px;
 }
 .main-navigation .menu-item a {
-  font-size: 17px;
+  font-size: 17px !important;
   font-size: 1.0625rem;
   color: white;
   text-decoration: none;
@@ -2353,7 +2375,7 @@ form select {
   line-height: normal;
 }
 .posts .entry-title {
-  font-size: 18px;
+  font-size: 18px !important;
   font-size: 1.125rem;
   margin: 0 0 10px;
   font-weight: 300;
@@ -2364,8 +2386,8 @@ form select {
 }
 .posts span {
   font-size: 14px;
-  font-size: 0.875rem;
-  color: #cad2c3;
+  /*font-size: 0.875rem;*/
+  color: #0B4525;
   font-weight: 300;
   display: inline-block;
   margin-right: 10px;
@@ -2421,10 +2443,47 @@ article .featured-image img {
 }
 
 .leading {
-  font-size: 24px;
+  font-size: 24px !important;
   font-size: 1.5rem;
   color: #777c73;
   line-height: 1.5;
 }
+
+.DH-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.DH-list {
+    display: inline-block;
+}
+
+.DH-list a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    margin-bottom: 2px;
+}
+
+.DH-list a.active {
+    background-color: #ddd;
+    color: black;
+    border: 1px solid #4CAF50;
+}
+
+.DH-list a:hover:not(.active) {background-color: #ddd;}
+
 
 /*# sourceMappingURL=style.css.map */

@@ -67,5 +67,6 @@ class Mmonhoc extends CI_Model
 		return $this->db->get('tbl_kyhoc')->result_array();
 	}
 
+	
 }
 ?>
