@@ -16,6 +16,15 @@
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
+		 <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+		
 
 	</head>
 
@@ -38,8 +47,8 @@
 								<li class="menu-item"><a href="<?php echo base_url('cmonhoc'); ?>">Môn học</a></li>
 								<li class="menu-item"><a href="event.html">Sự kiện</a></li>
 								<li class="menu-item"><a href="contact.html">Liên hệ</a></li>
-								<li class="menu-item dropdown">
-									<a href="<?php echo base_url('clogin'); ?>#login" data-toggle="dropdown">Đăng nhập</a>
+								<li class="menu-item">
+									<a href="<?php echo base_url('clogin'); ?>#login">Đăng nhập</a>
 								</li>
 							</ul> <!-- .menu -->
 						</div> <!-- .main-navigation -->
