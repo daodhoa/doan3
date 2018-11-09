@@ -14,7 +14,12 @@
         						<select class="form-control" id="makyhoc" onChange="window.location.href='<?php echo base_url('cmonhoc/dslop/'.$monhoc->mamon) ?>?makyhoc='+document.getElementById('makyhoc').value;" >
         							<option value="">--Chọn kỳ học--</option>
         							<?php foreach($dskyhoc as $row): ?>
-        								<option value="<?php echo $row['makyhoc']; ?>" ><?php echo $row['tenkyhoc']; ?></option>
+        								<option 
+        								<?php if($this->input->get('makyhoc')== $row['makyhoc']): ?>
+        									selected ="true"
+        								<?php endif; ?>
+
+        								value="<?php echo $row['makyhoc']; ?>" ><?php echo $row['tenkyhoc']; ?></option>
         							<?php endforeach; ?>
       							</select>
         					
@@ -33,10 +38,10 @@
 							<?php foreach($dslop as $row): ?>
 								<li class="post">
 									<h3 class="entry-title"><a href="#">Mã lớp: <?php echo $row['malophoc']; ?></a></h3>
-									<span class="time"><i class="icon-clock"></i>Trạng thái: 
+									<span class="time" style="color: black"><i class="icon-clock"></i>Trạng thái: 
 									<?php if($row['trangthai']== 1 ): ?>	
 										<span style="color:#33CC33;">Đang mở</span>
-										<button style="border-radius: 4px;">Tham gia lớp</button>
+										<a href="<?php echo base_url('clophoc/index/'.$row['malophoc']); ?>" class="button">Tham gia lớp</a>
 									<?php else: ?>
 										<span style="color:#FF3333;">Đóng</span>
 									<?php endif; ?>

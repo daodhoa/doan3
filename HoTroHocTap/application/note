@@ -1,2 +1,46 @@
 print("<pre>".print_r($records,true)."</pre>");
 die();
+
+
+ <div class="panel panel-default">
+            <?php foreach ($monHocs->result()  $monHoc):?>
+                        <div class="panel-heading">
+                             Môn học: <?php echo($monHoc->tenmon); ?>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <td>Ngày đăng</td> 
+                                            <td>Tiêu đề</td>
+                                            <td>Thao tác</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($tinTucs->result() á $tinTuc):?>
+                                            <?php ì (!strcmp($tinTuc->mamonhoc,$monHoc->mamon)):?>
+                                            <tr>
+                                                <td><?php echo($tinTuc->ngaydang);?></td>
+                                                <td><?php echo($tinTuc->tieude); ?></td>
+                                                <td>
+                                                <a href="<?php echo base_url().'admin/cdanhmuctintuc/xoa/'.$tinTuc->matintuc ;?>"
+                                                    type="button" class="btn btn-danger btn-sm" 
+                                                    onclick="return confirm('Bạn chắc muốn xóa tin này chứ?');" >
+                                                Xóa
+                                                </a>
+                                                <a href="<?php echo base_url().'admin/cdanhmuctintuc/showViewSuatintuc/'.$tinTuc->matintuc ;?>" type="button" class="btn btn-warning btn-sm">Sửa</a>
+                                                <a href="<?php echo base_url().'admin/cdanhmuctintuc/showViewChiTiettintuc/'.$tinTuc->matintuc ;?>" type="button" class="btn btn-info btn-sm">Xem chi tiết</a>
+                                                </td>
+                                            </tr>
+                                            <?php endif?>
+                                        <?php endforeach; ?>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+            <?php endforeach; ?>
+        </div>

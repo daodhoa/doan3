@@ -12,10 +12,10 @@
         	
         	<form id="themtin" action="<?php echo base_url().'admin/cdanhmuctintuc/them' ?>" method="POST">
         		 <div class="form-group">
-        		 	<label for="monhoc">Môn học</label>
-	        		 <select name="monhoc">
-	        		  <?php foreach ($monHocs->result() as $monHoc):?>
-					  <option value="<?php echo($monHoc->mamon); ?>"><?php echo($monHoc->tenmon); ?></option>
+        		 	<label for="lophoc">Lớp học</label>
+	        		 <select name="lophoc">
+	        		  <?php foreach ($lopHocs->result() as $lopHoc):?>
+					  <option value="<?php echo($lopHoc->malophoc); ?>"><?php echo($lopHoc->malophoc); ?></option>
 					  <?php endforeach; ?>
 					</select> 
 				</div>
@@ -27,6 +27,12 @@
                     <label for="noidung">Nội dung: </label>
                     <textarea class="form-control" rows="5" id="noidung" name="noidung" required></textarea>
                	
+                </div>
+                <div class="form-group">
+                    <input id="mamonhoc" type="hidden" value="<?php echo($mamonhoc); ?>" class="form-control" name="mamonhoc" required>
+                </div>
+                <div class="form-group">
+                    <input id="kyhoc" type="hidden" value="<?php echo($makyhoc); ?>" class="form-control" name="kyhoc" required>
                 </div>
                 <div class="form-group">
                     <input type="file" name="userfile" size="20" />
