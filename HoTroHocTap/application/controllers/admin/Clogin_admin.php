@@ -41,7 +41,6 @@ class Clogin_admin extends MY_Controller
 				$this->session->set_userdata('tentaikhoan', $record['tentaikhoan']);
 				$this->session->set_userdata('maquyen', $record['maquyen']);
 				$this->session->set_userdata('hoten', $record['hoten']);
-				$this->session->set_userdata('maquantri', $record['maquantri']);
 
 				redirect(base_url().'admin/Chome_admin');
 			}
