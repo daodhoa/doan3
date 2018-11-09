@@ -25,7 +25,7 @@ class Clogin_admin extends MY_Controller
 		{
 			$tentaikhoan = $this->input->post('tentaikhoan');
 			$matkhau = $this->input->post('matkhau');
-			$matkhau = md5($matkhau);
+			$matkhau = $matkhau;
 
 			//echo($tentaikhoan);
 
@@ -37,12 +37,17 @@ class Clogin_admin extends MY_Controller
 			}
 			else
 			{
-				$this->session->set_userdata('maquantri', $record['maquantri']);
+				// var_dump($record["maquyen"]);
+				$this->session->sest_userdata('maquantri', $record['maquantri']);
 				$this->session->set_userdata('tentaikhoan', $record['tentaikhoan']);
 				$this->session->set_userdata('maquyen', $record['maquyen']);
 				$this->session->set_userdata('hoten', $record['hoten']);
-
 				redirect(base_url().'admin/Chome_admin');
+				var_dump($record["maquyen"]);
+				if($record["maquyen"] == "giaovien"){
+					redirect(base_url().'admin/Chome_admin');
+				}
+				// redirect(base_url().'admin/Chome_admin');
 			}
 		}
 		else
