@@ -5,30 +5,32 @@ class Cdsbaigiang extends My_Controller{
 		parent::__construct();
         $this->load->model('Mthembaigiang');
 	}
-	function index(){
-		$mes=0;
-		
-		if($this->_post('xoa'))
+
+	public function index()
+	{
+
+		if($this->input->post('xoa'))
         {
-            if($this->IUD('delete','tbl_baigiang','mabg',$this->_post('xoa'),'',''))
+            if($this->IUD('delete','tbl_baigiang','mabg',$this->input->post('xoa'),'',''))
             {
-                $mes=array(
-                    'sobanghi'=>1,
-                    'thongbao'=>'Xóa bài giảng thành công!',
-                    'mau'=>'success'
-                );
+                $this->session->set_flashdata('message','Xóa bài giảng thành công');
             }
         }
-        $mamon = '';
-		$temp['data']['dsmon'] = $this->Mthembaigiang->getmon();
-		
-		if($this->input->get('monhoc')){
+
+		$data = array();
+		$mamon = '';
+		$data['dsmon'] = $this->Mthembaigiang->getmon();
+		if($this->input->get('monhoc'))
+		{
 			$mamon = $this->input->get('monhoc');
-			$temp['data']['dsbaigiang'] = $this->Mthembaigiang->getBaigiang($mamon);
 		}
-		$temp['data']['dsbaigiang'] = $this->Mthembaigiang->getBaigiang($mamon);
-		$temp['data']['mes'] = $mes;
-		$temp['template'] = 'admin/baigiang/Vdsbg';
-		$this->load->view('admin/layout',$temp);
+
+		$data['dsbaigiang'] = $this->Mthembaigiang->getBaigiang($mamon);
+
+		$data['content'] = 'admin/baigiang/view_dsbaigiang';
+		$this->load->view('admin/view_layout_admin', $data);
 	}
+
 }
+
+?>

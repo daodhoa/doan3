@@ -25,8 +25,8 @@ class Clogin_admin extends MY_Controller
 		{
 			$tentaikhoan = $this->input->post('tentaikhoan');
 			$matkhau = $this->input->post('matkhau');
-			$matkhau = sha1($matkhau);
-
+			$matkhau = md5($matkhau);
+			// print_r($matkhau);exit();
 			//echo($tentaikhoan);
 
 			$record = $this->Madmin->login($tentaikhoan, $matkhau);
@@ -37,7 +37,7 @@ class Clogin_admin extends MY_Controller
 			}
 			else
 			{
-
+				$this->session->set_userdata('maquantri', $record['maquantri']);
 				$this->session->set_userdata('tentaikhoan', $record['tentaikhoan']);
 				$this->session->set_userdata('maquyen', $record['maquyen']);
 				$this->session->set_userdata('hoten', $record['hoten']);

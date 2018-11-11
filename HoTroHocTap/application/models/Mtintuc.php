@@ -4,13 +4,16 @@
  */
 class Mtintuc extends CI_Model
 {
-	public function getDanhSachTinTuc($maquantri)
+	public function getDanhSachTinTuc($maMonHoc,$kyHoc,$maquantri)
 	{
 		//lay het cac tin nguoi dung đăng, ghép theo môn học
 		$this->db->select('*');
 		$this->db->from('dm_tintuc');
-		$this->db->join('dm_mon', 'dm_tintuc.mamonhoc = dm_mon.mamon');
+		$this->db->join('tbl_lophoc', 'dm_tintuc.malophoc = tbl_lophoc.malophoc');
+		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
 		$this->db->where('manguoidang', $maquantri);
+		$this->db->where('tbl_lophoc.mamon', $maMonHoc);
+		$this->db->where('tbl_lophoc.kyhoc', $kyHoc);
 		$records = $this->db->get();
 		// print("<pre>".print_r($records->result(),true)."</pre>");
 		// die();
@@ -25,7 +28,8 @@ class Mtintuc extends CI_Model
 		//lay het cac tin nguoi dung đăng, ghép theo môn học
 		$this->db->select('*');
 		$this->db->from('dm_tintuc');
-		$this->db->join('dm_mon', 'dm_tintuc.mamonhoc = dm_mon.mamon');
+		$this->db->join('tbl_lophoc', 'dm_tintuc.malophoc = tbl_lophoc.malophoc');
+		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
 		$this->db->where('maTinTuc', $maTinTuc);
 		$record = $this->db->get()->row();
 		// print("<pre>".print_r($record,true)."</pre>");
@@ -36,18 +40,48 @@ class Mtintuc extends CI_Model
 		}
 		return $record;
 	}
-
-	public function them($maquantri, $tieuDe, $maMonHoc, $noiDung)
+	public function getMaMonHoc($maTinTuc)
 	{
+		$this->db->select('tbl_lophoc.mamon');
+		$this->db->from('dm_tintuc');
+		$this->db->join('tbl_lophoc', 'dm_tintuc.malophoc = tbl_lophoc.malophoc');
+		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
+		$this->db->where('maTinTuc', $maTinTuc);
+		$record = $this->db->get()->row()->mamon;
+		if(empty($record))
+		{
+			return FALSE;
+		}
+		return $record;
+		// print("<pre>".print_r($record->mamon,true)."</pre>");
+		// die();
+	}
+	public function getMaKyHoc($maTinTuc)
+	{
+		$this->db->select('tbl_lophoc.kyhoc');
+		$this->db->from('dm_tintuc');
+		$this->db->join('tbl_lophoc', 'dm_tintuc.malophoc = tbl_lophoc.malophoc');
+		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
+		$this->db->where('maTinTuc', $maTinTuc);
+		$record = $this->db->get()->row()->kyhoc;
+		if(empty($record))
+		{
+			return FALSE;
+		}
+		return $record;
+	}
+	public function them($maquantri, $tieuDe, $maLopHoc, $noiDung)
+	{
+
 		$data = array(
-        'mamonhoc' => $maMonHoc,
+        'malophoc' => $maLopHoc,
         'tieude' => $tieuDe,
         'noiDung' => $noiDung,
         'manguoidang' => $maquantri,
         'ngaydang' => date('Y-m-d H:i:s')
 		);
-		$this->db->insert('dm_tintuc', $data);
-		return true;
+		$record = $this->db->insert('dm_tintuc', $data);
+		return $record;
 	}
 	public function xoa($maTinTuc)
 	{

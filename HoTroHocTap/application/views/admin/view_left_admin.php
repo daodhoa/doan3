@@ -7,10 +7,10 @@
                         <!-- user image section-->
                         <div class="user-section">
                             <div class="user-section-inner">
-                                <img src="{$url}bootstrap/assets/img/user.jpg" alt="">
+                                <img src="<?php echo base_url(); ?>/bootstrap/assets/img/user.jpg" alt="">
                             </div>
                             <div class="user-info">
-                                <div>{$hoten}</div>
+                                <div><?php echo $this->session->userdata('hoten'); ?></div>
                                 <div class="user-text-online">
                                     <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
                                 </div>

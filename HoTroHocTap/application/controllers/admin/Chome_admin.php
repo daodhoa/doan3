@@ -12,10 +12,7 @@ class Chome_admin extends MY_Controller
 
 	public function index()
 	{
-		$data="";
-		$temp['data'] = $data;
-		$temp['template'] = 'admin/vhome';
-		$this->load->view('admin/layout',$temp);
+		$this->load->view('admin/view_layout_admin');
 	}
 }
 ?>

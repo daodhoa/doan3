@@ -4,11 +4,11 @@
 	<title>Đăng nhập hệ thống</title>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-  	<script src="../bootstrap/js/jquery.min.js"></script>
-  	<script src="../bootstrap/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" type="text/css" href="../bootstrap/css/style.css">
-  	<link rel="stylesheet" type="text/css" href="../bootstrap/css/login_admin.css">
+  	<link rel="stylesheet" href="<?php echo base_url(); ?>/bootstrap/css/bootstrap.min.css">
+  	<script src="<?php echo base_url(); ?>/bootstrap/js/jquery.min.js"></script>
+  	<script src="<?php echo base_url(); ?>/bootstrap/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/bootstrap/css/style.css">
+  	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/bootstrap/css/login_admin.css">
 </head>
 <body style="background-color: #33CC66	">
 <div class="container-fluid">

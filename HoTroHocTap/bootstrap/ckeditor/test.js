@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    CKEDITOR.replace('txt_content');
+    // CKEDITOR.replace('txt_content');
 	// function editor()
         // {
         // },
