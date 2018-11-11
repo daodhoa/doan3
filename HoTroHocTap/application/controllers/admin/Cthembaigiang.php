@@ -20,6 +20,7 @@ class Cthembaigiang extends MY_Controller{
                  $dem2++;
                 }
             }
+            // pr($dem2);
             if($dem2 != 0){
                 if($this->IUD('insert','tbl_baigiang','','',array('mamon'=>$this->input->post('monhoc'),'tieude'=>$this->input->post('tieude'),'noidung'=>$this->input->post('noidung'),'file'=>$_FILES['bg']['name']),'')){
                     $mes=array(
