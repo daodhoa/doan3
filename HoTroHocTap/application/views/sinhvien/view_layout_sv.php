@@ -17,13 +17,13 @@
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 		 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo base_url('bootstrap');?>/css/bootstrap.min.css">
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="<?php echo base_url('bootstrap');?>/js/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="<?php echo base_url('bootstrap');?>/js/bootstrap.min.js"></script> 
 		
 
 	</head>
@@ -56,7 +56,7 @@
 						<div class="mobile-navigation"></div>
 					</div> <!-- .container -->
 				</div> <!-- .primary-header -->
-
+	
 				<?php
 				if (isset($slide)) {
 					$this->load->view($slide);

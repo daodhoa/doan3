@@ -1,11 +1,11 @@
 <div class="container" style="background-color: #EEEFFF; padding-top: 10px;">
 	<div class="row" style="margin-top: 20px;">
-		<div class="col-md-9">
-      <form method="get">
+    <div class="col-md-9">
+      <form method="POST" action="<?php echo base_url('clamdethi/ketqualambai/'.$madethi); ?>">
       <?php 
       $sottcau = 1;
       foreach ($dscauhoi as $row):?>
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin-top: 20px;">
         <h4>Câu <span><?php echo $sottcau;  $sottcau++; ?></span>: <span><?php echo $row['noidung'] ?>
         </span>
         </h4>
@@ -30,9 +30,8 @@
                 $label= '';
                 break;
             } ?>
-            <div class="form-control"  <?php if($dapandung[$row['macauhoi']]['macautraloi'] == $val['macautraloi'] ):?> style="color: red;" <?php endif; ?> >
-              <label>
-                <input type="radio" name="chondapan[<?php echo $row['macauhoi'] ?>][]" 
+            <div class="radio" >
+              <label><input type="radio" name="chondapan[<?php echo $row['macauhoi'] ?>]" 
                 value="<?php echo $val['macautraloi']; ?>">
                 <span><?php echo $label; $stt++; ?>:</span>
                 <span> <?php echo $val['noidung']; ?></span>
@@ -41,7 +40,11 @@
           <?php endforeach; ?>
         </div>
       <?php endforeach; ?>
-    </form>
+      <div class="col-md-12" style="margin-top: 30px;">
+        <input type="submit" onclick="return confirm('Xác nhận nộp bài?');" name="nopbai" id="nopbai" class="btn btn-primary" value="NỘP BÀI VÀ KẾT THÚC">
+      </div>
+      </form>
+
 		</div>
 		<div class="col-md-3" style="background-color: white; border-style: solid; border-color: green">
       <div class="col-md-12" >
@@ -50,18 +53,15 @@
       </div>
       <div class="col-md-12">
         <div class="DH-list">
-          <a href="" class="active">1</a>
-          <a href="">2</a>
-          <a href="">3</a>
-          <a href="">4</a>
-          <a href="">5</a>
-          <a href="">6</a>
-          <a href="">7</a>
+          <?php $cau=1; foreach ($dscauhoi as $row):?>
+            <a id="cau<?php echo $cau;?>">
+              <?php echo $cau++;?>
+            </a>
+          <?php endforeach; ?>
         </div>
       </div>
       <div class="col-md-12">
-        <p>Thời gian còn lại: <span>14:20</span></p>
-        <a href="" style="text-decoration: none;">Nộp bài và kết thúc</a>
+        <p>Thời gian còn lại: <span id="time"></span></p>
       </div>
 		</div>
     <div class="col-md-12">
@@ -69,3 +69,45 @@
     </div>
 	</div>  
 </div>
+
+<script type="text/javascript">
+      $(document).ready(function(){
+            <?php $s = 1; foreach ($dscauhoi as $row):?>
+              var macau = <?php echo $row['macauhoi']; ?>;
+              $("input[name='chondapan["+macau+"]']").click(function(){
+                $('#cau<?php echo $s; ?>').addClass('active');
+              });
+            <?php $s++; endforeach; ?>
+      });
+
+      window.onbeforeunload = function(event) {
+          event.returnValue = "Bạn chắc chứ?";
+      };
+
+      function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        var phut = <?php echo $this->session->userdata('thoigianlambai'); ?>;
+        var fiveMinutes = 60* phut,
+        display = document.querySelector('#time');
+        startTimer(fiveMinutes, display);
+    };
+
+    console.log(<?php echo $this->session->userdata('thoigianlambai'); ?>);
+
+</script>

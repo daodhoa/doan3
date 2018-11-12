@@ -8,6 +8,7 @@ class Clophoc extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Mlophoc');
+		$this->load->model('Mthicu');
 	}
 
 	public function index($malop='')
@@ -23,6 +24,11 @@ class Clophoc extends CI_Controller
 
 	public function dethi($made='')
 	{
+		$dethi = $this->Mthicu->getChitietdethi($made);
+		//echo "<pre>";
+		//print_r($dethi);
+		//echo "</pre>";
+		$data['dethi'] = $dethi;
 		$data['content'] = 'sinhvien/lophoc/vdethi';
 		$this->load->view('sinhvien/view_layout_sv', $data);
 	}

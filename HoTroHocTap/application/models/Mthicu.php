@@ -17,8 +17,9 @@ class Mthicu extends CI_Model
 
     public function getChitietdethi($madethi)
     {
-        $this->db->select('madethi, tenmon,mahocphan, thoigiantao, thoigianlambai');
+        $this->db->select('madethi, tenmon ,mahocphan, thoigiantao, thoigianlambai');
         $this->db->from('tbl_dethi');
+        $this->db->where('madethi', $madethi);
         $this->db->join('dm_mon', 'tbl_dethi.mamon = dm_mon.mamon', 'left');
         return $this->db->get()->row_array();
     }
