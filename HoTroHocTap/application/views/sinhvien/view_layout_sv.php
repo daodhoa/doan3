@@ -47,9 +47,20 @@
 								<li class="menu-item"><a href="<?php echo base_url('cmonhoc'); ?>">Môn học</a></li>
 								<li class="menu-item"><a href="event.html">Sự kiện</a></li>
 								<li class="menu-item"><a href="contact.html">Liên hệ</a></li>
+								
+								<?php if($this->session->userdata('hoten')!= '' ): ?>
+								<li class="menu-item dropdown">
+  									<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Đào Duy Hòa<span class="caret"></span> </a>
+  										<ul class="dropdown-menu duyhoa-ulli">
+    									<li><a href="">Xem thông tin</a></li>
+    									<li><a href="<?php echo base_url('clogout'); ?>">Đăng xuất</a></li>
+ 									 	</ul>
+								</li>
+								<?php else: ?>
 								<li class="menu-item">
 									<a href="<?php echo base_url('clogin'); ?>#login">Đăng nhập</a>
 								</li>
+							<?php endif; ?>
 							</ul> <!-- .menu -->
 						</div> <!-- .main-navigation -->
 
