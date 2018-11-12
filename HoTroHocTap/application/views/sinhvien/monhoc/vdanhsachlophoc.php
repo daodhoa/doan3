@@ -3,7 +3,7 @@
 		<div class="fullwidth-content">
 			<div class="row">
 				<div class="col-md-6">
-					<h3><span><?php echo $monhoc->tenmon; ?> - </span><span><?php echo $monhoc->mahocphan; ?></span></h3>
+					<h3><span><?php echo $monhoc['tenmon']; ?> - </span><span><?php echo $monhoc['mahocphan']; ?></span></h3>
 					
 				</div>
 				<div class="col-md-6" style="padding-top: 20px;">
@@ -11,7 +11,7 @@
 						<div class="form-group">
       						<label class="control-label col-md-4" for="email">Chọn kỳ học:</label>
       						<div class="col-md-6">
-        						<select class="form-control" id="makyhoc" onChange="window.location.href='<?php echo base_url('cmonhoc/dslop/'.$monhoc->mamon) ?>?makyhoc='+document.getElementById('makyhoc').value;" >
+        						<select class="form-control" id="makyhoc" onchange="window.location.href='<?php echo base_url('cmonhoc/dslop/'.$monhoc['mamon']); ?>?makyhoc='+document.getElementById('makyhoc').value;" >
         							<option value="">--Chọn kỳ học--</option>
         							<?php foreach($dskyhoc as $row): ?>
         								<option 
@@ -22,7 +22,6 @@
         								value="<?php echo $row['makyhoc']; ?>" ><?php echo $row['tenkyhoc']; ?></option>
         							<?php endforeach; ?>
       							</select>
-        					
       						</div>
     					</div>
 					</form>
