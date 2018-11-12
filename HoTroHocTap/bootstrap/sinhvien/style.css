@@ -79,7 +79,7 @@ html {
 
 html,
 button,
-input,
+/*input*/,
 select,
 textarea {
   font-family: sans-serif;
@@ -216,7 +216,7 @@ legend {
 }
 
 button,
-input,
+/*input*/,
 select,
 textarea {
   font-family: inherit;
@@ -226,7 +226,7 @@ textarea {
 }
 
 button,
-input {
+/*input*/ {
   line-height: normal;
 }
 
@@ -236,21 +236,21 @@ select {
 }
 
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+html /*input*/[type="button"],
+/*input*/[type="reset"],
+/*input*/[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
 
 button[disabled],
-input[disabled] {
+/*input*/[disabled] {
   cursor: default;
 }
 
-input[type="checkbox"],
+/*input*/[type="checkbox"],
 
-input[type="radio"] {
+/*input*/[type="radio"] {
   -moz-box-sizing: border-box;
        box-sizing: border-box;
   padding: 0;
@@ -258,18 +258,18 @@ input[type="radio"] {
 
 
 
-input[type="search"] {
+/*input*/[type="search"] {
   -webkit-appearance: textfield;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
 
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+/*input*/[type="search"]::-webkit-search-cancel-button,
+/*input*/[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-button::-moz-focus-inner, input::-moz-focus-inner {
+button::-moz-focus-inner, /*input*/::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
@@ -397,7 +397,7 @@ table {
   }
 }
 
-.button, input[type="submit"] {
+.button, /*input*/[type="submit"] {
   padding: 10px 20px;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.4);
   text-decoration: none;
@@ -406,62 +406,62 @@ table {
   display: inline-block;
   margin-bottom: 20px;
 }
-.button.primary, input.primary[type="submit"] {
+.button.primary, /*input*/.primary[type="submit"] {
   background: #f7eacc;
   background: -webkit-linear-gradient(270deg, #f7eacc, #c2ae81);
   background: linear-gradient(180deg, #f7eacc, #c2ae81);
   color: #72664c;
 }
-.button.primary:hover, input.primary[type="submit"]:hover {
+.button.primary:hover, /*input*/.primary[type="submit"]:hover {
   background: #c2ae81;
   background: -webkit-linear-gradient(90deg, #f7eacc, #c2ae81);
   background: linear-gradient(0deg, #f7eacc, #c2ae81);
 }
-.button.secondary, input.secondary[type="submit"], .pagination .page-numbers {
+.button.secondary, /*input*/.secondary[type="submit"], .pagination .page-numbers {
   background: #cbd3c4;
   background: -webkit-linear-gradient(270deg, #e4e9e0, #cbd3c4);
   background: linear-gradient(180deg, #e4e9e0, #cbd3c4);
   color: #8a9184;
 }
-.button.secondary:hover, input.secondary[type="submit"]:hover, .pagination .page-numbers:hover {
+.button.secondary:hover, /*input*/.secondary[type="submit"]:hover, .pagination .page-numbers:hover {
   background: #cbd3c4;
   background: -webkit-linear-gradient(90deg, #e4e9e0, #cbd3c4);
   background: linear-gradient(0deg, #e4e9e0, #cbd3c4);
 }
-.button.green, input.green[type="submit"], .pagination .page-numbers.current, .accordion.expanded .accordion-toggle:after {
+.button.green, /*input*/.green[type="submit"], .pagination .page-numbers.current, .accordion.expanded .accordion-toggle:after {
   background: #719c51;
   background: -webkit-linear-gradient(270deg, #719c51, #648a48);
   background: linear-gradient(180deg, #719c51, #648a48);
   color: white;
 }
-.button.green:hover, input.green[type="submit"]:hover, .pagination .page-numbers.current:hover, .accordion.expanded .accordion-toggle:hover:after {
+.button.green:hover, /*input*/.green[type="submit"]:hover, .pagination .page-numbers.current:hover, .accordion.expanded .accordion-toggle:hover:after {
   background: #648a48;
   background: -webkit-linear-gradient(90deg, #719c51, #648a48);
   background: linear-gradient(0deg, #719c51, #648a48);
 }
-.button.large, input.large[type="submit"] {
+.button.large, /*input*/.large[type="submit"] {
   font-size: 18px;
   font-size: 1.125rem;
 }
 
-input[type="submit"] {
+/*input*/[type="submit"] {
   background: #6c7f60;
   background: -webkit-linear-gradient(270deg, #6c7f60, #495740);
   background: linear-gradient(180deg, #6c7f60, #495740);
   color: white;
   text-decoration: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
-input[type="submit"]:hover {
+/*input*/[type="submit"]:hover {
   background: -webkit-linear-gradient(90deg, #6c7f60, #495740);
   background: linear-gradient(0deg, #6c7f60, #495740);
 }
-input[type="submit"].light {
+/*input*/[type="submit"].light {
   background: #c6d3bd;
   background: -webkit-linear-gradient(270deg, #c6d3bd, #a5b59b);
   background: linear-gradient(180deg, #c6d3bd, #a5b59b);
   color: #505f46;
 }
-input[type="submit"].light:hover {
+/*input*/[type="submit"].light:hover {
   background: -webkit-linear-gradient(90deg, #c6d3bd, #a5b59b);
   background: linear-gradient(0deg, #c6d3bd, #a5b59b);
 }
@@ -529,7 +529,7 @@ form .field label, form .field .control {
     display: block;
   }
 }
-form input, form textarea, form select {
+form /*input*/, form textarea, form select {
   padding: 12px;
   border: none;
   border-radius: 5px;
@@ -570,7 +570,7 @@ form select {
   top: 0;
 }
 
-.subscribe input {
+.subscribe /*input*/ {
   width: 100%;
   margin-bottom: 20px;
   background: rgba(0, 0, 0, 0.3);
@@ -820,12 +820,12 @@ form select {
 .contact-form label {
   width: 100px;
 }
-.contact-form .control input, .contact-form .control textarea {
+.contact-form .control /*input*/, .contact-form .control textarea {
   width: 100%;
   -webkit-transition: .3s ease;
           transition: .3s ease;
 }
-.contact-form .control input:focus, .contact-form .control input:active, .contact-form .control textarea:focus, .contact-form .control textarea:active {
+.contact-form .control /*input*/:focus, .contact-form .control /*input*/:active, .contact-form .control textarea:focus, .contact-form .control textarea:active {
   background: rgba(0, 0, 0, 0.05);
 }
 .contact-form .control textarea {
@@ -835,7 +835,7 @@ form select {
   display: block;
   text-align: right;
 }
-.contact-form .text-right input[type="submit"] {
+.contact-form .text-right /*input*/[type="submit"] {
   display: inline-block;
 }
 
@@ -2301,7 +2301,7 @@ form select {
     width: 100px;
   }
 }
-.request-form input, .request-form select {
+.request-form /*input*/, .request-form select {
   width: 100%;
 }
 .request-form .no-label {
@@ -2312,7 +2312,7 @@ form select {
     padding-left: 100px;
   }
 }
-.request-form .no-label input {
+.request-form .no-label /*input*/ {
   margin-top: 20px;
 }
 

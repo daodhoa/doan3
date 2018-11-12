@@ -6,13 +6,13 @@
 				<h1>Làm Bài Kiểm Tra</h1>
 				<br>
 				<h4>
-					MÔN HỌC: QUẢN TRỊ MẠNG<br>
-					IT1144
+					MÔN HỌC: <?php echo $dethi['tenmon']; ?><br>
+					<?php echo $dethi['mahocphan']; ?>
 				</h4>
-				<p>Mã đề: 32550</p>				
+				<p>Mã đề: <?php echo $dethi['madethi'] ?></p>				
 			</div>
 			<div style="margin-top: 20px;" class="col-md-12 text-center">
-				<p style="color: #006666">Thời gian làm bài: 15 phút</p>
+				<p style="color: #006666">Thời gian làm bài: <?php echo $dethi['thoigianlambai']; ?> phút</p>
 				<a href="#" class="button primary" onclick="return confirm('Xác nhận làm bài?');">
 					BẮT ĐẦU LÀM BÀI
 				</a>
