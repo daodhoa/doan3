@@ -529,7 +529,7 @@ form .field label, form .field .control {
     display: block;
   }
 }
-form /*input*/, form textarea, form select {
+/*form /*input, form textarea, form select {
   padding: 12px;
   border: none;
   border-radius: 5px;
@@ -540,7 +540,7 @@ form /*input*/, form textarea, form select {
   appearance: none;
   outline: none;
   color: #747d6f;
-}
+}*/
 form select {
   padding-right: 35px;
   background-image: url("images/select.png");
