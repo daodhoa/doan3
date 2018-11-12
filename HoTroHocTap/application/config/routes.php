@@ -60,3 +60,7 @@ $route['dangxuat'] = "admin/Clogout_admin";
 $route['trangchu'] = "admin/Chome_admin";
 
 
+// bài giảng
+ $route['thembg'] 			= "admin/Cthembaigiang";
+ $route['dsbg']			= "admin/Cdsbaigiang";
+

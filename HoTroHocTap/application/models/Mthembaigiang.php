@@ -13,7 +13,7 @@ class Mthembaigiang extends CI_Model
 	public function getbg($mabg)
 	{
 		$this->db->where('tbl_baigiang.mabg',$mabg);
-		$this->db->select('tieude,tbl_baigiang.mamon,mabg,noidung');
+		$this->db->select('tieude,tbl_baigiang.mamon,mabg,noidung,file');
 		$this->db->from('tbl_baigiang');
 		$query = $this->db->get();
 		return $query->row_array();
@@ -23,7 +23,7 @@ class Mthembaigiang extends CI_Model
 		if($mamon!=''){
 			$this->db->where('tbl_baigiang.mamon',$mamon);
 		}
-		$this->db->select('tieude,tenmon,tbl_baigiang.mamon,mabg');
+		$this->db->select('tieude,tenmon,tbl_baigiang.mamon,mabg,file');
 		$this->db->from('tbl_baigiang');
 		$this->db->join('dm_mon','dm_mon.mamon = tbl_baigiang.mamon');
 		$query = $this->db->get();

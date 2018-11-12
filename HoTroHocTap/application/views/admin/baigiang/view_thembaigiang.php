@@ -51,12 +51,12 @@
 
 		                    <div class="col-md-12" style="margin-top: 3%">
 		                        <label>Nội dung</label>
-		                        <textarea id="txt_content"  name="noidung" style="width:100%; height:250px !important;">
-		                        <?php if(isset($bg)){
-		                        	echo $bg['noidung'];
-		                        }
-		                        ?>
-		                        </textarea>
+		                        <textarea class="form-control" rows="4" cols="100" name="noidung"><?php if(isset($bg)): ?><?php echo $bg['noidung']; ?> <?php endif; ?>
+								</textarea>
+		                    </div>
+		                    <div class="col-md-12" style="margin-top: 3%" name="bg">
+		                        <label>Chọn file</label>
+		                        <input type="file" name="bg" class="form-control" value="<?php if(isset($bg)): ?><?php echo $bg['file']; ?> <?php endif; ?>">
 		                    </div>
 		                    <div class="col-md-12" style="margin-top: 2%">
 		                        <input type="submit" name="<?php if(isset($bg)){ echo 'sua';}else{echo 'luu';}?>" value="Lưu bài"  class="btn btn-success btn-sm btn-flat">

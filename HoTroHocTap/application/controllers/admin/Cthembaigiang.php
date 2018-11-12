@@ -12,13 +12,23 @@ class Cthembaigiang extends MY_Controller{
 
         if($this->input->post('luu'))
         {
-            if($this->IUD('insert','tbl_baigiang','','',array('mamon'=>$this->input->post('monhoc'),'tieude'=>$this->input->post('tieude'),'noidung'=>$this->input->post('noidung')),''))
-            {
-                $mes=array(
-                    'sobanghi'=>1,
-                    'thongbao'=>'Thêm bài giảng thành công!',
-                    'mau'=>'success'
-                );
+            $dem2 = 0;
+            // pr($_FILES);
+            if(!empty($_FILES['bg']['name'])){
+                $target_dir = "file/".$_FILES['bg']['name'];
+                if(move_uploaded_file($_FILES["bg"]["tmp_name"], $target_dir)){
+                 $dem2++;
+                }
+            }
+            // pr($dem2);
+            if($dem2 != 0){
+                if($this->IUD('insert','tbl_baigiang','','',array('mamon'=>$this->input->post('monhoc'),'tieude'=>$this->input->post('tieude'),'noidung'=>$this->input->post('noidung'),'file'=>$_FILES['bg']['name']),'')){
+                    $mes=array(
+                        'sobanghi'=>1,
+                        'thongbao'=>'Thêm bài giảng thành công!',
+                        'mau'=>'success'
+                    );
+                }
             }
         }
 
@@ -26,15 +36,33 @@ class Cthembaigiang extends MY_Controller{
             $mabg = $this->input->get('bg');
             $data['bg'] = $this->Mthembaigiang->getbg($mabg);
             if($this->input->post('sua')){
-                $data['khoiphuc']=array('mamon'=>$this->input->post('monhoc'),'tieude'=>$this->input->post('tieude'),'noidung'=>$this->input->post('noidung'));
-                if($this->IUD('update','tbl_baigiang','mabg',$this->input->get('bg'),$data['khoiphuc'],''))
-                {
-                    $mes=array(
-                        'sobanghi'=>1,
-                        'thongbao'=>'Sửa bài giảng thành công!',
-                        'mau'=>'success'
-                    );
+                $dem2 = 0;
+                // pr($_FILES);
+                if(!empty($_FILES['bg']['name'])){
+                    $target_dir = "file/".$_FILES['bg']['name'];
+                    if(move_uploaded_file($_FILES["bg"]["tmp_name"], $target_dir)){
+                     $dem2++;
+                    }
                 }
+                $data['khoiphuc']=array('mamon'=>$this->input->post('monhoc'),'tieude'=>$this->input->post('tieude'),'noidung'=>$this->input->post('noidung'),'file'=>$_FILES['bg']['name']);
+                if($dem2 != 0){
+                    if($this->IUD('update','tbl_baigiang','mabg',$this->input->get('bg'),$data['khoiphuc'],''))
+                    {
+                        $mes=array(
+                            'sobanghi'=>1,
+                            'thongbao'=>'Sửa bài giảng thành công!',
+                            'mau'=>'success'
+                        );
+                    }
+                }
+                else{
+                    $mes=array(
+                            'sobanghi'=>0,
+                            'thongbao'=>'Sửa bài giảng thất bại!',
+                            'mau'=>'success'
+                        );
+                }
+                
             }
         }
         
