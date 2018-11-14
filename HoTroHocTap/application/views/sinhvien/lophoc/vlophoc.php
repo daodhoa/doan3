@@ -87,7 +87,7 @@
 							<ul class="posts">
 								<?php foreach ($ds3dethi as $row): ?>
 								<li class="post">
-									<h3 class="entry-title"><a href="<?php echo base_url('clophoc/dethi/'.$row['madethi'] ); ?>"><?php echo $row['madethi']; ?></a></h3>
+									<h3 class="entry-title"><a href="<?php echo base_url('clophoc/dethi/'.$row['madethi'] ); ?>">Mã đề: <?php echo $row['madethi']; ?></a></h3>
 									<span class="time"><i class="icon-clock"></i>Thời gian làm bài:
 										<?php echo $row['thoigianlambai']; ?> phút
 									</span>
@@ -101,7 +101,7 @@
 								<?php endforeach ?>
 							</ul>
 							<p class="text-center">
-								<a href="#" class="more button secondary">Xem nhiều hơn</a>
+								<a href="<?php echo base_url('clophoc/dsdethi/'.$malop); ?>" class="more button secondary">Xem nhiều hơn</a>
 							</p>
 						</div>
 					</div> <!-- .row -->

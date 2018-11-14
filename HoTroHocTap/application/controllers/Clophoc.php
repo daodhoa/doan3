@@ -9,6 +9,11 @@ class Clophoc extends CI_Controller
 		parent::__construct();
 		$this->load->model('Mlophoc');
 		$this->load->model('Mthicu');
+		$this->load->model('Mbailam');
+		if($this->session->userdata('masinhvien') == '')
+		{
+			redirect(base_url());
+		}
 	}
 
 	public function index($malop='')
@@ -17,20 +22,40 @@ class Clophoc extends CI_Controller
 		
 
 		$data['ds3dethi']= $ds3dethi;
+		$data['malop'] = $malop;
 		$data['content'] = 'sinhvien/lophoc/vlophoc';
 		$data['slide'] = 'sinhvien/lophoc/lophoc_title';
 		$this->load->view('sinhvien/view_layout_sv', $data);
 	}
 
-	public function dethi($made='')
+	public function dethi($madethi='')
 	{
-		$dethi = $this->Mthicu->getChitietdethi($made);
-		//echo "<pre>";
-		//print_r($dethi);
-		//echo "</pre>";
-		$data['dethi'] = $dethi;
-		$data['content'] = 'sinhvien/lophoc/vdethi';
+		$where = array('madethi' => $madethi, 
+			'masinhvien' => $this->session->userdata('masinhvien'));
+		if($this->Mbailam->kiemtra($where))
+		{
+			$dethi = $this->Mthicu->getChitietdethi($madethi);
+			$data['dethi'] = $dethi;
+			$data['bailam'] = $this->Mbailam->xembailam($where);
+			$data['content'] = 'sinhvien/dethi/vlambairoi';
+			$this->load->view('sinhvien/view_layout_sv', $data);
+		}
+		else
+		{
+			$dethi = $this->Mthicu->getChitietdethi($madethi);
+			$data['dethi'] = $dethi;
+			$data['content'] = 'sinhvien/lophoc/vdethi';
+			$this->load->view('sinhvien/view_layout_sv', $data);
+		}
+	}
+
+	public function dsdethi($malophoc="")
+	{
+		$dsdethi = $this->Mlophoc->getDanhsachDethi($malophoc);
+		$data['dsdethi'] = $dsdethi;
+		$data['content'] = 'sinhvien/lophoc/vdsdethi';
 		$this->load->view('sinhvien/view_layout_sv', $data);
 	}
+
 }
 ?>
