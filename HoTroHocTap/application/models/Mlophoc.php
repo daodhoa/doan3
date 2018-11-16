@@ -37,31 +37,47 @@ class Mlophoc extends CI_Model
 		}
 		return $records;
 	}
+	public function getIdLopphoc($maLopHoc)
+	{
+		$this->db->select('tbl_lophoc.id_lophoc');
+		$this->db->where('malophoc', $maLopHoc);
+		$records = $this->db->get('tbl_lophoc')->row();
+		if(empty($records))
+		{
+			return FALSE;
+		}
+		
+		return $records->id_lophoc;
+	}
 	public function getDanhSachLopHoc1($mamonhoc,$makyhoc,$maquantri)
 	{
 
-		$this->db->select('tbl_lophoc.malophoc');
-		$this->db->where('kyhoc', $makyhoc);
-		$this->db->where('magiangvien', $maquantri);
-		$this->db->where('mamon', $mamonhoc);
-		$record = $this->db->get('tbl_lophoc');
+		$this->db->select('*');
+		$this->db->from('tbl_lophoc');
+		$this->db->join('dm_mon', 'dm_mon.mamon = tbl_lophoc.mamon','left');
+		$this->db->where('tbl_lophoc.kyhoc', $makyhoc);
+		$this->db->where('dm_mon.manguoitao', $maquantri);
+		$this->db->where('dm_mon.mamon', $mamonhoc);
+		$record = $this->db->get();
+// 		print("<pre>".print_r($record->result(),true)."</pre>");
+// die();
 		if(empty($record))
 		{
 			return FALSE;
 		}
 		return $record;
 	}
-	public function getDanhSachKyhoc()
-	{
-		$this->db->distinct();
-		$this->db->select('kyhoc');
-		$records = $this->db->get('tbl_lophoc');
-		if(empty($records))
-		{
-			return FALSE;
-		}
-		return $records;
-	}
+	// public function getDanhSachKyhoc()
+	// {
+	// 	$this->db->distinct();
+	// 	$this->db->select('kyhoc');
+	// 	$records = $this->db->get('tbl_lophoc');
+	// 	if(empty($records))
+	// 	{
+	// 		return FALSE;
+	// 	}
+	// 	return $records;
+	// }
 	
 
 }

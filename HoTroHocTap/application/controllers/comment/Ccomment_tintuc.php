@@ -23,8 +23,7 @@ class Ccomment_tintuc extends MY_Controller
 		if($this->input->post('submit'))
 		{
 			$noiDung = $this->input->post('noidungcomment');
-			#lay ma nguoi dung trong séssion vao ma quan tri
-			$maquantri = 2;
+			$maquantri	= $this->session->userdata('maquantri');
 			$record = $this->Mcomments->themCommentTinTuc($maquantri, $matintuc, $noiDung);
 			if($record == true ){
 				redirect('admin/cdanhmuctintuc/showViewChiTiettintuc/'.$matintuc);

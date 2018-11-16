@@ -4,19 +4,19 @@
  */
 class Mtintuc extends CI_Model
 {
-	public function getDanhSachTinTuc($maMonHoc,$kyHoc,$maquantri)
+	public function getDanhSachTinTuc($maMonHoc,$maKyHoc,$maquantri)
 	{
 		//lay het cac tin nguoi dung đăng, ghép theo môn học
 		$this->db->select('*');
 		$this->db->from('dm_tintuc');
-		$this->db->join('tbl_lophoc', 'dm_tintuc.malophoc = tbl_lophoc.malophoc');
+		$this->db->join('tbl_lophoc', 'dm_tintuc.id_lophoc = tbl_lophoc.id_lophoc');
+		$this->db->join('tbl_kyhoc', 'tbl_kyhoc.makyhoc = tbl_lophoc.kyhoc');
 		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
 		$this->db->where('manguoidang', $maquantri);
 		$this->db->where('tbl_lophoc.mamon', $maMonHoc);
-		$this->db->where('tbl_lophoc.kyhoc', $kyHoc);
+		$this->db->where('tbl_kyhoc.makyhoc', $maKyHoc);
 		$records = $this->db->get();
-		// print("<pre>".print_r($records->result(),true)."</pre>");
-		// die();
+		
 		if(empty($records))
 		{
 			return FALSE;
@@ -28,7 +28,7 @@ class Mtintuc extends CI_Model
 		//lay het cac tin nguoi dung đăng, ghép theo môn học
 		$this->db->select('*');
 		$this->db->from('dm_tintuc');
-		$this->db->join('tbl_lophoc', 'dm_tintuc.malophoc = tbl_lophoc.malophoc');
+		$this->db->join('tbl_lophoc', 'dm_tintuc.id_lophoc = tbl_lophoc.id_lophoc');
 		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
 		$this->db->where('maTinTuc', $maTinTuc);
 		$record = $this->db->get()->row();
@@ -44,7 +44,7 @@ class Mtintuc extends CI_Model
 	{
 		$this->db->select('tbl_lophoc.mamon');
 		$this->db->from('dm_tintuc');
-		$this->db->join('tbl_lophoc', 'dm_tintuc.malophoc = tbl_lophoc.malophoc');
+		$this->db->join('tbl_lophoc', 'dm_tintuc.id_lophoc = tbl_lophoc.id_lophoc');
 		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
 		$this->db->where('maTinTuc', $maTinTuc);
 		$record = $this->db->get()->row()->mamon;
@@ -60,7 +60,7 @@ class Mtintuc extends CI_Model
 	{
 		$this->db->select('tbl_lophoc.kyhoc');
 		$this->db->from('dm_tintuc');
-		$this->db->join('tbl_lophoc', 'dm_tintuc.malophoc = tbl_lophoc.malophoc');
+		$this->db->join('tbl_lophoc', 'dm_tintuc.id_lophoc = tbl_lophoc.id_lophoc');
 		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
 		$this->db->where('maTinTuc', $maTinTuc);
 		$record = $this->db->get()->row()->kyhoc;
@@ -70,11 +70,11 @@ class Mtintuc extends CI_Model
 		}
 		return $record;
 	}
-	public function them($maquantri, $tieuDe, $maLopHoc, $noiDung)
+	public function them($maquantri, $tieuDe, $id_LopHoc, $noiDung)
 	{
 
 		$data = array(
-        'malophoc' => $maLopHoc,
+        'id_LopHoc' => $id_LopHoc,
         'tieude' => $tieuDe,
         'noiDung' => $noiDung,
         'manguoidang' => $maquantri,
@@ -85,6 +85,7 @@ class Mtintuc extends CI_Model
 	}
 	public function xoa($maTinTuc)
 	{
+
 		$this->db->delete('dm_tintuc', array('matintuc' => $maTinTuc)); 
 		return true;
 	}

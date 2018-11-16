@@ -12,6 +12,7 @@ class Cdanhmuctintuc extends MY_Controller
 		$this->load->model('Mmonhoc');
 		$this->load->model('Mlophoc');
 		$this->load->model('Mcomments');
+		$this->load->model('Mkyhoc');
 	}
 
 	public function index()
@@ -23,16 +24,20 @@ class Cdanhmuctintuc extends MY_Controller
 	{
 		#lay ma nguoi dung trong séssion vao ma quan tri
 		$maquantri	= $this->session->userdata('maquantri');
+		$makyhoc 	= $this->Mkyhoc->getMaKyhoc($kyhoc);
 		$data 		= array();
 		$monHocs 		= $this->Mmonhoc->getDanhSachMonHoc();
-		$kyHocs 		= $this->Mlophoc->getDanhSachKyHoc();
+		$kyHocs 		= $this->Mkyhoc->getDanhSachTenKyhoc();
 		$data['mamonSelected']	= $mamonhoc;
 		$data['kyhocSelected']	= $kyhoc;
 		$data['monHocs'] = $monHocs;
 		$data['kyHocs'] = $kyHocs;
 
 		if ($mamonhoc!=0 && $kyhoc!=0) {
-    		$tinTucs	= $this->Mtintuc->getDanhSachTinTuc($mamonhoc,$kyhoc,$maquantri);
+			$lopHocs 	= $this->Mlophoc->getDanhSachLopHoc1($mamonhoc,$makyhoc,$maquantri);
+			$data['lopHocs'] = $lopHocs;
+			
+    		$tinTucs	= $this->Mtintuc->getDanhSachTinTuc($mamonhoc,$makyhoc,$maquantri);
     		$data['tinTucs'] = $tinTucs;
 		} 
 		$data['content'] = 'admin/tintuc/view_danhsachtintuc';
@@ -52,20 +57,23 @@ class Cdanhmuctintuc extends MY_Controller
 		{
 			$maMonHoc 	= $this->input->get('monhoc');
 			$kyHoc 		= $this->input->get('kyhoc');
-			$maquantri	= $this->session->userdata('maquantri');
 
+			$maquantri	= $this->session->userdata('maquantri');
 			$this->danhsachtintuc($maMonHoc,$kyHoc);
+
 			// $this->danhsachtintuc(0,0);
 		}
 	}
-	public function showViewThemtintuc($mamonhoc,$makyhoc)
+	public function showViewThemtintuc($mamonhoc,$kyhoc)
 	{
 		#lay ma nguoi dung trong séssion vao ma quan tri
 		$maquantri	= $this->session->userdata('maquantri');
+		$tenkyhoc 	= $kyhoc;
+		$makyhoc 	= $this->Mkyhoc->getMaKyhoc($tenkyhoc);
 		$lopHocs 	= $this->Mlophoc->getDanhSachLopHoc1($mamonhoc,$makyhoc,$maquantri);
 		$data 		= array();
 		$data['mamonhoc'] = $mamonhoc;
-		$data['makyhoc'] = $makyhoc;
+		$data['tenkyhoc'] = $tenkyhoc;
 		$data['lopHocs'] = $lopHocs;
 		$data['content'] = 'admin/tintuc/view_themtintuc';
 		$this->load->view('admin/view_layout_admin', $data);
@@ -91,16 +99,19 @@ class Cdanhmuctintuc extends MY_Controller
 		#lay ma nguoi dung trong séssion vao ma quan tri
 		if($this->input->post('submit'))
 		{
+
 			$maLopHoc 	= $this->input->post('lophoc');
+			$id_LopHoc	= $this->Mlophoc->getIdLopphoc($maLopHoc);
 			$maMonHoc 	= $this->input->post('mamonhoc');
-			$kyHoc 		= $this->input->post('kyhoc');
+			$kyHoc 		= $this->input->post('tenkyhoc');
 			$tieuDe 	= $this->input->post('tieude');
 			$noiDung 	= $this->input->post('noidung');
 			$maquantri	= $this->session->userdata('maquantri');
 			
-			$record 	= $this->Mtintuc->them($maquantri, $tieuDe, $maLopHoc, $noiDung);
+			$record 	= $this->Mtintuc->them($maquantri, $tieuDe, $id_LopHoc, $noiDung);
 
 			if($record == true ){
+				
 				$this->danhsachtintuc($maMonHoc,$kyHoc);
 			}
 			else
@@ -121,8 +132,8 @@ class Cdanhmuctintuc extends MY_Controller
 	{
 		$maMonHoc=$this->Mtintuc->getMaMonHoc($matintuc);
 		
-		$kyHoc=$this->Mtintuc->getMaKyHoc($matintuc);
-
+		$maKyHoc=$this->Mtintuc->getMaKyHoc($matintuc);
+		$kyHoc  =$this->Mkyhoc->getTenKyHoc($maKyHoc);
 		if($this->input->post('submit'))
 		{
 			$tieuDe 	= $this->input->post('tieude');
@@ -146,9 +157,9 @@ class Cdanhmuctintuc extends MY_Controller
 	public function xoa($maTinTuc)
 	{
 		$maMonHoc=$this->Mtintuc->getMaMonHoc($maTinTuc);
-		$kyHoc=$this->Mtintuc->getMaKyHoc($maTinTuc);
+		$makyHoc=$this->Mtintuc->getMaKyHoc($maTinTuc);
+		$kyHoc  = $this->Mkyhoc->getTenKyHoc($makyHoc);
 		$record = $this->Mtintuc->xoa($maTinTuc);
-
 		if($record == true ){
 			
 			$this->danhsachtintuc($maMonHoc,$kyHoc);

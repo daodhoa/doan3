@@ -32,7 +32,7 @@
                     <input id="mamonhoc" type="hidden" value="<?php echo($mamonhoc); ?>" class="form-control" name="mamonhoc" required>
                 </div>
                 <div class="form-group">
-                    <input id="kyhoc" type="hidden" value="<?php echo($makyhoc); ?>" class="form-control" name="kyhoc" required>
+                    <input id="tenkyhoc" type="hidden" value="<?php echo($tenkyhoc); ?>" class="form-control" name="tenkyhoc" required>
                 </div>
                 <div class="form-group">
                     <input type="file" name="userfile" size="20" />

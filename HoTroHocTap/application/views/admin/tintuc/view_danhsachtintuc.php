@@ -13,9 +13,9 @@
             <h4> Lựa chọn môn học và kỳ học để xem danh sách tin</h4>
         <?php else: ?>
             <div class="panel panel-default">
-                <?php foreach ($tinTucs->result() as $tinTuc):?>
+                <?php foreach ($lopHocs->result() as $lopHoc):?>
                     <div class="panel-heading">
-                             Mã lớp học: <?php echo($tinTuc->malophoc); ?>
+                             Mã lớp học: <?php echo($lopHoc->malophoc); ?>
                     </div>
                     <div class="panel-body">
                             <div class="table-responsive">
@@ -28,7 +28,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        <?php foreach ($tinTucs->result() as $tinTuc):?>
+                                            <?php if($tinTuc->malophoc==$lopHoc->malophoc): ?> 
                                             <tr>
                                                 <td><?php echo($tinTuc->ngaydang);?></td>
                                                 <td><?php echo($tinTuc->tieude); ?></td>
@@ -41,8 +42,9 @@
                                                 <a href="<?php echo base_url().'admin/cdanhmuctintuc/showViewSuatintuc/'.$tinTuc->matintuc ;?>" type="button" class="btn btn-warning btn-sm">Sửa</a>
                                                 <a href="<?php echo base_url().'admin/cdanhmuctintuc/showViewChiTiettintuc/'.$tinTuc->matintuc ;?>" type="button" class="btn btn-info btn-sm">Xem chi tiết</a>
                                                 </td>
-                                            </tr>                                           
-
+                                            </tr>
+                                            <?php endif; ?>                                           
+                                        <?php endforeach; ?>
 
                                     </tbody>
                                  </table>
@@ -68,7 +70,7 @@
                     <label for="tieude">Kỳ học </label>
                     <select name="kyhoc">
                     <?php foreach ($kyHocs->result() as $kyHoc):?>
-                      <option value="<?php echo($kyHoc->kyhoc); ?>"><?php echo($kyHoc->kyhoc); ?></option>
+                      <option value="<?php echo($kyHoc->tenkyhoc); ?>"><?php echo($kyHoc->tenkyhoc); ?></option>
                       <?php endforeach; ?>
                       </select> 
                 </div>
@@ -85,11 +87,20 @@
 </div>
 
 <?php if(isset($tinTucs)): ?>
-<div class="row">
-	<div class="col-md-12">
-		<a href="<?php echo base_url().'admin/cdanhmuctintuc/showViewThemtintuc/'.$mamonSelected.'/'.$kyhocSelected ;?>" type="button" class="btn btn-info btn-lg"> Thêm tin tức</a>
-	</div>
-</div>
+    <?php if(isset($lopHocs)): ?>
+        <?php if(empty($lopHocs->result())): ?> 
+            <div class="col-md-12">
+                <h4>Chưa có lớp học nào</h4>
+            </div>
+        <?php else: ?>
+        <div class="row">
+            <div class="col-md-12">
+             <a href="<?php echo base_url().'admin/cdanhmuctintuc/showViewThemtintuc/'.$mamonSelected.'/'.$kyhocSelected ;?>" type="button" class="btn btn-info btn-lg"> Thêm tin tức</a>
+             </div>
+        </div>
+        <?php endif; ?>
+    <?php endif; ?>
+
 <?php endif; ?>
 
 <script type="text/javascript">
