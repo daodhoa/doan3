@@ -1,7 +1,7 @@
 <div class="container" style="background-color: #EEEFFF; padding-top: 10px;">
 	<div class="row" style="margin-top: 20px;">
     <div class="col-md-9">
-      <form method="POST" action="<?php echo base_url('clamdethi/ketqualambai/'.$madethi); ?>">
+      <form method="POST" id="myForm" action="<?php echo base_url('clamdethi/ketqualambai/'.$madethi); ?>">
       <?php 
       $sottcau = 1;
       foreach ($dscauhoi as $row):?>
@@ -41,7 +41,8 @@
         </div>
       <?php endforeach; ?>
       <div class="col-md-12" style="margin-top: 30px;">
-        <input type="submit" onclick="return confirm('Xác nhận nộp bài?');" name="nopbai" id="nopbai" class="btn btn-primary" value="NỘP BÀI VÀ KẾT THÚC">
+        <input type="submit" onclick="return confirm('xác nhận nộp bài?');" name="nopbai" id="nopbai" class="btn btn-primary" value="NỘP BÀI VÀ KẾT THÚC">
+        <input type="submit" id="autonopbai" name="autonopbai" style="visibility: hidden;">
       </div>
       </form>
 
@@ -80,9 +81,7 @@
             <?php $s++; endforeach; ?>
       });
 
-      window.onbeforeunload = function(event) {
-          event.returnValue = "Bạn chắc chứ?";
-      };
+      //var now = 0;
 
       function startTimer(duration, display) {
         var timer = duration, minutes, seconds;
@@ -93,21 +92,45 @@
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
-            display.textContent = minutes + ":" + seconds;
+            display.textContent = minutes + ":" + seconds;            
 
-            if (--timer < 0) {
-                timer = duration;
+            if (timer < 0) {
+                //timer = duration;
+                submitform();
             }
+            now = timer;
+            timer = timer - 1;
+
+
         }, 1000);
     }
 
+    function submitform(){
+                
+                document.getElementById('autonopbai').click();
+        }
+
     window.onload = function () {
-        var phut = <?php echo $this->session->userdata('thoigianlambai'); ?>;
-        var fiveMinutes = 60* phut,
+        var phut = <?php echo $this->session->flashdata('thoigianlambai'); ?>;
+        var fiveMinutes =  phut,
         display = document.querySelector('#time');
         startTimer(fiveMinutes, display);
     };
 
-    console.log(<?php echo $this->session->userdata('thoigianlambai'); ?>);
+    window.onbeforeunload = function ()
+    {
+       var now = $('#time').text();
+       var p = now.slice(0,2);
+       var s = now.slice(3,5);
+       var cook = parseInt(p)*60 + parseInt(s);
+       $.ajax({
+        type: "POST",
+        url: "<?php echo base_url('clamdethi/session_update/'); ?>" + cook,
+        //data: { "timer": cook }
+        }).done(function( msg ) {
+          console.log( "Data Saved: " + msg );
+        });
+    };
 
+    
 </script>
