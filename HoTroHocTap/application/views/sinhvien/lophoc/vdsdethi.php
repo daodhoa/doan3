@@ -1,5 +1,7 @@
 <div class="container">
+	<input action="action" class="button secondary" onclick="window.history.go(-1); return false;" type="button" value="Trở về" />
 	<div class="row">
+
 		<div class="col-md-8">
 			<h2 class="section-title"><i class="icon-book"></i>Danh sách bài kiểm tra</h2>
 			<ul class="posts">

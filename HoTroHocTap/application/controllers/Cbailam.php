@@ -11,6 +11,7 @@ class Cbailam extends CI_Controller
 		$this->load->model('Mbailam');
 		if($this->session->userdata('masinhvien') == '')
 		{
+			$this->session->set_flashdata('message','Bạn chưa đăng nhập');
 			redirect(base_url());
 		}
 	}

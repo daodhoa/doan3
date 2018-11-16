@@ -52,7 +52,7 @@
 								<li class="menu-item dropdown">
   									<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Đào Duy Hòa<span class="caret"></span> </a>
   										<ul class="dropdown-menu duyhoa-ulli">
-    									<li><a href="">Xem thông tin</a></li>
+    									<li><a href="<?php echo base_url('csinhvien') ?>">Xem thông tin</a></li>
     									<li><a href="<?php echo base_url('clogout'); ?>">Đăng xuất</a></li>
  									 	</ul>
 								</li>
@@ -146,6 +146,14 @@
 		<script src="<?php echo base_url('bootstrap/sinhvien/'); ?>js/plugins.js"></script>
 		<script src="<?php echo base_url('bootstrap/sinhvien/'); ?>js/app.js"></script>
 		
+		<?php 
+	    if($this->session->flashdata('message')!=''):
+	        $message = $this->session->flashdata('message');
+	    ?>
+	    <script type="text/javascript">
+	        alert('<?php echo $message; ?>');
+	    </script>
+	    <?php endif; ?>
 	</body>
 
 </html>

@@ -11,16 +11,29 @@ class Clamdethi extends CI_Controller
 		$this->load->model('Mthicu');
 		if($this->session->userdata('masinhvien')== '')
 		{
+			$this->session->set_flashdata('message','Bạn chưa đăng nhập');
 			redirect(base_url());
 		}
 	}
 
 	public function index($madethi)
 	{
-		
-		$dethi = $this->Mthicu->getChitietdethi($madethi);
-		$this->session->set_userdata('thoigianlambai', $dethi['thoigianlambai'] );
+		$this->load->model('Mbailam');
+		$where = array('madethi' => $madethi, 
+			'masinhvien' => $this->session->userdata('masinhvien'));
+		if($this->Mbailam->kiemtra($where))
+		{
+			$this->session->set_flashdata('message','Bạn đã làm đề thi này');
+			redirect(base_url());
+		}		
 
+		$dethi = $this->Mthicu->getChitietdethi($madethi);
+
+		if($this->session->flashdata('thoigianlambai') == '')
+		{
+			$this->session->set_flashdata('thoigianlambai', $dethi['thoigianlambai'] * 60);
+		}
+		
 		$dscauhoi = $this->Mthicu->getCauhoiDethi($madethi);
 		$arrayCautraloi = array();
 		$arrayDapandung = array();
@@ -43,8 +56,14 @@ class Clamdethi extends CI_Controller
 		
 	}
 
-	public function ketqualambai($madethi="")
+	public function session_update($timer)
 	{
+		$this->session->set_flashdata('thoigianlambai', $timer - 1);
+	}
+
+	public function ketqualambai($madethi="")
+	{	
+
 		$dethi = $this->Mthicu->getChitietdethi($madethi);
 		$dscauhoi = $this->Mthicu->getCauhoiDethi($madethi);
 		$cautraloi = array();
@@ -56,7 +75,7 @@ class Clamdethi extends CI_Controller
 		}
 		$slc = count($arrayDapandung);
 		$bailam = array();
-		if($this->input->post('nopbai'))
+		if($this->input->post('nopbai') || $this->input->post('autonopbai'))
 		{
 			$bailam = $this->input->post('chondapan');
 		}
@@ -190,7 +209,7 @@ class Clamdethi extends CI_Controller
         );
 
         $this->Mbailam->thembailam($arrayBl); //insert bailam csdl
-        //
+        
 
 		$data['slc'] = $slc;
 		$data['socaudung'] = $count;

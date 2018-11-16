@@ -1,8 +1,8 @@
 <div class="container" style="padding-left: 10px;"><div class="row" style="margin-top: 20px;"><div class= "col-md-12"><h4>MSSV:20151589 </h4>
 				<h5>Mã đề: 76800</h5> 
-				<p>Thời gian: 2018/11/14 13:55:15</p>
-				<p>Số câu đúng: 1/2</p>
-				<p>Điểm: 5.00</p>
+				<p>Thời gian: 2018/11/16 11:36:04</p>
+				<p>Số câu đúng: 2/2</p>
+				<p>Điểm: 10.00</p>
 				</div><div class="col-md-9"><div class="col-md-12" style="margin-top: 20px;">
       		<h4>Câu <span>1</span>: <span>Để che giấu hay hiển thị các thanh công cụ, bạn chọn mục nào trong số các mục sau:
         	</span>
@@ -21,13 +21,13 @@
             			</div></div><div class="col-md-12" style="margin-top: 20px;">
       		<h4>Câu <span>2</span>: <span>Để ghi lưu một sổ bảng tính đang mở dưới một tên khác, bạn vào thực đơn lệnh File, chọn lệnh:
         	</span>
-        	</h4><div class= "radio"><label><input type="radio" checked><span>A:</span>
+        	</h4><div class= "radio"><label><input type="radio" disabled><span>A:</span>
                 		<span> Open</span>
               			</label>
             			</div><div class= "radio"><label><input type="radio" disabled><span>B:</span>
                 		<span> Save</span>
               			</label>
-            			</div><div class= "radio" style="color: red;"><label><input type="radio" disabled><span>C:</span>
+            			</div><div class= "radio" style="color: red;"><label><input type="radio" checked><span>C:</span>
                 		<span> Save As</span>
               			</label>
             			</div><div class= "radio"><label><input type="radio" disabled><span>D:</span>

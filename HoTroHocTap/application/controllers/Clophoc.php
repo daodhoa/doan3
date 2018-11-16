@@ -12,6 +12,7 @@ class Clophoc extends CI_Controller
 		$this->load->model('Mbailam');
 		if($this->session->userdata('masinhvien') == '')
 		{
+			$this->session->set_flashdata('message','Bạn chưa đăng nhập');
 			redirect(base_url());
 		}
 	}
@@ -32,6 +33,7 @@ class Clophoc extends CI_Controller
 	{
 		$where = array('madethi' => $madethi, 
 			'masinhvien' => $this->session->userdata('masinhvien'));
+		
 		if($this->Mbailam->kiemtra($where))
 		{
 			$dethi = $this->Mthicu->getChitietdethi($madethi);
