@@ -4,6 +4,12 @@
  */
 class Mmonhoc extends CI_Model
 {
+	public function UpdateTrangthai($mamon, $masv,$data)
+	{
+		$this->db->where('id_lophoc',$mamon);
+		$this->db->where('masinhvien',$masv);
+		$this->db->update('tbl_sinhvien_lophoc',$data);
+	}
 	public function getDanhSachMonHoc()
 	{
 		$records = $this->db->get('dm_mon');
@@ -13,7 +19,14 @@ class Mmonhoc extends CI_Model
 		}
 		return $records;
 	}
-
+	public function getSv_lh($masv)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_sinhvien_lophoc');
+		$this->db->where ('masinhvien',$masv);
+		$kq = $this->db->get();
+		return $kq->result_array();
+	}
 	public function getDanhSachLopHoc($mamonhoc)
 	{
 		$this->db->select('*');
@@ -68,7 +81,7 @@ class Mmonhoc extends CI_Model
 		return $records->result_array();
 	}
 
-	public function getListLopHoc($mamon, $makyhoc)
+	public function getListLopHoc($mamon, $makyhoc,$masv)
 	{
 		$this->db->select('tbl_lophoc.*, tenmon, mahocphan');
 		$this->db->from('tbl_lophoc');
@@ -76,7 +89,15 @@ class Mmonhoc extends CI_Model
 		$this->db->where('tbl_lophoc.mamon', $mamon);
 		$this->db->where('kyhoc', $makyhoc);
 		$records = $this->db->get();
-		return $records->result_array();
+		$kq = $records->result_array();
+
+		foreach ($kq as $k => $val) {
+			$this->db->select('masinhvien,trangthai');
+			$this->db->where('tbl_sinhvien_lophoc.id_lophoc',$val['id_lophoc']);
+			$this->db->where('masinhvien',$masv);
+			$kq[$k]["masinhvien"]= $this->db->get('tbl_sinhvien_lophoc')->result_array();
+		}
+		return $kq;
 	}
 
 	public function getLimitMonhoc($tongso, $batdau)

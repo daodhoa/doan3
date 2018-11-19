@@ -29,30 +29,53 @@
 			</div>
 			<hr>
 			<!--danh sách lớp-->
+			<form action="" method="post">
 			<div class="row">
 			<?php if(!empty($dslop)): ?>
 				<div class="col-md-12">
-							<h2 class="section-title"><i class="icon-book"></i>Danh sách lớp</h2>
-							<ul class="posts">
-							<?php foreach($dslop as $row): ?>
-								<li class="post">
-									<h3 class="entry-title"><a href="#">Mã lớp: <?php echo $row['malophoc']; ?></a></h3>
-									<span class="time" style="color: black"><i class="icon-clock"></i>Trạng thái: 
-									<?php if($row['trangthai']== 1 ): ?>	
-										<span style="color:#33CC33;">Đang mở</span>
-										<a href="<?php echo base_url('clophoc/index/'.$row['malophoc']); ?>" class="button">Tham gia lớp</a>
+					<h2 class="section-title"><i class="icon-book"></i>Danh sách lớp</h2>
+					<?php if(!empty($thongbao) ): ?>
+						<div id="thongbao" class="button col-md-12" style="background-color: #6c7f60;color: white; font-size: 20px" ><?php echo $thongbao; ?></div>
+					<?php endif; ?>
+					<div class="clear"></div>
+					<ul class="posts">
+					<?php foreach($dslop as $row): ?>
+						<li class="post">
+							<h3 class="entry-title"><a href="#" >Mã lớp: <?php echo $row['id_lophoc']; ?></a></h3>
+							<span class="time" style="color: black"><i class="icon-clock"></i>Trạng thái: 
+							<?php if($row['trangthai']== 1 ): ?>	
+								<span style="color:#33CC33;">Đang mở</span>
+								
+								<?php if(!empty($row['masinhvien'][0])): ?>
+									<?php if($row['masinhvien'][0] == "t"): ?>
+										<a href="" class="button">Đã tham gia</a>
 									<?php else: ?>
-										<span style="color:#FF3333;">Đóng</span>
-									<?php endif; ?>
-									</span>
-									
-								</li>
-							<?php endforeach; ?>
-							</ul>
-							
+										<input type="submit" value="Chưa tham gia" name="dangky" class="button"/>
+										<input  class="hidden" value="<?php echo $row['id_lophoc']; ?>" name="malop"/>
+									<?php endif; ?>	
+								<?php else: ?><input type="submit" value="Chưa tham gia" class="button" onclick="return confirm('Bạn không thể tham gia lớp <?php echo $row['id_lophoc']; ?>');"/>
+								<?php endif; ?>
+								
+							<?php else: ?>
+								<span style="color:#FF3333;">Đóng</span>
+							<?php endif; ?>
+							</span>
+						</li>
+					<?php endforeach; ?>
+					</ul>
 				</div>
 			<?php endif; ?>
-			</div>
+			</div><!--?row-->
+			<input type="hidden" name="{$csrf_token_name}" value="{$csrf_token}" />
+			</form>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        setTimeout(function(){ $('#thongbao').fadeOut(2000); },2000);
+    });
+
+</script>
