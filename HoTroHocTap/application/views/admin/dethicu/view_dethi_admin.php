@@ -122,10 +122,10 @@
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th class="text-center">STT</th>
-                                <th class="text-center col-md-2">Mã thi</th>
+                                <th class="text-center col-md-1">STT</th>
+                                <th class="text-center col-md-1">Mã thi</th>
                                 <th class="text-center col-md-3">Môn học</th>
-                                <th class="text-center">TG làm bài</th>
+                                <th class="text-center" >TG làm bài</th>
                                 <th class="text-center col-md-4">TG tạo</th>
                                 <th class="text-center">Trạng thái</th>
                             </tr>
@@ -139,9 +139,9 @@
                                         <td class="text-center"><?php echo $stt; $stt++; ?></td>
                                         <td><?php echo $row['madethi']; ?></td>
                                         <td><?php echo $row['tenmon']; ?></td>
-                                        <td><?php echo $row['thoigianlambai']; ?></td>
+                                        <td><?php echo $row['thoigianlambai']; ?> phút</td>
                                         <td><?php echo $row['thoigiantao']; ?></td>
-                                        <td class="text-center col-md-2">
+                                        <td class="text-center col-md-3">
                                             <a href="<?php echo base_url('admin/cdanhmucmathi/xemchitiet?madethi='.$row['madethi']); ?>" class="btn btn-success btn-flat btn-sm"><i class="fa fa-download" aria-hidden="true"></i></a>
 
                                             <?php if($row['trangthai'] == 1): ?>
@@ -149,6 +149,7 @@
                                             <?php elseif($row['trangthai'] == 0): ?>
                                                 <button  class="btn btn-danger btn-flat btn-sm" title="đã bị hủy" onclick="changeStatus('<?php echo $row["madethi"]; ?>');" name ="uncheck" ><i class="fa fa-times" aria-hidden="true"></i></button>
                                             <?php endif; ?>
+                                            <a href="<?php echo base_url('admin/cdanhmucmathi/xembailam/'.$row['madethi']); ?>" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-folder-open" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
