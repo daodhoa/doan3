@@ -6,6 +6,18 @@
                 <!--End Page Header -->
 </div>
 <div class="row">
+    <!-- Thông báo-->
+    <?php if($this->session->flashdata('count') != "" ): ?>
+        <div class="col-md-12">
+          <div class="row" id="thongbao">
+            <div class="alert alert-info alert-dismissible fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Thông báo!</strong> Đã thêm <?php echo $this->session->flashdata('count'); ?> câu hỏi
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
+        <!-- Thông báo-->
     <div class="col-lg-12">
         <button class="btn btn-primary" id="show-add-btn">Thêm câu hỏi</button>
         <div class="row">&nbsp;</div>
@@ -29,29 +41,6 @@
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-md-12">
-        <!-- Thông báo-->
-        <div class="col-md-12">
-          <div class="row" id="thongbao">
-            <?php if(!empty($this->session->flashdata('mes'))): 
-              $mes= $this->session->flashdata('mes');
-              ?>
-            <div class="col-md-12">
-              <div class="box box-<?php echo $mes['mau'];?> box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Thông báo</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div><!-- /.box-tools -->
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <?php echo $mes['thongbao']; ?>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div>
-            <?php endif; ?>
-          </div>
-        </div>
-        <!-- Thông báo-->
         <div class="box box-success">
           <div class="box-header with-border">
             <h3 class="box-title">Import câu hỏi, đáp án</h3>

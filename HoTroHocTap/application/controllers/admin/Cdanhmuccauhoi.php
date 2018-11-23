@@ -25,13 +25,8 @@ class Cdanhmuccauhoi extends MY_Controller
 	{
 		if($this->input->post('import'))
 		{
-			$this->import_cauhoi();
-			$mes = array(
-				'sobanghi'=>1,
-                'thongbao'=>'import thành công!',
-                'mau'=>'success'
-			);
-			$this->session->set_flashdata('mes', $mes);
+			$count = $this->import_cauhoi();
+			$this->session->set_flashdata('count', $count);
             redirect(base_url('admin/Cdanhmuccauhoi'));
 		}
 	}
@@ -44,6 +39,8 @@ class Cdanhmuccauhoi extends MY_Controller
             $data = PHPExcel_IOFactory::load($_FILES['file_import']['tmp_name']);
             $sheetData = $data->getActiveSheet()->toArray(null, true, true, true);
             $sohang=1;
+
+            $count =0;
 
             foreach ($sheetData as $row)
             {
@@ -70,12 +67,20 @@ class Cdanhmuccauhoi extends MY_Controller
                         $manhom = 'khohn';
                     }
 
+
+
                     // dua vao mang de chen
                     $insertCauhoi = array(
                         'mamon'  	  =>	$mamon,
                         'manhom'      =>	$manhom,
                         'noidung'     =>    $noidung
                     );
+
+                    if($this->Mcauhoi->check_exist($insertCauhoi))
+                    {
+                        continue;
+                    }
+
                     $macauhoi =  $this->Mcauhoi->insertCauhoi($insertCauhoi);
 
                     $socotcautraloi = 'D';
@@ -111,11 +116,16 @@ class Cdanhmuccauhoi extends MY_Controller
                             $socotdapandung++;
                         }
                     }
+
+                    $count++;
                 }
                 $sohang++;
+
             }
             unlink($_FILES['file_import']['tmp_name']);
         }
+
+        return $count;
     }
 
 

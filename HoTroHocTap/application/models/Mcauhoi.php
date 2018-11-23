@@ -81,7 +81,7 @@ class Mcauhoi extends CI_Model
 
     public function xoaCauHoi($macauhoi)
     {
-        $table = array('tbl_dapandung', 'tbl_cautraloi', 'tbl_cauhoi');
+        $table = array('tbl_dapandung', 'tbl_cautraloi', 'tbl_dethi_cauhoi' ,'tbl_cauhoi');
         $this->db->where('macauhoi', $macauhoi);
         return $this->db->delete($table);
     }
@@ -114,5 +114,18 @@ class Mcauhoi extends CI_Model
         $this->db->update('tbl_cauhoi', $data);
     }
 
+    public function check_exist($where = array())
+    {
+        $this->db->where($where);
+        $query = $this->db->get('tbl_cauhoi');
+        if($query->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
 }
 ?>
