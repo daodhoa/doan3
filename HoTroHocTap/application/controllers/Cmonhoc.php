@@ -56,14 +56,39 @@ class Cmonhoc extends CI_Controller
     {
         //$dslop = $this->Mmonhoc->getListLopHoc($mamon);
         $dskyhoc = $this->Mmonhoc->getdskyhoc();
-
+        $thongbao="";
+        // pr($dskyhoc);
         $dslop = array();
         if($this->input->get('makyhoc'))
         {
             $makyhoc = $this->input->get('makyhoc');
-            $dslop = $this->Mmonhoc->getListLopHoc($mamon,$makyhoc);
-        }
+            $masv = $this->session->userdata('masinhvien');
+            if($this->input->post('dangky')){
+                $malop = $this->input->post('malop');
+                $data=array(
+                    'trangthai' => "t"
+                );
+                $dangky = $this->Mmonhoc->UpdateTrangthai($malop,$masv,$data);
+                $thongbao = "Tham gia thành công";
+            }
+            $dslop = $this->Mmonhoc->getListLopHoc($mamon,$makyhoc,$masv);
+            // pr($dslop);
+            $sv_lh = $this->Mmonhoc->getSv_lh($masv);
+            $sv = array();
+            foreach ($sv_lh as $key => $value) {
+                $sv[$value['id_lophoc']][] = $value['trangthai'];
+            }
 
+            foreach ($dslop as $key => $value) {
+                if(isset($sv[$value['id_lophoc']])){
+                    $dslop[$key]['masinhvien'] = $sv[$value['id_lophoc']];
+                }else{
+                    $dslop[$key]['masinhvien'] = [];
+                }
+            }
+            
+        }
+        $data['thongbao'] = $thongbao;
         $data['monhoc'] = $this->Mmonhoc->getThongTinMonHoc($mamon);
         $data['dskyhoc'] = $dskyhoc;
         $data['dslop'] = $dslop;

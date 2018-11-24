@@ -13,7 +13,7 @@
 			</div>
 			<div style="margin-top: 20px;" class="col-md-12 text-center">
 				<p style="color: #006666">Thời gian làm bài: <?php echo $dethi['thoigianlambai']; ?> phút</p>
-				<a href="#" class="button primary" onclick="return confirm('Xác nhận làm bài?');">
+				<a href="<?php echo base_url('clamdethi/index/'.$dethi['madethi']); ?>" class="button primary" onclick="return confirm('Xác nhận làm bài?');">
 					BẮT ĐẦU LÀM BÀI
 				</a>
 			</div>
