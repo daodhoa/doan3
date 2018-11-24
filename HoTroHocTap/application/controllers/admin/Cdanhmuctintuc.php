@@ -39,7 +39,11 @@ class Cdanhmuctintuc extends MY_Controller
 			
     		$tinTucs	= $this->Mtintuc->getDanhSachTinTuc($mamonhoc,$makyhoc,$maquantri);
     		$data['tinTucs'] = $tinTucs;
-		} 
+//     				print("<pre>".print_r($tinTucs->result(),true)."</pre>");
+// die();
+		}
+
+		
 		$data['content'] = 'admin/tintuc/view_danhsachtintuc';
 		$this->load->view('admin/view_layout_admin', $data);
 	}
@@ -107,8 +111,8 @@ class Cdanhmuctintuc extends MY_Controller
 			$tieuDe 	= $this->input->post('tieude');
 			$noiDung 	= $this->input->post('noidung');
 			$maquantri	= $this->session->userdata('maquantri');
-			
-			$record 	= $this->Mtintuc->them($maquantri, $tieuDe, $id_LopHoc, $noiDung);
+			$theloai	= 'thongbao';
+			$record 	= $this->Mtintuc->them($maquantri, $tieuDe, $id_LopHoc, $noiDung,$theloai);
 
 			if($record == true ){
 				

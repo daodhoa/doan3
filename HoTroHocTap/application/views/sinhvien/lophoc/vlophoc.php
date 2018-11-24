@@ -2,32 +2,28 @@
 	<div class="container">
 		<div class="fullwidth-content">
 			<h2 class="section-title">Thông báo</h2>
+			<?php if(empty($ds3ThongBaos)==true): ?>
+							
+            	<h4> Hiện chưa có thông báo nào</h4>
+        					
+        	<?php else: ?>
+			<?php foreach ($ds3ThongBaos as $row): ?>
 			<div class="accordion">
 				<div class="accordion-toggle">
-					<h3><a href="">Nghỉ học</a></h3>
-					<span class="date"><i class="icon-calendar"></i> 6 APR 2014</span>
-					<span class="location"><i class="icon-user"></i>Đào Duy Hòa
+					<h3><a href="<?php echo base_url('Ctintuc/chiTietThongBao/'.$row['matintuc'] ); ?>"><?php echo $row['tieude']; ?></a></h3>
+					<span class="date"><i class="icon-calendar"></i> <?php echo $row['ngaydang']; ?> </span>
+					<span class="location"><i class="icon-user"></i><?php echo $row['hoten']; ?>
 				</div>
 				<div class="accordion-content">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus totam quaerat, accusantium soluta facilis sequi quis ex nostrum, consequuntur odio ea. Eaque molestiae earum saepe, qui accusamus voluptate sed libero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus totam quaerat, accusantium soluta facilis sequi quis ex nostrum, consequuntur odio ea. Eaque molestiae earum saepe, qui accusamus voluptate sed libero.</p>
+					<p><?php echo $row['noidung']; ?></p>
 				</div>
 			</div>
-
-			<div class="accordion">
-				<div class="accordion-toggle">
-					<h3><a href="">Học bù</a></h3>
-					<span class="date"><i class="icon-calendar"></i> 6 APR 2014</span>
-					<span class="location"><i class="icon-user"></i>Duy Hòa
-				</div>
-				<div class="accordion-content">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus totam quaerat, accusantium soluta facilis sequi quis ex nostrum, consequuntur odio ea. Eaque molestiae earum saepe, qui accusamus voluptate sed libero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus totam quaerat, accusantium soluta facilis sequi quis ex nostrum, consequuntur odio ea. Eaque molestiae earum saepe, qui accusamus voluptate sed libero.</p>
-				</div>
-			</div>
+			<?php endforeach ?>
 
 			<p>
-				<a href="" style="float: right;">Xem nhiều hơn >></a>
+				<a href="<?php echo base_url('Ctintuc/dsthongbao/'.$malop); ?>" style="float: right;">Xem nhiều hơn >></a>
 			</p>
-
+			<?php endif ?>
 		</div>
 	</div>
 </div>
@@ -39,24 +35,27 @@
 						<div class="col-md-4">
 							<h2 class="section-title"><i class="icon-calendar-lg"></i>Hỏi đáp, thắc mắc</h2>
 							<ul class="posts">
+							<?php if(empty($ds3CauHois)==true): ?>
+							
+            				<h4> Hiện chưa có câu hỏi nào</h4>
+        					
+        					<?php else: ?>
+							<?php foreach ($ds3CauHois as $row): ?>
 								<li class="post">
-									<h3 class="entry-title"><a href="#">Nostrud exercitation ullamco</a></h3>
-									<span class="date"><i class="icon-calendar"></i> 6 APR 2014</span>
-									<span class="author"><i class="icon-user"></i>Marco Baletti</span>
+									<h3 class="entry-title"><a href="<?php echo base_url('Ctintuc/chiTietHoiDap/'.$row['matintuc'].'/'.$malop ); ?>"><?php echo $row['tieude']; ?></a></h3>
+									<span class="date"><i class="icon-calendar"></i>  
+										<?php echo $row['ngaydang']; ?> 
+									</span>
+			
+									<span class="author"><i class="icon-user"></i> <?php echo $row['hoten']; ?> </span>
+									
 								</li>
-								<li class="post">
-									<h3 class="entry-title"><a href="#">Nostrud exercitation ullamco</a></h3>
-									<span class="date"><i class="icon-calendar"></i> 6 APR 2014</span>
-									<span class="author"><i class="icon-user"></i>Marco Baletti</span>
-								</li>
-								<li class="post">
-									<h3 class="entry-title"><a href="#">Nostrud exercitation ullamco</a></h3>
-									<span class="date"><i class="icon-calendar"></i> 6 APR 2014</span>
-									<span class="author"><i class="icon-user"></i>Marco Baletti</span>
-								</li>
+								<?php endforeach ?>
 							</ul>
+							<?php endif; ?>
 							<p class="text-center">
-								<a href="#" class="more button secondary">Xem nhiều hơn</a>
+								<a href="<?php echo base_url('Ctintuc/dsHoiDap/'.$malop); ?>" class="more button secondary">Xem nhiều hơn</a>
+								<a href="<?php echo base_url('Ctintuc/showViewThemCauHoi/'.$malop); ?>" class="more button secondary">Thêm câu hỏi</a>
 							</p>
 						</div>
 						<div class="col-md-4">
