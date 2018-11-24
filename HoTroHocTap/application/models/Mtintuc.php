@@ -78,7 +78,7 @@ class Mtintuc extends CI_Model
 	public function getChiTietTinTuc($maTinTuc)
 	{
 		//lay het cac tin nguoi dung đăng, ghép theo môn học
-		$this->db->select('matintuc , tieude, noidung, theloai, file, ngaydang, malophoc, tbl_sinhvien.hoten as tensinhvien, tbl_quantri.hoten as tengiaovien ');
+		$this->db->select('matintuc , manguoidang, tieude, noidung, theloai, file, ngaydang, malophoc, tbl_sinhvien.hoten as tensinhvien, tbl_quantri.hoten as tengiaovien ');
 		$this->db->from('dm_tintuc');
 		$this->db->join('tbl_lophoc', 'dm_tintuc.id_lophoc = tbl_lophoc.id_lophoc');
 		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
