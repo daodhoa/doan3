@@ -172,8 +172,7 @@
         }
     </script>
 
-<<<<<<< HEAD
-=======
+
     <?php 
     if($this->session->flashdata('message')!=''):
         $message = $this->session->flashdata('message');
@@ -182,7 +181,7 @@
         alert('<?php echo $message; ?>');
     </script>
     <?php endif; ?>
->>>>>>> duyhoa
+
 </body>
 
 </html>

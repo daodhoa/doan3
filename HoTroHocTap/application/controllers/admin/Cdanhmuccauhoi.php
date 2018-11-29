@@ -9,17 +9,36 @@ class Cdanhmuccauhoi extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->model('Mcauhoi');
+        $this->load->model('Mmonhoc');
 	}
 	public function index()
 	{
-		$records = $this->Mcauhoi->getDanhSachCauHoi();
+        $maquantri = $this->session->userdata('maquantri');
+		$records = $this->Mcauhoi->getDanhSachCauHoi($maquantri);
+        $monhoc = $this->Mmonhoc->getListMonHoc($maquantri);
 		
 		$data = array();
 		$data['records'] = $records;
+        $data['monhoc'] = $monhoc;
 		$data['content'] = 'admin/cauhoi/view_cauhoi_admin';
 		$this->load->view('admin/view_layout_admin', $data);
 		
 	}
+
+    public function danhsachcauhoi($mamon='')
+    {
+        $maquantri = $this->session->userdata('maquantri');
+        if($mamon != '')
+        {
+            $records = $this->Mcauhoi->getDanhSachCauHoi($maquantri, $mamon);
+            echo json_encode($records);
+        }
+        else
+        {
+            $records = $this->Mcauhoi->getDanhSachCauHoi($maquantri);
+            echo json_encode($records);
+        }
+    }
 
 	public function them()
 	{

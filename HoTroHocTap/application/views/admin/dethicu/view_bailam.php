@@ -19,6 +19,7 @@
       </div>
       <div class="col-md-3">
         <select class="form-control" id="sel1" v-model="hocky" v-on:change="ChonLopHoc" >
+          <option value="">--Chọn học kỳ--</option>
           <?php foreach($hocky as $row): ?>
             <option value="<?php echo $row['makyhoc']; ?>"><?php echo $row['tenkyhoc']; ?></option>
           <?php endforeach; ?>

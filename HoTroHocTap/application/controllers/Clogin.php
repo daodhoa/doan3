@@ -69,7 +69,7 @@ class Clogin extends CI_Controller
 				{
 					$name = $_FILES['anhdaidien']['name'];
 					$tmp_name = $_FILES['anhdaidien']['tmp_name'];
-					$dir= './anhdaidien/';
+					$dir= './attachment/avatar/';
 					$destination = $dir.$name;
 					if(move_uploaded_file($tmp_name, $destination))
 					{
@@ -84,6 +84,7 @@ class Clogin extends CI_Controller
 				else
 				{
 					$data['message'] = array('noidung' => 'Đăng ký thất bại, vui lòng thử lại', 'kieu' => 0 );
+					unlink($_FILES['anhdaidien']['tmp_name']);
 				}
 
 			}

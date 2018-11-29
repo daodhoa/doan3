@@ -81,16 +81,29 @@
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 
+<div class="row" id="vue" >
+  <div class="col-md-12">
+    <div class="col-md-2">
+      <h4>Môn học: </h4>
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" id="sel1" v-model="monhoc" v-on:change="ChonMonHoc" >
+        <option value="">--Chọn môn học--</option>
+        <?php foreach($monhoc as $row): ?>
+          <option value="<?php echo $row['mamon']; ?>"><?php echo $row['tenmon']; ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+  </div>
 
-<div class="row" >
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<div class="panel panel-default">
                         <div class="panel-heading">
                              Danh sách câu hỏi
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="tbl-cauhoi">
+                                <table class="table table-striped table-bordered table-responsive table-hover" id="tbl-cauhoi">
                                     <thead>
                                         <tr>
                                             <td>Mã</td> 
@@ -101,16 +114,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($records->result() as $row):?>
+                                        <?php foreach ($records as $row):?>
 											<tr>
-												<td><?php echo($row->macauhoi);?></td>
-												<td><?php echo($row->tenmon); ?></td>
-												<td><?php echo($row->chuthich); ?></td>
-												<td><?php echo($row->noidung); ?></td>
+												<td><?php echo($row['macauhoi']);?></td>
+												<td><?php echo($row['tenmon']); ?></td>
+												<td><?php echo($row['chuthich']); ?></td>
+												<td><?php echo($row['noidung']); ?></td>
 												<td>
-                          <a href="<?php echo base_url('admin/cdanhmuccauhoi/xem?macauhoi='.$row->macauhoi); ?>"><span class="glyphicon glyphicon-th-list"></span></a>
-                          <a href="<?php echo base_url('admin/cdanhmuccauhoi/sua?macauhoi='.$row->macauhoi); ?>"><span class="glyphicon glyphicon-edit"></span></a>
-												  <a onclick="return confirmAction()" href="<?php echo  base_url('admin/cdanhmuccauhoi/xoa?macauhoi='.$row->macauhoi); ?>"><span class="glyphicon glyphicon-remove"></span></a>
+                          <a href="<?php echo base_url('admin/cdanhmuccauhoi/xem?macauhoi='.$row['macauhoi']); ?>"><span class="glyphicon glyphicon-th-list"></span></a>
+                          <a href="<?php echo base_url('admin/cdanhmuccauhoi/sua?macauhoi='.$row['macauhoi']); ?>"><span class="glyphicon glyphicon-edit"></span></a>
+												  <a onclick="return confirmAction()" href="<?php echo  base_url('admin/cdanhmuccauhoi/xoa?macauhoi='.$row['macauhoi']); ?>"><span class="glyphicon glyphicon-remove"></span></a>
 
 												</td>
 											</tr>
@@ -127,7 +140,7 @@
 	</div>
 </div>
 
-
+<script type="text/javascript" src="<?php echo base_url('bootstrap/js/vue.js'); ?>"></script>
 <script type="text/javascript">
 	$(document).ready(function (){
         $('#tbl-cauhoi').DataTable(
@@ -151,6 +164,47 @@
     $("#show-add-btn").click(function(){
         $("#add-form").toggle();
     });
+
+  var vm = new Vue({
+    el: '#vue',
+    data: {
+      monhoc: ""
+    },
+    methods: {
+      ChonMonHoc : function(){
+        var url="";
+        if(this.monhoc != ""){
+          url = "<?php echo base_url('admin/cdanhmuccauhoi/danhsachcauhoi/'); ?>" + this.monhoc;
+
+        }else{
+          url = "<?php echo base_url('admin/cdanhmuccauhoi/danhsachcauhoi'); ?>";
+        }
+
+        console.log(url);
+        $.ajax({
+            url : url,
+            type : "GET",
+            dataType: "JSON",
+            success: function(data){
+              var str ='';
+              
+              $.each(data,function(i,o){
+                  str += '<tr><td>'+o.macauhoi+'</td><td>'+o.tenmon+'</td><td>'+o.chuthich+'</td><td>'+o.noidung+'</td><td><a href="<?php echo base_url('admin/cdanhmuccauhoi/xem?macauhoi=');?>'+o.macauhoi+'"><span class="glyphicon glyphicon-th-list"></span></a> <a href="<?php echo base_url('admin/cdanhmuccauhoi/sua?macauhoi=');?>'+o.macauhoi+'"><span class="glyphicon glyphicon-edit"></span></a> <a onclick="return confirmAction()" href="<?php echo  base_url('admin/cdanhmuccauhoi/xoa?macauhoi=');?>'+o.macauhoi+'"><span class="glyphicon glyphicon-remove"></span></a></td></tr>';
+              });
+
+              $("#tbl-cauhoi tbody").empty().append(str);
+              
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Có lỗi khi load dữ liệu');
+            }
+        });
+
+      }
+    }
+  })
+
 
 </script>
 

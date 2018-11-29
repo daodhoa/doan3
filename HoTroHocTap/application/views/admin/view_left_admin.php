@@ -40,6 +40,9 @@
                     <li>
                         <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý giảng viên</a>
                     </li>
+                    <li>
+                        <a href="<?php echo base_url('admin/chocky') ?>"><i class="fa fa-table fa-fw"></i>Học kỳ</a>
+                    </li>
                     
                 </ul>
                 <!-- end side-menu -->
