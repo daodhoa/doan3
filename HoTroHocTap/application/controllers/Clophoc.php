@@ -9,6 +9,7 @@ class Clophoc extends CI_Controller
 		parent::__construct();
 		$this->load->model('Mlophoc');
 		$this->load->model('Mthicu');
+		$this->load->model('Mthembaigiang');
 		$this->load->model('Mbailam');
 		if($this->session->userdata('masinhvien') == '')
 		{
@@ -30,7 +31,7 @@ class Clophoc extends CI_Controller
 		$data['malop'] = $malop;
 		$data['ds3ThongBaos'] = $this->Mtintuc->getLimitDanhSachThongBao($malop,3);
 		$data['ds3CauHois'] = $this->Mtintuc->getLimitDanhSachCauHoi($malop,3);
-		$data['dsBaigiang'] = $this->Mtintuc->getLimitBaigiang($data['mon'],3);
+		$data['dsBaigiang'] = $this->Mthembaigiang->getLimitBaigiang($data['mon'],3);
 		// pr($data['mon']);
 // 		print("<pre>".print_r($data['ds3CauHois'],true)."</pre>");
 // die();
@@ -40,7 +41,7 @@ class Clophoc extends CI_Controller
 		$mon = $this->uri->segment(3);
 		$limit = '';
 		$data['tenmon'] = $this->Mlophoc->getMon($mon);
-		$data['getBaigiang'] = $this->Mtintuc->getLimitBaigiang($mon,$limit);
+		$data['getBaigiang'] = $this->Mthembaigiang->getLimitBaigiang($mon,$limit);
 		
 		$data['content'] = 'sinhvien/lophoc/Vdsbaigiang';
 		$this->load->view('sinhvien/view_layout_sv', $data);

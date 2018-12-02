@@ -5,6 +5,19 @@ class Mthembaigiang extends CI_Model
 	{
 		parent::__construct();
 	}
+	public function getLimitBaigiang($mamon,$limit){
+		if($mamon != ''){
+			$this->db->where('tbl_baigiang.mamon',$mamon);
+		}
+		if($limit!=''){
+			$this->db->limit($limit);
+		}
+		$this->db->select('*');
+		$this->db->from('tbl_baigiang');
+		$kq = $this->db->get()->result_array();
+		// pr($kq);
+		return $kq;
+	}
 	public function insert($arr){
 		$this->db->insert('tbl_baigiang', $arr);
         $insert_id = $this->db->insert_id();
