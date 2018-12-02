@@ -4,7 +4,12 @@
  */
 class Mlophoc extends CI_Model
 {
-
+	public function getMon($mamon){
+		$this->db->where('mamon',$mamon);
+		$this->db->select('*');
+		$kq=$this->db->get('dm_mon')->row_array();
+		return $kq;
+	}
 	public function getLimitDethi($malop, $tongso)
 	{
 		$this->db->select('madethi, thoigianlambai, tbl_dethi.trangthai, thoigiantao');

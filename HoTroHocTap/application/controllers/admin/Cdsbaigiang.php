@@ -8,7 +8,7 @@ class Cdsbaigiang extends My_Controller{
 
 	public function index()
 	{
-
+		$manguoitao = $this->session->userdata('maquantri');
 		if($this->input->post('xoa'))
         {
             if($this->IUD('delete','tbl_baigiang','mabg',$this->input->post('xoa'),'',''))
@@ -25,7 +25,7 @@ class Cdsbaigiang extends My_Controller{
 			$mamon = $this->input->get('monhoc');
 		}
 
-		$data['dsbaigiang'] = $this->Mthembaigiang->getBaigiang($mamon);
+		$data['dsbaigiang'] = $this->Mthembaigiang->getBaigiang($mamon,$manguoitao);
 
 		$data['content'] = 'admin/baigiang/view_dsbaigiang';
 		$this->load->view('admin/view_layout_admin', $data);

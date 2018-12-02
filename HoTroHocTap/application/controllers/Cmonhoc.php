@@ -86,7 +86,6 @@ class Cmonhoc extends CI_Controller
                     $dslop[$key]['masinhvien'] = [];
                 }
             }
-            
         }
         $data['thongbao'] = $thongbao;
         $data['monhoc'] = $this->Mmonhoc->getThongTinMonHoc($mamon);

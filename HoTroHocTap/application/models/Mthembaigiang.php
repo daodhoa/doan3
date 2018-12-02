@@ -18,10 +18,13 @@ class Mthembaigiang extends CI_Model
 		$query = $this->db->get();
 		return $query->row_array();
 	}
-	public function getBaigiang($mamon)
+	public function getBaigiang($mamon,$manguoitao)
 	{
 		if($mamon!=''){
 			$this->db->where('tbl_baigiang.mamon',$mamon);
+		}
+		if($manguoitao!=''){
+			$this->db->where('dm_mon.manguoitao',$manguoitao);
 		}
 		$this->db->select('tieude,tenmon,tbl_baigiang.mamon,mabg,file');
 		$this->db->from('tbl_baigiang');

@@ -61,24 +61,16 @@
 						<div class="col-md-4">
 							<h2 class="section-title"><i class="icon-newspaper"></i> Bài Giảng</h2>
 							<ul class="posts">
+								<?php foreach ($dsBaigiang as $row): ?>
 								<li class="post">
-									<h3 class="entry-title"><a href="#">Biểu diễn dữ liệu đa phương tiện</a></h3>
-									<span class="date"><i class="icon-calendar"></i> 6 APR 2014</span>
-									<span class="location"><i class="icon-map-marker"></i>Yankee Stadium</span>
+									<h3 class="entry-title"><a href="<?php echo base_url('chitietbg/'.$row['mabg']); ?>"><?php echo $row['tieude']; ?></a></h3>
+									<span class="date"><i class="icon-calendar"></i> <?php echo $row['ngaydang'];?></span>
+									
 								</li>
-								<li class="post">
-									<h3 class="entry-title"><a href="#">Nostrud exercitation ullamco</a></h3>
-									<span class="date"><i class="icon-calendar"></i> 6 APR 2014</span>
-									<span class="location"><i class="icon-map-marker"></i>Yankee Stadium</span>
-								</li>
-								<li class="post">
-									<h3 class="entry-title"><a href="#">Nostrud exercitation ullamco</a></h3>
-									<span class="date"><i class="icon-calendar"></i> 6 APR 2014</span>
-									<span class="location"><i class="icon-map-marker"></i>Yankee Stadium</span>
-								</li>
+								<?php endforeach ?>
 							</ul>
 							<p class="text-center">
-								<a href="#" class="more button secondary">Xem nhiều hơn</a>
+								<a href="<?php echo base_url('clophoc/dsbaigiang/').$mon ?>" class="more button secondary">Xem nhiều hơn</a>
 							</p>
 						</div>
 						<div class="col-md-4">

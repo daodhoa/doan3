@@ -21,7 +21,7 @@ class Clophoc extends CI_Controller
 	public function index($malop='')
 	{
 		$ds3dethi = $this->Mlophoc->getLimitDethi($malop,3);
-		
+		$data['mon'] = $this->uri->segment(2);
 		$data['ds3dethi']= $ds3dethi;
 		$data['malop'] = $malop;
 		$data['content'] = 'sinhvien/lophoc/vlophoc';
@@ -30,12 +30,21 @@ class Clophoc extends CI_Controller
 		$data['malop'] = $malop;
 		$data['ds3ThongBaos'] = $this->Mtintuc->getLimitDanhSachThongBao($malop,3);
 		$data['ds3CauHois'] = $this->Mtintuc->getLimitDanhSachCauHoi($malop,3);
-
+		$data['dsBaigiang'] = $this->Mtintuc->getLimitBaigiang($data['mon'],3);
+		// pr($data['mon']);
 // 		print("<pre>".print_r($data['ds3CauHois'],true)."</pre>");
 // die();
 		$this->load->view('sinhvien/view_layout_sv', $data);
 	}
-
+	public function dsbaigiang(){
+		$mon = $this->uri->segment(3);
+		$limit = '';
+		$data['tenmon'] = $this->Mlophoc->getMon($mon);
+		$data['getBaigiang'] = $this->Mtintuc->getLimitBaigiang($mon,$limit);
+		
+		$data['content'] = 'sinhvien/lophoc/Vdsbaigiang';
+		$this->load->view('sinhvien/view_layout_sv', $data);
+	}
 
 	public function dethi($madethi='')
 	{

@@ -9,20 +9,22 @@ class Cthembaigiang extends MY_Controller{
 		$mes=array('sobanghi'=>0);
 	    
         $data['khoiphuc']=array('mamon'=>'','tieude'=>'','noidung'=>'');
-
+        
         if($this->input->post('luu'))
         {
             $dem2 = 0;
+            $tg=date("d/m/Y", time());
             // pr($_FILES);
             if(!empty($_FILES['bg']['name'])){
-                $target_dir = "file/".$_FILES['bg']['name'];
+                $target_dir = "chitietbg/file/".$_FILES['bg']['name'];
                 if(move_uploaded_file($_FILES["bg"]["tmp_name"], $target_dir)){
                  $dem2++;
                 }
             }
+            
             // pr($dem2);
             if($dem2 != 0){
-                if($this->IUD('insert','tbl_baigiang','','',array('mamon'=>$this->input->post('monhoc'),'tieude'=>$this->input->post('tieude'),'noidung'=>$this->input->post('noidung'),'file'=>$_FILES['bg']['name']),'')){
+                if($this->IUD('insert','tbl_baigiang','','',array('mamon'=>$this->input->post('monhoc'),'tieude'=>$this->input->post('tieude'),'noidung'=>$this->input->post('noidung'),'file'=>$_FILES['bg']['name'],'ngaydang'=>$tg),'')){
                     $mes=array(
                         'sobanghi'=>1,
                         'thongbao'=>'Thêm bài giảng thành công!',
@@ -39,7 +41,7 @@ class Cthembaigiang extends MY_Controller{
                 $dem2 = 0;
                 // pr($_FILES);
                 if(!empty($_FILES['bg']['name'])){
-                    $target_dir = "file/".$_FILES['bg']['name'];
+                    $target_dir = "chitietbg/file/".$_FILES['bg']['name'];
                     if(move_uploaded_file($_FILES["bg"]["tmp_name"], $target_dir)){
                      $dem2++;
                     }

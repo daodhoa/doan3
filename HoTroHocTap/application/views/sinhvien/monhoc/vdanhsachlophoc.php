@@ -48,7 +48,7 @@
 								
 								<?php if(!empty($row['masinhvien'][0])): ?>
 									<?php if($row['masinhvien'][0] == "t"): ?>
-										<a href="" class="button">Đã tham gia</a>
+										<a href="<?php echo base_url('ctlop/').$row['mamon'] ?>" class="button">Đã tham gia</a>
 									<?php else: ?>
 										<input type="submit" value="Chưa tham gia" name="dangky" class="button"/>
 										<input  class="hidden" value="<?php echo $row['id_lophoc']; ?>" name="malop"/>

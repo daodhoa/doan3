@@ -61,6 +61,8 @@ $route['trangchu'] = "admin/Chome_admin";
 
 
 // bài giảng
- $route['thembg'] 			= "admin/Cthembaigiang";
- $route['dsbg']			= "admin/Cdsbaigiang";
+ $route['thembg'] 					= "admin/Cthembaigiang";
+ $route['dsbg']						= "admin/Cdsbaigiang";
+ $route['ctlop/(:any)']				= "Clophoc";
+ $route['chitietbg/(:any)']			= "Cchitietbg";
 
