@@ -47,7 +47,7 @@ class Mkyhoc extends CI_Model
 		);
 		$this->db->insert('tbl_comments', $data);
 		return true;
-
+	}
 	public function getAll()
 	{
 		$this->db->order_by('makyhoc', 'desc');

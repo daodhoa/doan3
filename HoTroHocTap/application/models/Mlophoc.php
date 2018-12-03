@@ -10,6 +10,13 @@ class Mlophoc extends CI_Model
 		$kq=$this->db->get('dm_mon')->row_array();
 		return $kq;
 	}
+
+	public function chitietlop($malophoc)
+	{
+		$this->db->where('malophoc', $malophoc);
+		return $this->db->get('tbl_lophoc')->row_array();
+	}
+
 	public function getLimitDethi($malop, $tongso)
 	{
 		$this->db->select('madethi, thoigianlambai, tbl_dethi.trangthai, thoigiantao');

@@ -41,14 +41,14 @@
 					<ul class="posts">
 					<?php foreach($dslop as $row): ?>
 						<li class="post">
-							<h3 class="entry-title"><a href="#" >Mã lớp: <?php echo $row['id_lophoc']; ?></a></h3>
+							<h3 class="entry-title"><a href="#" >Mã lớp: <?php echo $row['malophoc']; ?></a></h3>
 							<span class="time" style="color: black"><i class="icon-clock"></i>Trạng thái: 
 							<?php if($row['trangthai']== 1 ): ?>	
 								<span style="color:#33CC33;">Đang mở</span>
 								
 								<?php if(!empty($row['masinhvien'][0])): ?>
 									<?php if($row['masinhvien'][0] == "t"): ?>
-										<a href="<?php echo base_url('ctlop/').$row['mamon'] ?>" class="button">Đã tham gia</a>
+										<a href="<?php echo base_url('clophoc/index/').$row['malophoc']; ?>" class="button">Đã tham gia</a>
 									<?php else: ?>
 										<input type="submit" value="Chưa tham gia" name="dangky" class="button"/>
 										<input  class="hidden" value="<?php echo $row['id_lophoc']; ?>" name="malop"/>

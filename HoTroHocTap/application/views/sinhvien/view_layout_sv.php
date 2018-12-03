@@ -45,8 +45,7 @@
 							<ul class="menu">
 								<li class="menu-item "><a href="<?php echo base_url('chome'); ?>">Home</a></li>
 								<li class="menu-item"><a href="<?php echo base_url('cmonhoc'); ?>">Môn học</a></li>
-								<li class="menu-item"><a href="event.html">Sự kiện</a></li>
-								<li class="menu-item"><a href="contact.html">Liên hệ</a></li>
+								
 								
 								<?php if($this->session->userdata('hoten')!= '' ): ?>
 								<li class="menu-item dropdown">
