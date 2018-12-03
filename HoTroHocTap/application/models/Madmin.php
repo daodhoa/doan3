@@ -25,6 +25,27 @@
  		}
  	}
 
+ 	public function signup($where=array())
+ 	{
+ 		$this->db->insert("tbl_quantri", $where);
+		return $this->db->insert_id();
+ 	}
+
+	public function kiemtra($where = array())
+	{
+		$this->db->where($where);
+        $query = $this->db->get('tbl_quantri');
+        if($query->num_rows() > 0)
+        {
+        	return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+	}
+
+
  	function capma($truongmuonlay,$bangmuonlay)
 		{
 			$sql = "select $truongmuonlay from $bangmuonlay where SUBSTR($truongmuonlay,3)=(select MAX(SUBSTR($truongmuonlay,3)*1.0) from $bangmuonlay)";
