@@ -35,13 +35,13 @@
                     </li>
                     
                     <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý sinh viên</a>
+                        <a href="<?php echo base_url('admin/csinhvien'); ?>"><i class="fa fa-table fa-fw"></i>Quản lý sinh viên</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i>Quản lý giảng viên</a>
+                        <a href="<?php echo base_url('admin/cgiangvien'); ?>"><i class="fa fa-table fa-fw"></i>Quản lý giảng viên</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('admin/chocky') ?>"><i class="fa fa-table fa-fw"></i>Học kỳ</a>
+                        <a href="<?php echo base_url('admin/chocky'); ?>"><i class="fa fa-table fa-fw"></i>Học kỳ</a>
                     </li>
                     
                 </ul>
