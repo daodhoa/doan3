@@ -4,18 +4,23 @@
  */
 class Mcauhoi extends CI_Model
 {
-	public function getDanhSachCauHoi()
+	public function getDanhSachCauHoi($maquantri, $mamon="")
 	{
 		$this->db->select('*');
 		$this->db->from('tbl_cauhoi a');
 		$this->db->join('dm_mon b', 'a.mamon = b.mamon', 'left');
 		$this->db->join('dm_nhomcauhoi c', 'a.manhom = c.manhom', 'left');
+        $this->db->where('manguoitao', $maquantri);
+        if($mamon != "")
+        {
+            $this->db->where('b.mamon', $mamon);
+        }
 		$query = $this->db->get();
 		if(empty($query))
 		{
 			return FALSE;
 		}
-		return $query;
+		return $query->result_array();
 	}
 
 	public function insertCauhoi($data)
@@ -81,7 +86,7 @@ class Mcauhoi extends CI_Model
 
     public function xoaCauHoi($macauhoi)
     {
-        $table = array('tbl_dapandung', 'tbl_cautraloi', 'tbl_cauhoi');
+        $table = array('tbl_dapandung', 'tbl_cautraloi', 'tbl_dethi_cauhoi' ,'tbl_cauhoi');
         $this->db->where('macauhoi', $macauhoi);
         return $this->db->delete($table);
     }
@@ -114,5 +119,18 @@ class Mcauhoi extends CI_Model
         $this->db->update('tbl_cauhoi', $data);
     }
 
+    public function check_exist($where = array())
+    {
+        $this->db->where($where);
+        $query = $this->db->get('tbl_cauhoi');
+        if($query->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
 }
 ?>

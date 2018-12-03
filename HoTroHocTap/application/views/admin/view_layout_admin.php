@@ -120,7 +120,7 @@
                     <!-- dropdown user-->
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i>
-                            <?php echo $this->session->userdata('hoten'); ?></a>
+                            <?php echo $this->session->userdata('Ahoten'); ?></a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
                         </li>
@@ -172,8 +172,7 @@
         }
     </script>
 
-<<<<<<< HEAD
-=======
+
     <?php 
     if($this->session->flashdata('message')!=''):
         $message = $this->session->flashdata('message');
@@ -182,7 +181,7 @@
         alert('<?php echo $message; ?>');
     </script>
     <?php endif; ?>
->>>>>>> duyhoa
+
 </body>
 
 </html>

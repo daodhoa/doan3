@@ -129,5 +129,49 @@ class Cdanhmucmathi extends MY_Controller
 		$this->load->view('admin/dethicu/view_dethi_chitiet', $data);
 
 	}
+
+	public function xembailam($madethi)
+	{
+		$this->load->model('Mkyhoc');
+
+		$data['madethi'] = $madethi;
+		$data['hocky'] = $this->Mkyhoc->getAll();
+		$data['content'] = 'admin/dethicu/view_bailam';
+		$this->load->view('admin/view_layout_admin', $data);
+	}
+	public function danhsachlop($mahocky, $madethi)
+	{
+		$danhsachlop = $this->Mthicu->danhsachlop($mahocky, $madethi);
+		echo json_encode($danhsachlop);
+		//print_r($danhsachlop);
+	}
+
+	public function danhsachbailam($madethi, $malophoc)
+	{
+		$danhsachbailam = $this->Mthicu->danhsachbailam($madethi, $malophoc);
+		echo json_encode($danhsachbailam);
+	}
+
+	public function xemchitietbailam($madethi,$masinhvien)
+	{
+		$this->load->model('Mbailam');
+		$mang = array(
+			'madethi' => $madethi,
+			'masinhvien' => $masinhvien
+		);
+		$bailam = $this->Mbailam->xembailam($mang);
+
+		$filename = $bailam['file'];
+
+        $html = ""; 
+        $file = fopen(rootlogbailam().$filename,"r");
+        $html = fread($file,filesize(rootlogbailam().$filename));
+        fclose($file);
+
+        $data['html'] = $html;
+		$data['content'] = 'admin/bailam/vbailam';
+		$this->load->view('admin/view_layout_admin', $data);
+	}
+
 }
 ?>

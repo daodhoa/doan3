@@ -50,7 +50,7 @@
 								
 								<?php if($this->session->userdata('hoten')!= '' ): ?>
 								<li class="menu-item dropdown">
-  									<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Đào Duy Hòa<span class="caret"></span> </a>
+  									<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"> </span><?php echo $this->session->userdata('hoten'); ?><span class="caret"></span> </a>
   										<ul class="dropdown-menu duyhoa-ulli">
     									<li><a href="<?php echo base_url('csinhvien') ?>">Xem thông tin</a></li>
     									<li><a href="<?php echo base_url('clogout'); ?>">Đăng xuất</a></li>

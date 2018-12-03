@@ -37,5 +37,19 @@ class Msinhvien extends CI_Model
             return FALSE;
         }
 	}
+
+	public function thongtin($masinhvien)
+	{
+		$this->db->where('masinhvien', $masinhvien);
+		$record = $this->db->get('tbl_sinhvien');
+		return $record->row_array();
+	}
+
+	public function capnhatthongtin($masinhvien,$data = array())
+	{
+		$this->db->where('masinhvien', $masinhvien);
+		return $this->db->update('tbl_sinhvien', $data);
+	}
+
 }
 ?>

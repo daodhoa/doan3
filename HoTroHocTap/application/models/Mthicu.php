@@ -107,5 +107,23 @@ class Mthicu extends CI_Model
     	return $this->db->get('tbl_dapandung')->row_array();
     }
 
+    public function danhsachlop($mahocky, $madethi)
+    {
+        $this->db->select('id_lophoc, malophoc');
+        $this->db->from('tbl_dethi a');
+        $this->db->join('tbl_lophoc b', 'a.mamon = b.mamon', 'left');
+        $this->db->where('b.kyhoc', $mahocky);
+        $this->db->where('a.madethi', $madethi);
+        $records = $this->db->get();
+        return $records->result_array();
+    }
+    public function danhsachbailam($madethi, $malophoc)
+    {
+        $this->db->from('tbl_bailam a');
+        $this->db->join('tbl_sinhvien_lophoc b', 'a.masinhvien = b.masinhvien', 'left');
+        $this->db->where('b.id_lophoc', $malophoc);
+        $this->db->where('a.madethi', $madethi);
+        return $this->db->get()->result_array();
+    }
 }
 ?>
