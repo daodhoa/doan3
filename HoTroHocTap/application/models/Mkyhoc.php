@@ -54,9 +54,17 @@ class Mkyhoc extends CI_Model
 		return $this->db->get('tbl_kyhoc')->result_array();
 	}
 
+	public function getLast()
+	{
+		$this->db->order_by('makyhoc','desc');
+		$this->db->limit(1);
+       	$query=$this->db->get('tbl_kyhoc');
+       	return $query->row_array();
+	}
+
 	public function add($tenkyhoc)
 	{
-		$this->db->insert("tbl_kyhoc", array('tenkyhoc'=>$tenkyhoc));
+		$this->db->insert("tbl_kyhoc", array('tenkyhoc'=>$tenkyhoc, 'trangthai' => 1));
 		return $this->db->insert_id();
 	}
 

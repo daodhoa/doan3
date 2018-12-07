@@ -12,12 +12,12 @@
 </head>
 <body style="background-color: #33CC66	">
 <div class="container-fluid">
-	<h1 class="form-heading">Đăng nhập Hệ thống</h1>
-<div class="login-form">
+	
+<div class="login-form" style="margin-top: 5%">
 <div class="main-div">
     <div class="panel">
-   <h2>Admin Login</h2>
-   <p>Please enter your username and password</p>
+   <h2>Đăng nhập</h2>
+   <p>Vui lòng nhập tên đăng nhập và mật khẩu</p>
    </div>
     <form id="Login" action="<?php echo base_url().'admin/clogin_admin/login' ?>" method="POST">
         <div class="form-group">
@@ -27,7 +27,7 @@
             <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="matkhau" required>
         </div>
         <div class="forgot">
-        <a href="reset.html">Forgot password?</a>
+        <a href="<?php echo base_url('admin/csignup_admin'); ?>">Đăng ký tài khoản</a>
 		    </div>
         <?php 
         $error_login= $this->session->userdata('error_login');

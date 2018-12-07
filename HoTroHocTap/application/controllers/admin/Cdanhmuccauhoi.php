@@ -102,6 +102,7 @@ class Cdanhmuccauhoi extends MY_Controller
 
                     $macauhoi =  $this->Mcauhoi->insertCauhoi($insertCauhoi);
 
+                    /////////////////
                     $socotcautraloi = 'D';
                     $mangmacautraloi = array();
                     for($i=0;$i<6;$i++)//insert câu trả lời
@@ -135,7 +136,7 @@ class Cdanhmuccauhoi extends MY_Controller
                             $socotdapandung++;
                         }
                     }
-
+                    //////////////////////
                     $count++;
                 }
                 $sohang++;
