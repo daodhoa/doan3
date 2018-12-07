@@ -68,7 +68,7 @@
                   Chú ý: File Excel phải có định dạng .xls và theo một định dạng sau.<br>
                   - Dữ liệu sẽ được đọc từ dòng số 2 trong file excel, vì vậy cần loại bỏ những trường không cần thiết trước khi import.<br>
                   - Thứ tự các cột: [A]-Mã môn( xem ở danh mục môn), [B]-Mã loại câu hỏi(de,tbinh,kho), [C]-Nội dung câu hoi, [D]->[I]-Nội dung câu trả lời, [J]->[O]-Ô đáp án đúng(từ D->I).
-                  <br><a style="color: #3366CC" target="_blank" href="../attachment/files/ImportCauHoiFitHouQuiz.xls">Download file excel mẫu</a>
+                  <br><a style="color: #3366CC" target="_blank" href="<?php echo base_url(); ?>attachment/files/ImportCauHoiFitHouQuiz.xls">Download file excel mẫu</a>
                 </div>
               </div>
             </div>

@@ -33,32 +33,6 @@ class Mmonhoc extends CI_Model
 		$records = $this->db->get('dm_mon');
 		return $records->row_array();
 	}
-	public function suaMonHoc($mamon, $tenmon, $mahocphan, $manguoitao)
-    {
-        $data = array(
-            'tenmon' => $tenmon,
-            'mahocphan' => $mahocphan,
-            'manguoitao' => $manguoitao
-        );
-        $this->db->where('mamon', $mamon);
-        $this->db->update('dm_mon', $data);
-    }
-    public function them($mamon, $tenmon, $mahocphan, $manguoitao)
- 	{
-		$data = array(
-			'mamon' => $mamon,
-			'tenmon' => $tenmon,
-			'mahocphan' => $mahocphan,
-			'manguoitao' => $manguoitao
-		);
-		$this->db->insert('dm_mon', $data);
- 	}
- 	public function xoaMonHoc($mamon)
-    {
-        $table = array('dm_mon');
-        $this->db->where('mamon', $mamon);
-        return $this->db->delete($table);
-    }
 
 	//hòa làm đoạn này đừng có sửa
 	public function getListMonHoc($maquantri)
@@ -66,6 +40,41 @@ class Mmonhoc extends CI_Model
 		$this->db->where('manguoitao', $maquantri);
 		$records = $this->db->get('dm_mon');
 		return $records->result_array();
+	}
+
+	public function them($data = array())
+ 	{
+		return $this->db->insert('dm_mon', $data);
+ 	}
+
+ 	public function xoa($mamon)
+ 	{
+ 		$this->db->where('mamon', $mamon);
+        return $this->db->delete('dm_mon');
+ 	}
+ 	public function kiemtra($where = array())
+	{
+		$this->db->where($where);
+        $query = $this->db->get('dm_mon');
+        if($query->num_rows() > 0)
+        {
+        	return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+	}
+	public function chitiet($mamon)
+	{
+		$this->db->where('mamon', $mamon);
+		return $this->db->get('dm_mon')->row_array();
+	}
+
+	public function capnhat($mamon, $data= array())
+	{
+		$this->db->where('mamon',$mamon);
+		return $this->db->update('dm_mon', $data);	
 	}
 
 	public function getListLopHoc($mamon, $makyhoc)
