@@ -53,7 +53,7 @@
 										<input type="submit" value="Chưa tham gia" name="dangky" class="button"/>
 										<input  class="hidden" value="<?php echo $row['id_lophoc']; ?>" name="malop"/>
 									<?php endif; ?>	
-								<?php else: ?><input type="submit" value="Chưa tham gia" class="button" onclick="return confirm('Bạn không thể tham gia lớp <?php echo $row['id_lophoc']; ?>');"/>
+								<?php else: ?><input type="submit" value="Chưa tham gia" class="button" onclick="return confirm('Bạn không thể tham gia lớp <?php echo $row['malophoc']; ?>');"/>
 								<?php endif; ?>
 								
 							<?php else: ?>

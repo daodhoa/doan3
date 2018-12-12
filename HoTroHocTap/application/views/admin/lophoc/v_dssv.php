@@ -48,10 +48,10 @@
                       <form action="" method="POST"  enctype="multipart/form-data" class="form-inline">
                         <div class="col-md-12">
                           <div class="col-md-4">
-                            <span><b>Chọn file excel *.xls</b></span>
+                            <span><b>Chọn file excel *.xls/.xlsx</b></span>
                           </div>
                           <div class="col-md-4">
-                            <input type="file" name="file_import">
+                            <input type="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file_import">
                           </div>
                           <div class="col-md-4">
                             <button type="submit" name="import" value="import" class="btn btn-success btn-flat btn-sm">import<i class="fa fa-file-excel-o" aria-hidden="true"></i></button>

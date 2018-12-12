@@ -24,10 +24,7 @@ class Clophoc extends CI_Controller
 		$check = array('malophoc' => $malop, 'masinhvien' => $this->session->userdata('masinhvien'));
 		if(!$this->Mlophoc->check_exist_malophoc($check))
 		{
-			echo '<script language="javascript">';
-			echo 'alert("message successfully sent")';
-			echo '</script>';
-			redirect(base_url('cmonhoc'));
+			show_404();
 		}
 
 		$ds3dethi = $this->Mlophoc->getLimitDethi($malop,3);

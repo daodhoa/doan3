@@ -54,6 +54,10 @@ class Cmonhoc extends CI_Controller
 
     public function dslop($mamon)
     {
+        if($this->Mmonhoc->kiemtra(array('mamon' => $mamon)) == FALSE )
+        {
+            show_404();
+        }
         //$dslop = $this->Mmonhoc->getListLopHoc($mamon);
         $dskyhoc = $this->Mmonhoc->getdskyhoc();
         $thongbao="";

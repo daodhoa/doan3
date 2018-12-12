@@ -7,7 +7,11 @@
 			<ul class="posts">
 				<?php foreach ($dsdethi as $row): ?>
 				<li class="post">
-					<h3 class="entry-title"><a href="<?php echo base_url('clophoc/dethi/'.$row['madethi'] ); ?>">Mã đề: <?php echo $row['madethi']; ?></a></h3>
+					<h3 class="entry-title"><a <?php if($row['trangthai'] ==1): ?>
+										href="<?php echo base_url('clophoc/dethi/'.$row['madethi'] ); ?>"
+										<?php else: ?>
+											 onclick="return alert('Đề thi đã bị khóa');"
+										<?php endif; ?> >Mã đề: <?php echo $row['madethi']; ?></a></h3>
 					<span class="time"><i class="icon-clock"></i>Thời gian làm bài:
 						<?php echo $row['thoigianlambai']; ?> phút
 					</span>

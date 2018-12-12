@@ -14,7 +14,7 @@
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-md-3">
       <div class="col-md-12">
-        <div class="panel panel-default" style="position: fixed; width: 20%" >
+        <div class="panel panel-default">
         <div class="panel-heading">
           <h4>ĐỀ THI MÔN: </h4>
           <h5><?php echo $dethi['tenmon']; ?></h5>
@@ -77,7 +77,7 @@
 		<div class="col-md-3" style="background-color: #EEEFFF">
 		</div>
     <div class="col-md-12">
-      <h4  style="color: #33CC33; margin-left: 10px;">Được tạo bởi Đào Duy Hòa</h4>
+      <h4  style="color: #33CC33; margin-left: 10px;">&nbsp;</h4>
     </div>
 	</div>  
 </div>
