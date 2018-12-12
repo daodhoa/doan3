@@ -37,7 +37,12 @@ class Clogin_admin extends MY_Controller
 			}
 			else
 			{
-				// var_dump($record["maquyen"]);
+				if($record['trangthai'] == 0)
+				{
+					$this->session->set_userdata('error_login', 'Tài khoản đã bị khóa.');
+					redirect(base_url().'admin/Clogin_admin');
+				}
+				
 				$this->session->set_userdata('maquantri', $record['maquantri']);
 				$this->session->set_userdata('tentaikhoan', $record['tentaikhoan']);
 				$this->session->set_userdata('maquyen', $record['maquyen']);

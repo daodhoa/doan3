@@ -11,10 +11,30 @@ class MY_Controller extends CI_Controller
 		parent::__construct();
 		$this->load->model('madmin');
 		$folder= $this->uri->segment(1);
+		$maquyen = $this->session->userdata('maquyen');
+		$c_admin = array(1, 'csinhvien', 'cgiangvien','chocky');
+		$c_giangvien = array(1, 'cdanhmuccauhoi', 'cdanhmuclophoc', 'cdanhmucmathi', 'cdanhmucmonhoc', 'cdanhmuctintuc', 'cdsbaigiang', 'cdssinhvien', 'cthembaigiang');
+		$class = strtolower($this->uri->segment(2));
 
 		switch ($folder) {
 			case 'admin':
 				$this->check_login();
+				if($maquyen == 'admin')
+				{
+					if(array_search($class, $c_giangvien) != FALSE)
+					{
+
+						redirect(base_url().'admin/chome_admin');
+					}
+				}
+				else
+				{
+					if(array_search($class, $c_admin) != FALSE)
+					{
+						redirect(base_url().'admin/chome_admin');
+					}
+				}
+
 				break;
 			
 			default:
@@ -27,7 +47,6 @@ class MY_Controller extends CI_Controller
 	{
 		$crl = $this->uri->segment(2);
 		$taikhoan = $this->session->userdata('tentaikhoan');
-		$maquyen = $this->session->userdata('maquyen');
 		
 		if($taikhoan == '' && $crl != 'clogin_admin')
 		{

@@ -10,7 +10,7 @@
                                 <img src="<?php echo base_url(); ?>/bootstrap/assets/img/user.jpg" alt="">
                             </div>
                             <div class="user-info">
-                                <div><?php echo $this->session->userdata('hoten'); ?></div>
+                                <div><?php echo $this->session->userdata('Ahoten'); ?></div>
                                 <div class="user-text-online">
                                     <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
                                 </div>
