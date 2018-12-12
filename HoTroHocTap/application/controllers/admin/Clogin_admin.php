@@ -43,10 +43,7 @@ class Clogin_admin extends MY_Controller
 				$this->session->set_userdata('maquyen', $record['maquyen']);
 				$this->session->set_userdata('Ahoten', $record['hoten']);
 				redirect(base_url().'admin/Chome_admin');
-				var_dump($record["maquyen"]);
-				if($record["maquyen"] == "giaovien"){
-					redirect(base_url().'admin/Chome_admin');
-				}
+				
 				// redirect(base_url().'admin/Chome_admin');
 			}
 		}

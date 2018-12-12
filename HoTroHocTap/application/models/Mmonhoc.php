@@ -90,7 +90,7 @@ class Mmonhoc extends CI_Model
 		return $this->db->update('dm_mon', $data);	
 	}
 
-	public function getListLopHoc($mamon, $makyhoc)
+	public function getListLopHoc($mamon, $makyhoc, $masv)
 	{
 		$this->db->select('tbl_lophoc.*, tenmon, mahocphan');
 		$this->db->from('tbl_lophoc');

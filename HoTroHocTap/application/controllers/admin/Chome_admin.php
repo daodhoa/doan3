@@ -11,8 +11,9 @@ class Chome_admin extends MY_Controller
 	}
 
 	public function index()
-	{
-		$this->load->view('admin/view_layout_admin');
+	{	
+		$data['content'] = 'admin/home/v_home';
+		$this->load->view('admin/view_layout_admin', $data);
 	}
 }
 ?>
