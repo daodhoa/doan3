@@ -71,15 +71,9 @@
                 <div class="panel-heading" style="color: green">Các lớp đã tham gia</div>
                 <div class="panel-body">
                     <ul class="list-group">
-                      <li class="list-group-item"><a href="">Quản trị mạng - 126463 </a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">Các lớp chưa tham gia</div>
-                <div class="panel-body">
-                    <ul class="list-group">
-                      <li class="list-group-item"><a href="">Quản trị mạng - 126463 </a></li>
+                      <?php foreach($thamgia as $row): ?>
+                      <li class="list-group-item"><a href="<?php echo base_url('clophoc/index/'.$row['malophoc']) ?>"><?php echo $row['tenmon']; ?> - <?php echo $row['malophoc']; ?> </a></li>
+                    <?php endforeach; ?>
                     </ul>
                 </div>
             </div>

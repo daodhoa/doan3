@@ -41,7 +41,7 @@
 					<ul class="posts">
 					<?php foreach($dslop as $row): ?>
 						<li class="post">
-							<h3 class="entry-title"><a href="#" >Mã lớp: <?php echo $row['malophoc']; ?></a></h3>
+							<h3 class="entry-title"><a href="" >Mã lớp: <?php echo $row['malophoc']; ?></a></h3>
 							<span class="time" style="color: black"><i class="icon-clock"></i>Trạng thái: 
 							<?php if($row['trangthai']== 1 ): ?>	
 								<span style="color:#33CC33;">Đang mở</span>

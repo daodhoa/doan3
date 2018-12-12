@@ -140,6 +140,22 @@ class Mlophoc extends CI_Model
         }
     }
 
+    public function check_exist_malophoc($where = array())
+    {
+        $this->db->where($where);
+        $this->db->from('tbl_sinhvien_lophoc');
+        $this->db->join('tbl_lophoc', 'tbl_lophoc.id_lophoc = tbl_sinhvien_lophoc.id_lophoc', 'left');
+        $query = $this->db->get();
+        if($query->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
     public function xoaSVLH($data= array())
     {
     	$this->db->where($data);

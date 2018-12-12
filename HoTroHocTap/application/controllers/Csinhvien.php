@@ -16,6 +16,9 @@ class Csinhvien extends CI_Controller
 		$masinhvien = $this->session->userdata('masinhvien');
 		$profile = $this->Msinhvien->thongtin($masinhvien);
 
+		$thamgia = $this->Msinhvien->dslopthamgia($masinhvien, "t");
+
+		$data['thamgia'] = $thamgia;
 		$data['profile'] = $profile;
 		$data['content'] = 'sinhvien/student/profile';
 		$this->load->view('sinhvien/view_layout_sv', $data);

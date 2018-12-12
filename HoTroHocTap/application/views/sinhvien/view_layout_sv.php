@@ -88,17 +88,17 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="widget">
-							<h3 class="widget-title">Contact us</h3>
-							<address>Lincoln High School <br>745 Jewel Ave Street <br>Fress Meadows, NY 1136</address>
+							<h3 class="widget-title">Liên hệ</h3>
+							<address>Đại học Bách Khoa Hà Nội <br>Số 17 Giải Phóng <br></address>
 
-							<a href="mailto:info@lincolnhighschool.com">info@lincolnhighschool.com</a> <br>
-							<a href="tel:48942652394324">(489) 42652394324</a>
+							<a href="">duyhoa.dao@gmail.com</a> <br>
+							<a href="">(489) 42652394324</a>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="widget">
-							<h3 class="widget-title">Social media</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+							<h3 class="widget-title">Mạng xã hội</h3>
+							<p>Tham gia cùng chúng tôi</p>
 							<div class="social-links circle">
 								<a href="#"><i class="fa fa-facebook"></i></a>
 								<a href="#"><i class="fa fa-google-plus"></i></a>
@@ -110,33 +110,17 @@
 					<div class="col-md-3">
 						<div class="widget">
 							<h3 class="widget-title">Featured students</h3>
-							<ul class="student-list">
-								<li><a href="#">
-										<img src="<?php echo base_url('bootstrap/sinhvien/'); ?>dummy/student-sm-1.jpg" alt="" class="avatar">
-										<span class="fn">Sarah Branson</span>
-										<span class="average">Average: 4,9</span>
-									</a></li>
-								<li><a href="#">
-										<img src="<?php echo base_url('bootstrap/sinhvien/'); ?>dummy/student-sm-2.jpg" alt="" class="avatar">
-										<span class="fn">Dorothy Smith</span>
-										<span class="average">Average: 4,9</span>
-									</a></li>
-							</ul>
+							
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="widget">
 							<h3 class="widget-title">Newsletter</h3>
-							<p>Aspernatur, rerum. Impedit, deleniti suscipit</p>
-							<form action="#" class="subscribe">
-								<input type="email" placeholder="Email Address...">
-								<input type="submit" class="light" value="Subscribe">
-							</form>
 						</div>
 					</div>
 				</div>
 
-				<div class="copy">Copyright 2014 Lincoln High School. All rights reserved.</div>
+				<div class="copy">Copyright 2018 Our School. All rights reserved.</div>
 			</div>
 
 		</footer>

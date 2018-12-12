@@ -51,5 +51,16 @@ class Msinhvien extends CI_Model
 		return $this->db->update('tbl_sinhvien', $data);
 	}
 
+	public function dslopthamgia($masinhvien, $thamgia)
+	{
+		$this->db->select('tenmon, malophoc');
+		$this->db->from('dm_mon a');
+		$this->db->join('tbl_lophoc b', 'a.mamon = b.mamon', 'left');
+		$this->db->join('tbl_sinhvien_lophoc c', 'b.id_lophoc = c.id_lophoc', 'left');
+		$this->db->where('masinhvien', $masinhvien);
+		$this->db->where('c.trangthai', $thamgia);
+		$records = $this->db->get()->result_array();
+		return $records;
+	}
 }
 ?>
