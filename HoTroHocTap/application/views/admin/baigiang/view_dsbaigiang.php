@@ -26,7 +26,9 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-
+                <div class="col-md-2" style="margin-top: 3%;margin-bottom: 3%; float: right">
+                    <a href="<?php echo base_url('thembg') ?>" class="btn btn-success btn-sm btn-flat">Thêm bài giảng</a>
+                </div>
                 <div class="col-md-12">
                     <div class="box box-success">
                         <div class="box-body">

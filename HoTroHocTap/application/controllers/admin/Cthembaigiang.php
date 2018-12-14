@@ -7,7 +7,7 @@ class Cthembaigiang extends MY_Controller{
 	}
 	function index(){
 		$mes=array('sobanghi'=>0);
-	    
+	    $data['ten'] = "Thêm bài giảng";
         $data['khoiphuc']=array('mamon'=>'','tieude'=>'','noidung'=>'');
         
         if($this->input->post('luu'))
@@ -35,6 +35,7 @@ class Cthembaigiang extends MY_Controller{
         }
 
         if($this->input->get('bg')){
+            $data['ten'] = "Sửa bài giảng";
             $mabg = $this->input->get('bg');
             $data['bg'] = $this->Mthembaigiang->getbg($mabg);
             if($this->input->post('sua')){

@@ -64,14 +64,22 @@
             </tbody>
           </table>
         </div>
+
+        <div id="container"></div>
       </div>
-      
     </div>
   </section>
 </div>
-
+<script src="<?php echo base_url(); ?>/bootstrap/highcharts/highcharts.js"></script>
+<script src="<?php echo base_url(); ?>/bootstrap/highcharts/data.js"></script>
+<script src="<?php echo base_url(); ?>/bootstrap/highcharts/drilldown.js"></script>
 <script type="text/javascript" src="<?php echo base_url('bootstrap/js/vue.js'); ?>"></script>
 <script type="text/javascript">
+  var muc1 = 0;
+  var muc2 = 0;
+  var muc3 = 0;
+  var muc4 = 0;
+  var muc5 = 0;
   var vm = new Vue({
     el: '#vue',
     data: {
@@ -111,10 +119,9 @@
       },
       DanhSachBL: function(){
         if(this.malophoc != ""){
-          
+          //danh sách sinh viên
           var url = "<?php echo base_url('admin/Cdanhmucmathi/danhsachbailam/'.$madethi); ?>"+ "/" + this.malophoc;
-         // console.log(url);
-          
+          // console.log(this.malophoc);
           $.ajax({
             url : url,
             type : "GET",
@@ -122,11 +129,85 @@
             success: function(data)
             {
               var toAppend = '';
-          
               $.each(data,function(i,o){
+                  if(o.sodiem>=0 && o.sodiem<3 ){
+                    muc1 ++;
+                  }
+                  if(o.sodiem>=3 && o.sodiem<5 ){
+                    muc2 ++;
+                  }
+                  if(o.sodiem>=5 && o.sodiem<7 ){
+                    muc3 ++;
+                  }
+                  if(o.sodiem>=7 && o.sodiem<8 ){
+                    muc4 ++;
+                  }
+                  if(o.sodiem>=8 && o.sodiem<=10 ){
+                    muc5 ++;
+                  }
                   toAppend += '<tr><td class="text-center col-md-3">'+o.masinhvien+'</td><td class="text-center col-md-3">'+o.thoigiannopbai+'</td><td class="text-center col-md-2">'+o.socaudung+'</td><td class="text-center col-md-2">'+o.sodiem+'</td><td class="text-center col-md-2"><a href="<?php echo base_url('admin/cdanhmucmathi/xemchitietbailam/'.$madethi.'/') ?>'+o.masinhvien+'" class="btn btn-success btn-flat btn-sm"><i class="fa fa-download" aria-hidden="true"></i></a> <button  class="btn btn-danger btn-flat btn-sm" title="đã bị hủy" ><i class="fa fa-times" aria-hidden="true"></i></button></td></tr>';
               });
+              console.log(muc5);
+              //biểu đồ
+              Highcharts.chart('container', {
+                  chart: {
+                      type: 'pie'
+                  },
+                  title: {
+                      text: 'Biểu đồ %'
+                  },
+                  plotOptions: {
+                      series: {
+                          dataLabels: {
+                              enabled: true,
+                              format: '{point.name}: {point.y:.1f}%'
+                          }
+                      }
+                  },
+
+                  tooltip: {
+                      headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                      pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                  },
+
+                  "series": [
+                      {
+                          "name": "Browsers",
+                          "colorByPoint": true,
+                          "data": [
+                              {
+                                  "name": "0đ-3đ",
+                                  "y": (muc1 *100),
+                                  "drilldown": "0đ-3đ"
+                              },
+                              {
+                                  "name": "3đ-5đ",
+                                  "y": (muc2 *100),
+                                  "drilldown": "3đ-5đ"
+                              },
+                              {
+                                  "name": "5đ-7đ",
+                                  "y": (muc3 *100),
+                                  "drilldown": "5đ-7đ"
+                              },
+                              {
+                                  "name": "7đ-8đ",
+                                  "y": (muc4 *100),
+                                  "drilldown": "7đ-8đ"
+                              },
+                              {
+                                  "name": "8đ-10đ",
+                                  "y": (muc5 *100),
+                                  "drilldown": "7đ-8đ"
+                              },
+                              
+                          ]
+                      }
+                  ],
+                  
+              });
               $("#tableBL tbody").empty().append(toAppend);
+
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
@@ -134,9 +215,7 @@
             }
 
           });
-          
 
-          
           $('#danhsach').show();
         }else{
           $('#danhsach').hide();
@@ -145,4 +224,7 @@
       }
     }
   })
+
+  
 </script>
+

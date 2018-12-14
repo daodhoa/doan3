@@ -132,8 +132,9 @@ class Cdanhmucmathi extends MY_Controller
 
 	public function xembailam($madethi)
 	{
-		$this->load->model('Mkyhoc');
+		
 
+		$this->load->model('Mkyhoc');
 		$data['madethi'] = $madethi;
 		$data['hocky'] = $this->Mkyhoc->getAll();
 		$data['content'] = 'admin/dethicu/view_bailam';
@@ -144,6 +145,12 @@ class Cdanhmucmathi extends MY_Controller
 		$danhsachlop = $this->Mthicu->danhsachlop($mahocky, $madethi);
 		echo json_encode($danhsachlop);
 		//print_r($danhsachlop);
+	}
+
+	public function bieudo($madethi, $malophoc)
+	{
+		$bieudo = $this->Mthicu->bieudo($madethi, $malophoc);
+		echo json_encode($bieudo);
 	}
 
 	public function danhsachbailam($madethi, $malophoc)

@@ -2,7 +2,7 @@
 <div class="row">
     <!-- Page Header -->
     <div class="col-lg-12">
-        <h1 class="page-header">Thêm Bài Giảng</h1>
+        <h1 class="page-header"><?php echo $ten?></h1>
     </div>
                 <!--End Page Header -->
 </div>
@@ -10,7 +10,7 @@
 	<section class="content-header">
 		<ol class="breadcrumb">
 		  <li><a href="<?php echo base_url('admin/cdsbaigiang'); ?>"><i class="fa fa-dashboard"></i>Danh sách bài giảng</a></li>
-		  <li class="active">Thêm bài giảng </li>
+		  <li class="active"><?php echo $ten?></li>
 		</ol>
 	</section>
 	<section class="content">
@@ -60,8 +60,7 @@
 		                    </div>
 		                    <div class="col-md-12" style="margin-top: 2%">
 		                        <input type="submit" name="<?php if(isset($bg)){ echo 'sua';}else{echo 'luu';}?>" value="Lưu bài"  class="btn btn-success btn-sm btn-flat">
-		                        
-		                        <button type="reset" class="btn btn-minw btn-sm btn-square btn-warning"><i class="fa fa-times push-5-r"></i>Hủy</button>
+		                        <a href="<?php echo base_url('admin/cdsbaigiang'); ?>" class="btn btn-minw btn-sm btn-square btn-warning">Hủy</a>
 		                    </div>
 		                </div>
 		            </div>
