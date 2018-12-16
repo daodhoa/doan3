@@ -23,8 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+# tren moi truong dev
 $config['base_url'] = 'http://localhost/doan3/HoTroHocTap/';
-
+# tren moi truong internet
+$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/doan3/HoTroHocTap/';
 /*
 |--------------------------------------------------------------------------
 | Index File
