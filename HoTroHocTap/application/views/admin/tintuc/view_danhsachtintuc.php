@@ -16,7 +16,7 @@
             <div class="panel panel-default">
                 <?php foreach ($lopHocs->result() as $lopHoc):?>
                     <div class="panel-heading">
-                             Mã lớp học: <?php echo($lopHoc->malophoc); ?>
+                             <strong><big>Mã lớp học: <?php echo($lopHoc->malophoc); ?></big></strong>
 
                     </div>
                     <div class="panel-body">
