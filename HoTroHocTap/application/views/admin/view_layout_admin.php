@@ -84,7 +84,7 @@
                                     1 câu hỏi mới
                                     </div>
                                     <div class="col-sm-5">
-                                    <span class="pull-right text-muted small" id="thoi_gian_hoi">12 minutes ago</span>
+                                    <span class="pull-right text-muted small" id="thoi_gian_hoi">0 minutes ago</span>
                                     </div>
                                 </div>
                             </a>
@@ -214,7 +214,7 @@ $(document).ready(function(){
                 
                 var json = JSON.parse(data);
                 document.getElementById('so_cau_hoi_moi').innerHTML= " "+json.so_cau_hoi_moi+" câu hỏi mới";
-                document.getElementById("thoi_gian_hoi").innerHTML= json.thoi_gian_hoi;
+                if(json.so_cau_hoi_moi!=0) document.getElementById("thoi_gian_hoi").innerHTML= json.thoi_gian_hoi;
                 document.getElementById("so_cau").innerHTML=json.so_cau_hoi_moi;
                 console.log(json.thoi_gian_hoi);
 
