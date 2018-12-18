@@ -153,7 +153,9 @@ class Cdanhmuctintuc extends MY_Controller
 			$noiDung 	= $this->input->post('noidung');
 			$maquantri	= $this->session->userdata('maquantri');
 			$theloai	= 'thongbao';
-			$record 	= $this->Mtintuc->them($maquantri, $tieuDe, $id_LopHoc, $noiDung,$theloai);
+			$thong_bao_cho = $this->Mtintuc->notifyFor($maquantri, $theloai, $id_LopHoc);
+			
+			$record 	= $this->Mtintuc->them($maquantri, $tieuDe, $id_LopHoc, $noiDung,$theloai,$thong_bao_cho);
 
 			if($record == true ){
 				

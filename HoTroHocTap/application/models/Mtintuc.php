@@ -185,9 +185,12 @@ class Mtintuc extends CI_Model
 			unset($dsSinhvien[$key]);
 			# code...
 		}
-		array_push($dsSinhvien,$magiangvien);
+		if($theloai=='hoidap') array_push($dsSinhvien,$magiangvien);
 		$notifyFor=serialize($dsSinhvien);
 		// $notifyFor=unserialize($notifyFor);
+		// print("<pre>".print_r(unserialize($notifyFor),true)."</pre>");
+		// die();
+		
 		return $notifyFor;
 
 
