@@ -145,7 +145,7 @@
                   if(o.sodiem>=8 && o.sodiem<=10 ){
                     muc5 ++;
                   }
-                  toAppend += '<tr><td class="text-center col-md-3">'+o.masinhvien+'</td><td class="text-center col-md-3">'+o.thoigiannopbai+'</td><td class="text-center col-md-2">'+o.socaudung+'</td><td class="text-center col-md-2">'+o.sodiem+'</td><td class="text-center col-md-2"><a href="<?php echo base_url('admin/cdanhmucmathi/xemchitietbailam/'.$madethi.'/') ?>'+o.masinhvien+'" class="btn btn-success btn-flat btn-sm"><i class="fa fa-download" aria-hidden="true"></i></a> <button  class="btn btn-danger btn-flat btn-sm" title="đã bị hủy" ><i class="fa fa-times" aria-hidden="true"></i></button></td></tr>';
+                  toAppend += '<tr><td class="text-center col-md-3">'+o.masinhvien+'</td><td class="text-center col-md-3">'+o.thoigiannopbai+'</td><td class="text-center col-md-2">'+o.socaudung+'</td><td class="text-center col-md-2">'+o.sodiem+'</td><td class="text-center col-md-2"><a href="<?php echo base_url('admin/cdanhmucmathi/xemchitietbailam/'.$madethi.'/') ?>'+o.masinhvien+'" class="btn btn-success btn-flat btn-sm">Xem chi tiết</a></td></tr>';
               });
               console.log(muc5);
               //biểu đồ

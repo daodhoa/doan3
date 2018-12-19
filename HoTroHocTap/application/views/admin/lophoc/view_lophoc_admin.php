@@ -109,7 +109,11 @@
                                     <tr>
                                         <td class="text-center"><?php echo($stt); $stt++; ?></td>
                                         <td><?php echo $row['malophoc']; ?></td>
-                                        <td class="text-center"><?php echo $row['trangthai']; ?></td>
+                                        <td class="text-center">
+                                            <?php if($row['trangthai']==1 ){
+                                                echo "Mở";
+                                            }else{ echo "Đóng"; } ?>
+                                        </td>
                                         <td class="text-center">
                                             <a onclick="return confirmAction();" class="btn btn-danger btn-flat btn-sm" title="Xóa" href="<?php echo base_url('admin/cdanhmuclophoc/xoa?id='.$row['id_lophoc']); ?>" >Xóa</a>
                                         </td>

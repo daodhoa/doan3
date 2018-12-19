@@ -142,14 +142,14 @@
                                         <td><?php echo $row['thoigianlambai']; ?> phút</td>
                                         <td><?php echo $row['thoigiantao']; ?></td>
                                         <td class="text-center col-md-3">
-                                            <a href="<?php echo base_url('admin/cdanhmucmathi/xemchitiet?madethi='.$row['madethi']); ?>" class="btn btn-success btn-flat btn-sm"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                            <a title="Xem chi tiết đề thi" href="<?php echo base_url('admin/cdanhmucmathi/xemchitiet?madethi='.$row['madethi']); ?>" class="btn btn-success btn-flat btn-sm"><i class="fa fa-download" aria-hidden="true"></i></a>
 
                                             <?php if($row['trangthai'] == 1): ?>
                                                 <button class="btn btn-primary btn-flat btn-sm" title="đang hoạt động" onclick="changeStatus('<?php echo $row["madethi"]; ?>');" name="check" ><i class="fa fa-check" aria-hidden="true"></i></button>
                                             <?php elseif($row['trangthai'] == 0): ?>
                                                 <button  class="btn btn-danger btn-flat btn-sm" title="đã bị hủy" onclick="changeStatus('<?php echo $row["madethi"]; ?>');" name ="uncheck" ><i class="fa fa-times" aria-hidden="true"></i></button>
                                             <?php endif; ?>
-                                            <a href="<?php echo base_url('admin/cdanhmucmathi/xembailam/'.$row['madethi']); ?>" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-folder-open" aria-hidden="true"></i></a>
+                                            <a title="Xem danh sách bài làm" href="<?php echo base_url('admin/cdanhmucmathi/xembailam/'.$row['madethi']); ?>" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-folder-open" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

@@ -18,18 +18,7 @@
                         </div>
                         <!--end user image section-->
                     </li>
-                    <li class="sidebar-search">
-                        <!-- search section-->
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                        <!--end search section-->
-                    </li>
+                    
                 
                      <li>
                         <a href= "<?php echo base_url().'admin/cdanhmucmonhoc' ;?>"><i class="fa fa-flask fa-fw"></i>Quản lý môn học</a>
