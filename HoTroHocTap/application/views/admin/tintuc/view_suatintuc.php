@@ -11,13 +11,8 @@
         <div class="col-md-6 ">
         	
         	<form id="themtin" action="<?php echo base_url().'admin/cdanhmuctintuc/sua/'.$tinTuc->matintuc ;?>" method="POST">
-				<div class="form-group">
-        			<input type="hidden" id="mamonhoc" value="<?php echo($tinTuc->mamon); ?>" class="form-control" name="maMonHoc" placeholder="<?php echo($tinTuc->tenmon); ?>" readonly hide>
-        		</div>
-				<div class="form-group">
-                    <label for="monhoc">Môn học </label>
-                    <input type="text" id="tenmon" value="<?php echo($tinTuc->tenmon); ?>" class="form-control" name="maMonHoc" placeholder="" readonly>
-                </div>
+				
+				
                 <div class="form-group">
                     <label for="tieude">Tiêu đề tin </label>
                     <input type="text" id="tieude" value="<?php echo($tinTuc->tieude); ?>" class="form-control" name="tieude" placeholder="" required>

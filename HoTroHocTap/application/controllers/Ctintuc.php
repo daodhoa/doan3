@@ -87,7 +87,10 @@ class Ctintuc extends CI_Controller
 			$noiDung 	= $this->input->post('noidung');
 			$masinhvien	= $this->session->userdata('masinhvien');
 			$theloai	= 'hoidap';
-			$record 	= $this->Mtintuc->them($masinhvien, $tieuDe, $id_LopHoc, $noiDung, $theloai);
+
+			$thong_bao_cho = $this->Mtintuc->notifyFor($masinhvien, $theloai, $id_LopHoc);
+
+			$record 	= $this->Mtintuc->them($masinhvien, $tieuDe, $id_LopHoc, $noiDung, $theloai,$thong_bao_cho );
 
 			if($record == true ){
 				

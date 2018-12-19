@@ -34,9 +34,7 @@
                 <div class="form-group">
                     <input id="tenkyhoc" type="hidden" value="<?php echo($tenkyhoc); ?>" class="form-control" name="tenkyhoc" required>
                 </div>
-                <div class="form-group">
-                    <input type="file" name="userfile" size="20" />
-                </div>
+                
                 <div class="form-group">
 		            <input type="submit" class="btn btn-primary" name="submit" value="Ghi lại">
 		        </div>

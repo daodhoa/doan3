@@ -125,7 +125,7 @@ class Mtintuc extends CI_Model
 		}
 		return $record;
 	}
-	public function them($maquantri, $tieuDe, $id_LopHoc, $noiDung, $theloai)
+	public function them($maquantri, $tieuDe, $id_LopHoc, $noiDung, $theloai,$thong_bao_cho)
 	{
 
 		$data = array(
@@ -133,6 +133,7 @@ class Mtintuc extends CI_Model
         'tieude' => $tieuDe,
         'noiDung' => $noiDung,
         'manguoidang' => $maquantri,
+        'thong_bao_cho'=> $thong_bao_cho,
         'ngaydang' => date('Y-m-d H:i:s'),
         'theloai' => $theloai
 		);
@@ -151,6 +152,103 @@ class Mtintuc extends CI_Model
         'tieuDe' => $tieuDe,
         'noiDung' => $noiDung
 		);
+		$this->db->where('matintuc', $matintuc);
+		$this->db->update('dm_tintuc', $data);
+		return true;
+	}
+	public function notifyFor($manguoidang, $theloai, $id_LopHoc){
+		//danh sach notify gom co tat ca thanh vien trong lop cung voi giao vien lop do. tru nguoi dang
+		//tra ve 1 array da duoc serialize
+
+		$this->db->select('dm_mon.manguoitao');
+		$this->db->from('dm_tintuc');
+		$this->db->join('tbl_lophoc', 'dm_tintuc.id_lophoc = tbl_lophoc.id_lophoc');
+		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
+		
+		$magiangvien = $this->db->get()->row()->manguoitao;
+		// print("<pre>".print_r($record1,true)."</pre>");
+		// die();
+		// lay danh sach sv lop:
+		$this->db->distinct();
+		$this->db->select('tbl_sinhvien_lophoc.masinhvien');
+		$this->db->from('dm_tintuc');
+		$this->db->join('tbl_sinhvien_lophoc', 'tbl_sinhvien_lophoc.id_lophoc = dm_tintuc.id_lophoc');
+		$dsSinhvien = $this->db->get()->result_array();
+		$dsSinhvien = array_map (function($value){
+    		return $value['masinhvien'];
+		} , $dsSinhvien);
+		// array_diff( $dsSinhvien[0], array($manguoidang));
+		// $notifyFor= $dsSinhvien;
+		
+		foreach ($dsSinhvien as $key => $value) {
+			if($manguoidang==$value)
+			unset($dsSinhvien[$key]);
+			# code...
+		}
+		if($theloai=='hoidap') array_push($dsSinhvien,$magiangvien);
+		$notifyFor=serialize($dsSinhvien);
+		// $notifyFor=unserialize($notifyFor);
+		// print("<pre>".print_r(unserialize($notifyFor),true)."</pre>");
+		// die();
+		
+		return $notifyFor;
+
+
+	}
+	public function getListCauHoiMoi($magiangvien){
+		
+		$this->db->select('tenmon,dm_tintuc.matintuc,dm_tintuc.thong_bao_cho,dm_tintuc.da_thong_bao_cho,dm_tintuc.id_lophoc,dm_tintuc.ngaydang,dm_tintuc.tieude,tbl_sinhvien.hoten');
+		$this->db->from('dm_tintuc');
+		$this->db->join('tbl_lophoc', 'tbl_lophoc.id_lophoc = dm_tintuc.id_lophoc');
+		$this->db->join('tbl_sinhvien', 'dm_tintuc.manguoidang = tbl_sinhvien.masinhvien');
+		$this->db->join('dm_mon', 'tbl_lophoc.mamon = dm_mon.mamon');
+		$this->db->where('manguoitao', $magiangvien);
+		$this->db->where('theloai', 'hoidap');
+		$this->db->order_by("dm_tintuc.ngaydang", "desc");
+		$result = $this->db->get()->result_array();
+		
+		foreach ($result as $key => $row) {
+			if(!empty($row['thong_bao_cho'])) {
+				if(in_array($magiangvien,unserialize($row['thong_bao_cho']))){
+					
+					if(!empty($row['da_thong_bao_cho'])){
+						if(!in_array($magiangvien,unserialize($row['da_thong_bao_cho']))){
+							//giang vien phai nam trong danh sach thong bao cua tin. dong thoi khong nam trong danh sach da xem
+						}else{
+							unset($result[$key]);
+						}
+					}
+					
+				}else{
+					unset($result[$key]);
+				}
+			}else{
+				unset($result[$key]);
+			}
+		}
+		// print("<pre>".print_r($result,true)."</pre>");
+		// die();
+		return $result;
+		
+		
+	}
+	public function updateDaXemTinTuc($manguoixem,$matintuc){
+		$this->db->select('dm_tintuc.da_thong_bao_cho');
+		$this->db->from('dm_tintuc');
+		$this->db->where('matintuc', $matintuc);
+		$record=$this->db->get()->row()->da_thong_bao_cho;
+		if(empty($record)) {
+			$dsDaThongBao=[];
+		}else{
+			$dsDaThongBao=unserialize($record);
+		}
+		array_push($dsDaThongBao,$manguoixem);
+		
+		$data = array(
+        'da_thong_bao_cho' => serialize($dsDaThongBao)
+		);
+		// print("<pre>".print_r(unserialize($record),true)."</pre>");
+		// die();
 		$this->db->where('matintuc', $matintuc);
 		$this->db->update('dm_tintuc', $data);
 		return true;

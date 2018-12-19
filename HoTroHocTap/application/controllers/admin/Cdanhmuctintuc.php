@@ -13,6 +13,7 @@ class Cdanhmuctintuc extends MY_Controller
 		$this->load->model('Mlophoc');
 		$this->load->model('Mcomments');
 		$this->load->model('Mkyhoc');
+		$this->load->helper('date');
 	}
 
 	public function index()
@@ -68,6 +69,46 @@ class Cdanhmuctintuc extends MY_Controller
 			// $this->danhsachtintuc(0,0);
 		}
 	}
+	public function getNotifyList()
+	{
+		
+		$maquantri	= $this->session->userdata('maquantri');
+		$cau_hoi_moi = $this->Mtintuc->getListCauHoiMoi($maquantri);
+		$so_cau_hoi_moi= count($cau_hoi_moi);
+		$now = time();
+		$ngaydang= strtotime(reset($cau_hoi_moi)["ngaydang"]);
+		$thoi_gian_hoi=timespan($ngaydang, $now) . ' ago';
+		$data=array("so_cau_hoi_moi"=>$so_cau_hoi_moi,
+					 "thoi_gian_hoi"=>$thoi_gian_hoi
+					 );
+		// print("<pre>".print_r(timespan($ngaydang, $now) . ' ago',true)."</pre>");
+		// die();
+		// $so_comment_moi = $this->Mtintuc->getSoCommentMoi($maquantri);
+		echo json_encode($data);
+		
+	}
+	public function getNewQuesList(){
+		$maquantri	= $this->session->userdata('maquantri');
+		$cau_hoi_moi = $this->Mtintuc->getListCauHoiMoi($maquantri);
+		$now = time();
+		foreach ($cau_hoi_moi as $key => $value) {
+			# code...
+			
+			$ngaydang=strtotime($cau_hoi_moi[$key]["ngaydang"]);
+			$cau_hoi_moi[$key]["ngaydang"]=timespan($ngaydang, $now) . ' ago';
+			
+		}
+		
+		$data['cau_hoi_moi']=$cau_hoi_moi;
+		$data['content'] = 'admin/tintuc/view_danhsachcauhoimoi';
+		$this->load->view('admin/view_layout_admin', $data);
+
+	}
+	public function seeNewQuest($maTinTuc){
+		$maquantri	= $this->session->userdata('maquantri');
+		$this->Mtintuc->updateDaXemTinTuc($maquantri,$maTinTuc);
+		$this->showViewChiTiettintuc($maTinTuc);
+	}
 	public function showViewThemtintuc($mamonhoc,$kyhoc)
 	{
 		#lay ma nguoi dung trong séssion vao ma quan tri
@@ -112,7 +153,9 @@ class Cdanhmuctintuc extends MY_Controller
 			$noiDung 	= $this->input->post('noidung');
 			$maquantri	= $this->session->userdata('maquantri');
 			$theloai	= 'thongbao';
-			$record 	= $this->Mtintuc->them($maquantri, $tieuDe, $id_LopHoc, $noiDung,$theloai);
+			$thong_bao_cho = $this->Mtintuc->notifyFor($maquantri, $theloai, $id_LopHoc);
+			
+			$record 	= $this->Mtintuc->them($maquantri, $tieuDe, $id_LopHoc, $noiDung,$theloai,$thong_bao_cho);
 
 			if($record == true ){
 				
@@ -173,6 +216,11 @@ class Cdanhmuctintuc extends MY_Controller
 			echo "xoa thất bại";
 		}
 		
+	}
+	public function loadNotify()
+	{
+		var_dump("hello");
+		die();
 	}
 }
 ?>

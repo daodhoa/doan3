@@ -75,7 +75,7 @@ class Cdanhmuccauhoi extends MY_Controller
 					}
 					else if($manhom == '2')
 					{
-						$manhom = 'tbinh';
+						$manhom = 'tb';
 					}
 					else if($manhom == '3')
 					{

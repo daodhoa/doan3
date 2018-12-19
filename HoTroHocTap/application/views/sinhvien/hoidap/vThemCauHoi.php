@@ -26,9 +26,9 @@
                     <input id="malop" type="hidden" value="<?php echo($malop); ?>" class="form-control" name="malop" required>
                 </div>
                 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <input type="file" name="userfile" size="20" />
-                </div>
+                </div> -->
                 <div class="form-group">
 		            <input type="submit" class="btn btn-primary" name="submit" value="Ghi lại">
 		        </div>
