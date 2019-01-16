@@ -16,5 +16,5 @@ thay đổi csdl trong file application/config/database.php
   + cần tạo thêm view thì thêm thư mục trong view/admin, ví dụ tạo thư mục view/admin/monhoc chứa các file view của quản lý môn học
 ----------------
 vào trang đăng nhập admin: ví dụ ở đây là http://localhost:8080/HoTroHocTap/admin/clogin_admin.
-tài khoản: ví dụ tk: duyhoa   pw: 123 or h0aday_nd 123 (muốn tạo thêm tk thì phải thêm trong phpmyadmin, mật khẩu là chuỗi đã mã hóa md5)
+tài khoản: ví dụ tk: duyhoa   pw: 123 or h0aday_nd 123 (muốn tạo thêm tk thì phải thêm trong phpmyadmin, mật khẩu là chuỗi đã mã hóa md5).
                 
